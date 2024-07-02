@@ -1,0 +1,294 @@
+\section{Chapter 1}
+\subsection{Set operations}
+A union of 2 sets is given by the combination of their elements:
+\[
+    A\cup B = \{1,2\}\cup\{2,3\}=\{1,2,3\}
+\]
+The intersection of 2 sets is instead given by their shared elements:
+\[
+    A\cap B=\{1,2\}\cap\{2,3\}=\{2\}
+\]
+\begin{theorem}[De Morgan's law]
+  For any sets $A_1,A_2,\ldots,A_n$ we have
+  \begin{align*}
+    \overline{A_1\cup A_2\cup \ldots \cup A_n}&=\overline{A_1}\cap\overline{A_2}\cap\ldots\cap\overline{A_n} \\
+    \overline{A_1\cap A_2\cap\ldots\cap A_n}&=\overline{A_1}\cup\overline{A_2}\cup\ldots\cup\overline{A_n}
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}[Distributive law]
+  For any sets $A$, $B$ and $C$ we have
+  \begin{align*}
+      A\cap(B\cup C)&=(A\cap B)\cup (A\cap C) \\
+      A\cup(B\cap C)&=(A\cup B)\cap (A\cup C)
+  \end{align*}
+\end{theorem}
+The complement of a set is given by all elements that are in the universal set, but not the set itself:
+\[
+    S=\{1,2,3,4,5\}\hskip 32pt \overline{A}=S\setminus A=\{1,2,3,4,5\}\setminus\{1,2\}=\{3,4,5\}
+\]
+The difference between two sets is given by elements in the first but not the second:
+\[
+    A\setminus B=\{1,2\}-\{2,3\}=\{1\}\hskip 32pt A\setminus B=A\cap\overline{B}
+\]
+Two sets are disjoint if their intersection is an empty set
+\[
+    A\cap B=\emptyset
+\]
+Sets can be partitioned into smaller parts. The sets $A_1,A_2,\ldots,A_n$ are a partition of $S$ if they're disjoint and:
+\[
+    \bigcup_{i=1}^n A_i=S
+\]
+The cartesian product of two sets are given by the ordered pairs of both sets:
+\[
+    A\times B=\{1,2\}\times\{2,3\}=\{(1,2),(1,3),(2,2),(2,3)\}
+\]
+Which can be expressed more generally as:
+\[
+    A\times B=\{(x,y)~|~x\in A \text{ and } y\in B\}
+\]
+The number of elements contained in a (finite) sets is given by its cardinality:
+\[
+    |A|=|\{1,2\}|=2
+\]
+For determining the cardinality of (finite) sets, the inclusion-exclusion principle is often used:
+\[
+    |A\cup B|=|A|+|B|-|A\cap B|
+\]
+This can once again be expanded to more sets:
+\begin{equation*}
+    \begin{gathered}
+    |\bigcup_{i=1}^n A_i|=\sum_{i=1}^n |A_i|-\sum_{i<j}|A_i\cap A_j| \\
+    +\sum_{i<j<k}|A_i\cap A_j\cap A_k|-\cdots +(-1)^{n+1}|A_1\cap \cdots\cap A_n|
+    \end{gathered}
+\end{equation*}
+\subsection{Cardinality and countable sets}
+Finite sets are obviously countable, however when we move onto infinite sets they are divided into countable \textbf{and} uncountable sets. A countable set is characterised by the ability to write it in one-to-one correspondance with the natural numbers, e.g.:
+\[
+    A=\{a_1,a_2,\ldots,a_n\}
+\]
+Meaning you can list the elements, this is true for sets like the natural numbers, $\mathbb{N}$, and the integers, $\mathbb{Z}$, but also the rational numbers, $\mathbb{Q}$. Uncountable sets (such as the real- and complex numbers) on the other hand cannot be written as lists, but instead have to be denoted as intervals.
+\begin{definition}[Countability of a set]
+  A set, $A$, is called countable if one of the following is true:
+  \begin{itemize}
+      \item[-] It is a finite set, $|A|<\infty$.
+      \item[-] The set can be written as a list with one-to-one correspondance with the natural numbers.
+  \end{itemize}
+\end{definition}
+This means that any subset of $\mathbb{N}, \mathbb{Z} \text{ and } \mathbb{Q}$ are countable, whilst any set containing an interval on the real line is uncountable. 
+\begin{theorem}[Countability of sub- and supersets]
+  Any subset of a countable set is countable and any superset of an uncountable set is uncountable.
+\end{theorem}
+\begin{proof}
+  Let $A$ be a countable set and $B\subset A$. If $A$ is finite, then it follows that $|B|\leq|A|<\infty$, thus $B$ must be countable as its cardinality cannot exceed that of $A$, which must be smaller than $\infty$.
+
+  If $A$ is instead countably infinite, then it follows that as $B$ is a subset of $A$ it must be possible to construct it by removing $\overline{B}$ from $A$, whereby it must also be countable, as it can be constructed as a list. 
+
+  The opposite can be argued by assuming $B$ is \textbf{not} countable, whereby a contradiction would occur in both proofs.
+\end{proof}
+\begin{theorem}[Countability of union]
+  If $A_1,A_2,\ldots,A_n$ are countable sets, then the union of those must also be countable.
+\end{theorem}
+\begin{proof}
+  As the sets are countable it must be possible to write them in the form
+  \begin{align*}
+      A_1&=\{a_{11},a_{12},\ldots,a_{1n}\} \\
+      A_2&=\{a_{21},a_{22},\ldots,a_{2n}\} \\
+      A_3&=\{a_{31},a_{32},\ldots,a_{3n}\}
+  \end{align*}
+  As such the union of those sets must also be possible to construct as a list
+  \[
+      \bigcup_{i=1}^{m}A_{i}=\{a_{11},a_{12},a_{21},a_{22},a_{31},a_{32},\ldots,a_{mn}\}
+  \]
+  And as a result must be countable.
+\end{proof}
+\begin{theorem}[Countability of carthesian product]
+  If $A$ and $B$ are countable, then $A\times B$ is also countable.
+\end{theorem}
+\begin{proof}
+  As $A$ and $B$ are countable it must be possible to write them in the form
+  \begin{align*}
+      A&=\{a_{1},a_{2},\ldots,a_{n}\} \\
+      B&=\{b_{1},b_{2},\ldots,b_{n}\}
+  \end{align*}
+  In accordance with the definition of the carthesian product, the two sets can be constructed as a list with the form
+  \[
+      A\times B=\{(a_{i},b_{j})~|~i,j\in \mathbb{N}\}
+  \]
+  Whereby it must be countable as it can be constructed as a list.
+\end{proof}
+As a result of this proof it also becomes clear that any set that can be written in the form
+\[
+    C=\bigcup_{i}\bigcup_{j}\{a_{ij}\}\text{ where }i,j \text{ belong to a countable set}
+\]
+Must also be countable, the set of rational numbers is an example of this as it can be written as
+\[
+    \mathbb{Q}=\bigcup_{i\in \mathbb{Z}}\bigcup_{j\in \mathbb{N}}\left\{\frac{i}{j}\right\}
+\]
+\subsection{Functions}
+Functions take an input from its domain, apply a rule to said input, whereby an output from the co-domain is produced.
+\[
+    f:A\xrightarrow{} B\hskip 32pt f(x\in A)\in B
+\]
+\begin{definition}
+  A function maps elements from the domain set to elements in the co-domain with the property that each input is mapped to exactly one output.
+\end{definition}
+In the same context the range operand is defined, as it is not necessary for a function to be able to output all elements of the codomain:
+\[
+    f: \mathbb{R} \xrightarrow{x^{2}} \mathbb{R}
+\]
+Here both the domain- and co-domain are the real numbers, however it is clear that no value $x\in \mathbb{R}$ would ever produce a negative number, therefore:
+\[
+    \text{Range}(f)=\mathbb{R}^{+}
+\]
+\subsection{Problems}
+\subsubsection{Problem 3}
+a) Let $S=\{1,2,3\}$. Write all possible partitions of $S$.
+
+As a partition is any collection of disjoint sets whos union makes up $S$ we have that
+\begin{enumerate}
+  \item \{1\},\{2\},\{3\}
+  \item \{1,2\},\{3\}
+  \item \{1\},\{2,3\}
+  \item \{1,3\},\{2\}
+  \item \{1,2,3\}
+\end{enumerate}
+
+\subsubsection{Problem 4}
+a) Determine whether each of the following sets are countable or countable:
+\begin{itemize}
+    \item[-] $A=\{x\in \mathbb{Q}~|~-100\leq x\leq 100\}$
+    \item[-] $B=\{(x,y)~|~x\in \mathbb{N},y \in \mathbb{Z}\}$
+    \item[-] $C=]0,0.1]$
+    \item[-] $D=\left\{\frac{1}{n}~|~n\in \mathbb{N}\right\}$
+\end{itemize}
+
+As $A\subset \mathbb{Q}$ it is clear that it must be countable.
+
+As $B$ is the carthesian product of 2 countable sets it must be countable.
+
+As $C$ is a range it must be uncountable.
+
+As $D$ can be written in one-to-one correspondance with the naturals it must be countable.
+
+\subsubsection{Problem 5}
+a) Find the range of the function $f: \mathbb{R} \xrightarrow{\sin(x)} \mathbb{R}$. 
+
+As $\sin(x)$ has its extrema at $\sin\left(\frac{\pi}{2}\right)=1$ and $\sin\left(\frac{3\pi}{2}=-1\right)$, it is clear that
+\[
+    \text{Range}(f)=[-1,1]
+\]
+\subsection{Random experiments}
+A random experiment will always have an \textbf{outcome} corresponding to an element from the \textbf{sample space}, $S$.
+\begin{definition}
+  A random experiment is a process by which we observe something uncertain.
+\end{definition}
+When a random experiment is repeated, each repetition is called a \textbf{trial}. The goal of analyzing a random experiment is to assign probabilities to \textbf{events}, which correspond to subsets of the sample space.
+
+\subsection{Probability}
+A probability is assigned to an event, $P(A)\in[0,1]$. The derivation of probability theorem is based on 3 axioms:
+\begin{itemize}
+    \item Axiom 1: For any event $A$, $1\geq P(A)\geq 0$.
+    \item Axiom 2: Probability of the sample space, $S$, is $P(S)=1$.
+    \item Axiom 3: If $A_{1},A_{2},\ldots,A_{n}$ are disjoint events, then $P(\bigcup_{i=1}^{n}A_{i})=\sum_{i=1}^{n}P(A_{i})$
+\end{itemize}
+Notationally unions and intersections can be read as:
+\begin{align*}
+    P(A\cap B)&=P(A \text{ and } B)=P(A,B) \\
+    P(A\cup B)&=P(A \text{ or } B)
+\end{align*}
+\begin{theorem}[Probability of complement]
+  For any event $A$, $P(\overline{A})=1-P(A)$.
+\end{theorem}
+\begin{proof}
+  As the complement of a set contains all elements of the sample space that are not in the set
+  \[
+      \overline{A}=S\setminus A
+  \]
+  It is clear that their unions must be $S$ and they must be disjoint whereby
+  \[
+      P(A\cup \overline{A})=P(S)=1
+  \]
+  As they are disjoint we can write the probability of their union as the sum of their probabilities
+  \[
+      P(A)+P(\overline{A})=1\Leftrightarrow P(A)=1-P(\overline{A})
+  \]
+\end{proof}
+\begin{theorem}[Probability of empty set]
+  The probability of the empty is zero, $P(\emptyset)=0$.
+\end{theorem}
+\begin{proof}
+  As the empty set must be the complement of the sample space we have that
+  \[
+      P(\emptyset)=P(\overline{S})=1-P(S)=1-1=0
+  \]
+\end{proof}
+\begin{theorem}[Probability must be equal to or less than 1]
+  For any event $A$, $P(A)\leq 1$.
+\end{theorem}
+\begin{proof}
+  By the first axiom we have that
+  \[
+      P(\overline{A})\geq 0
+  \]
+  It becomes clear that
+  \[
+      P(A)\leq 1
+  \]
+  As $P(A)+P(\overline{A})=1$.
+\end{proof}
+\begin{theorem}[Probability of a difference]
+  The probability of a difference is given by $P(A\setminus B)=P(A)-P(A\cap B)$.
+\end{theorem}
+\begin{proof}
+  As $A\cap B$ and $A\setminus B$ must be disjoint, whilst their union must be $A$
+  \[
+      (A\cap B)\cup(A\setminus B)=A
+  \]
+  We have by the third axiom that
+  \[
+      P(A)=P((A\cap B)\cup(A\setminus B))=P(A\cap B)+P(A\setminus B)
+  \]
+  By rearranging it becomes clear that
+  \[
+      P(A\setminus B)=P(A)-P(A\cap B)
+  \]
+\end{proof}
+\begin{theorem}[Probability of a union]
+  The probability of a union is given by $P(A\cup B)=P(A)+P(B)-P(A\cap B)$.
+\end{theorem}
+\begin{proof}
+  As $A$ and $B\setminus A$ must be disjoint sets whilst their union must be $A\cup B$, it is clear that
+  \[
+      P(A\cup B)=P(A\cup (B\setminus A))
+  \]
+  As we know these are disjoint we write
+  \[
+      P(A\cup B)=P(A)+P(B\setminus A)
+  \]
+  Rewriting using the previous theorem we then have
+  \[
+      P(A\cup B)=P(A)+P(B)-P(A\cap B)
+  \]
+\end{proof}
+\begin{theorem}[Probability of a subset must be less than or equal to its superset]
+  If $A\subset B$ then $P(A)\leq P(B)$.
+\end{theorem}
+\begin{proof}
+  As $A\subset B$ it is clear that their union must be $B$
+  \[
+      P(B)=P(A\cap B)+P(B\setminus A)
+  \]
+  As their intersection is $A$ we have that
+  \[
+      P(B)=P(A)+P(B\setminus A)
+  \]
+  As
+  \[
+      P(B\setminus A)\geq 0
+  \]
+  By the first axiom, we have that
+  \[
+      P(B)\geq P(A)
+  \]
+\end{proof}
