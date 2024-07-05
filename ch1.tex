@@ -62,7 +62,7 @@ This can once again be expanded to more sets:
     +\sum_{i<j<k}|A_i\cap A_j\cap A_k|-\cdots +(-1)^{n+1}|A_1\cap \cdots\cap A_n|
     \end{gathered}
 \end{equation*}
-\subsection{Cardinality and countable sets}
+\subsubsection{Cardinality and countable sets}
 Finite sets are obviously countable, however when we move onto infinite sets they are divided into countable \textbf{and} uncountable sets. A countable set is characterised by the ability to write it in one-to-one correspondance with the natural numbers, e.g.:
 \[
     A=\{a_1,a_2,\ldots,a_n\}
@@ -125,7 +125,7 @@ Must also be countable, the set of rational numbers is an example of this as it 
 \[
     \mathbb{Q}=\bigcup_{i\in \mathbb{Z}}\bigcup_{j\in \mathbb{N}}\left\{\frac{i}{j}\right\}
 \]
-\subsection{Functions}
+\subsubsection{Functions}
 Functions take an input from its domain, apply a rule to said input, whereby an output from the co-domain is produced.
 \[
     f:A\xrightarrow{} B\hskip 32pt f(x\in A)\in B
@@ -141,8 +141,8 @@ Here both the domain- and co-domain are the real numbers, however it is clear th
 \[
     \text{Range}(f)=\mathbb{R}^{+}
 \]
-\subsection{Problems}
-\subsubsection{Problem 3}
+\subsubsection{Problems}
+\paragraph{Problem 3}
 a) Let $S=\{1,2,3\}$. Write all possible partitions of $S$.
 
 As a partition is any collection of disjoint sets whos union makes up $S$ we have that
@@ -154,7 +154,7 @@ As a partition is any collection of disjoint sets whos union makes up $S$ we hav
   \item \{1,2,3\}
 \end{enumerate}
 
-\subsubsection{Problem 4}
+\paragraph{Problem 4}
 a) Determine whether each of the following sets are countable or countable:
 \begin{itemize}
     \item[-] $A=\{x\in \mathbb{Q}~|~-100\leq x\leq 100\}$
@@ -171,7 +171,7 @@ As $C$ is a range it must be uncountable.
 
 As $D$ can be written in one-to-one correspondance with the naturals it must be countable.
 
-\subsubsection{Problem 5}
+\paragraph{Problem 5}
 a) Find the range of the function $f: \mathbb{R} \xrightarrow{\sin(x)} \mathbb{R}$. 
 
 As $\sin(x)$ has its extrema at $\sin\left(\frac{\pi}{2}\right)=1$ and $\sin\left(\frac{3\pi}{2}=-1\right)$, it is clear that
@@ -185,7 +185,7 @@ A random experiment will always have an \textbf{outcome} corresponding to an ele
 \end{definition}
 When a random experiment is repeated, each repetition is called a \textbf{trial}. The goal of analyzing a random experiment is to assign probabilities to \textbf{events}, which correspond to subsets of the sample space.
 
-\subsection{Probability}
+\subsubsection{Probability}
 A probability is assigned to an event, $P(A)\in[0,1]$. The derivation of probability theorem is based on 3 axioms:
 \begin{itemize}
     \item Axiom 1: For any event $A$, $1\geq P(A)\geq 0$.
@@ -292,3 +292,436 @@ Notationally unions and intersections can be read as:
       P(B)\geq P(A)
   \]
 \end{proof}
+\subsubsection{Problems}
+\paragraph{Problem 2}
+Write the sample space, $S$, for the following random experiments:
+
+a) We toss a coin until we see two consecutive tails. We record the number of coin tosses.
+\[
+    S= \{n\in \mathbb{N}~|~n\geq 2\}
+\]
+b) A bag contains 4 balls: one is red, one is blue, one is white and one is green. We choose two distinct balls and record their color in order.
+\begin{equation*}
+    \begin{gathered}
+        S=\{(R,B),(R,W),(R,G),(B,R),(B,W)(B,G),(W,R), \\
+        (W,B),(W,G),(G,R),(G,B),(G,W)\}
+    \end{gathered}
+\end{equation*}
+c) A customer arrives at a bank and waits in the line. We observe $T$, which is the total time (in hours) that the customer waits in the line. The bank has a strict policy that no customer waits more than 20 minutes under any circumstances.
+\[
+S=\left[0;\frac{1}{3}\right]
+\]
+\paragraph{Problem 3}
+Let $A,B$ and $C$ be three events in the sample space $S$. Suppose we know:
+\begin{itemize}
+    \item[-] $A\cup B \cup C=S$
+    \item[-] $P(A)=\frac{1}{2}$
+    \item[-] $P(B)=\frac{2}{3}$
+    \item[-] $P(A\cup B)=\frac{5}{6}$
+\end{itemize}
+Answer the following questions:
+
+a) Find $P(A\cap B)$.
+
+We have that
+\[
+    P(A\cap B)=P(A)+P(B)-P(A\cup B)
+\]
+Inserting known information we get that
+\[
+    P(A\cap B)=\frac{1}{2}+\frac{2}{3}-\frac{5}{6}=\frac{1}{3}
+\]
+b) Do $A,B$ and $C$ form a partition of $S$?
+
+No, as they aren't disjoint.
+
+c) Find $P(C-(A\cup B))$.
+
+We rewrite the event as
+\[
+    C\setminus (A\cup B)=(C\cup (A\cup B))-(A\cup B)
+\]
+As their union makes up the sample space
+\[
+    C\setminus (A\cup B)=S\setminus (A\cup B)=\overline{A\cup B}
+\]
+Which we know is equal to
+\[
+    P(C\setminus (A\cup B))=1-\frac{5}{6}=\frac{1}{6}
+\]
+d) If $P(C\cap (A\cup B))=\frac{5}{12}$, find $P(C)$.
+
+As $C$ must be possible to construct from the intersection of $C$ with $A$ and $B$ and the difference between them we get that
+\[
+    P(C)=P(C\cap (A\cup B))+P(C\setminus (A\cup B))
+\]
+By inserting we get
+\[
+    P(C)=\frac{5}{12}+\frac{1}{6}=\frac{7}{12}
+\]
+\paragraph{Problem 4}
+I roll a fair die twice and obtain two numbers, $X_{1}=\text{result of the first roll}$, and $X_{2}=\text{result of the second roll}$. Find the probability of the following events.
+
+a) $A$ defined as $X_{1}<X_{2}$.
+
+We write the sample space
+\begin{equation*}
+  \begin{gathered}
+      S=\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(2,1),(2,2),(2,3),(2,4), \\
+      (2,5),(2,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(4,1),(4,2), \\
+      (4,3),(4,4),(4,5),(4,6),(5,1),(5,2),(5,3),(5,4),(5,5), \\
+      (5,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\}$
+  \end{gathered}
+\end{equation*}
+Is is clear that $|S|=36$ and $|A|=15$, as such
+\[
+    P(A)=\frac{15}{36}=\frac{5}{12}
+\]
+b) $B$ defined $|\{6\}|\geq 1$.
+
+From the sample space we get that $|B|=11$, as such
+\[
+    P(B)=\frac{11}{36}
+\]
+\paragraph{Problem 5}
+You purchase a certain product. The manual states that the lifetime, $T$, of the product defined as the amount of time (in years) the product works properly until it breaks down satisfies:
+\[
+    P(T\geq t)=e^{-\frac{t}{5}} \text{ for all } t\geq 0
+\]
+For examples, the probability that the product lasts more than (or equal to) 2 years is
+\[
+    P(T\geq 2)=e^{-\frac{2}{5}}=0.6703
+\]
+
+a) This is an example of a continuous probability model. Write down the sample space, $S$.
+
+As $t\geq 0$ we get that
+\[
+    S=[0;\infty[
+\]
+b) Check that the statement in the manual makes sense by finding $P(T\geq 0)$ and $\lim_{t\rightarrow \infty} P(T\geq t)$
+
+We insert that $t=0$ and get
+\[
+    P(T\geq 0)=e^{-\frac{0}{5}}=e^{0}=1
+\]
+As such it makes sense, we take the limit as $t\rightarrow \infty$
+\[
+    \lim_{t\rightarrow \infty} e^{-\frac{t}{5}}=0
+\]
+Which also makes sense.
+
+c) Also check that if $t_{1}<t_{2}$ then $P(T\geq t_{1})\geq P(T\geq t_{2})$. Why does this need to be true?
+
+We assume $t_{1}=1,t_{2}=2$ and get
+\[
+    P(T\geq 1)=0.8187\hskip 32pt P(T\geq 2)=0.6703
+\]
+Whereby the statement is true. This has to be true as it is an exponential model, resulting in the monotony constantly being negative, as such the value must fall every time $t$ is increased.
+
+d) Find the probability that the product breaks down within three years of the purchase time.
+
+We have that
+\[
+    P(T\geq 3)=e^{-\frac{3}{5}}=0.5488
+\]
+As this is the probability that it last longer than or equal to 3 years, the complement must be
+\[
+    P(T<3)=1-P(T\geq 3)=1-0.5488=0.4512
+\]
+e) Find the probability that the product breaks down in the second year, i.e., find $P(1\leq T<2)$.
+
+We determine the probability of it breaking down within 2 years and then subtract the probability of it breaking down within 1. Using results from c) we have
+\[
+    P(T<1)=0.1813\hskip 32pt P(T<2)=0.3297
+\]
+Subtracting the two we get that
+\[
+    P(1\geq T<2)=0.3297-0.1813=0.1484
+\]
+\paragraph{Problem 6}
+You get a stick and break it randomly into three pieces. What is the probability that you can make a triangle using the three pieces? You can assume the break points are chosen completely at random, i.e. if the length of the original stick is 1 unit, and $x,y,z$ are the lengths of the three pieces, then $(x,y,z)$ are uniformly chosen from the set
+\[
+    \{(x,y,z)\in \mathbb{R}^{3}~|~x+y+z=1,x,y,z\geq 0\}
+\]
+By the triangle inequality we have that
+\begin{align*}
+  x<y+z \\
+  y<x+z \\
+  z<x+y
+\end{align*}
+Due to the sum requirement, the only time this is satisfied is when
+\begin{align*}
+  x<\frac{1}{2} \\
+  y<\frac{1}{2} \\
+  z<\frac{1}{2}
+\end{align*}
+Furthermore we have that the entire sample space must stretch a 3 dimensional plane from $P_{1}(1,0,0),P_{2}(0,1,0),P_{3}(0,0,1)$, while the possible values for forming a triangle must stretch one from $P_{1}(0.5,0,0),P_{2}(0,0.5,0),P_{3}(0,0,0.5).$ The area of this plane is $\frac{1}{4}$ of the sample spaces plane, and therefore
+\[
+    P(A)=\frac{1}{4}
+\]
+\subsection{Conditional probability}
+Conditional probabilities are written as
+\[
+    P(A~|~B)
+\]
+And are read as ''\textit{the probability of $A$, given that $B$ has occurred}``. The conditional probability will therefore be given by
+\begin{align*}
+    P(A~|~B)&=\frac{|A\cap B|}{|B|} \\
+            &=\frac{\frac{|A\cap B|}{|S|}}{\frac{|B|}{|S|}} \text{ dividing by $|S|$} \\
+            &=\frac{P(A\cap B)}{P(B)}
+\end{align*}
+This is as when we know $B$ has occured, the sample space of $A$ is shrunk to $B$, whereby the cardinality of their intersection must be equal to the amount of favourable outcomes.
+
+The earlier established probability axioms can also be formulated for conditional probabilities
+\begin{itemize}
+    \item[-] Axiom 1: For any event $A$, $P(A~|~B)\geq 0$.
+    \item[-] Axiom 2: Conditional probability of $B$ given $B$ is $1$, i.e., $P(B~|~B)=1$.
+    \item[-] Axiom 3: If $A_{1},A_{2},\ldots,A_{n}$ are disjoint events, then $P(\bigcup_{i=1}^{n}A_{i}~|~B)=\sum_{i=1}^{n} P(A_{i}~|~B)$.
+\end{itemize}
+And the same applies to the established fomulas
+
+\begin{theorem}
+  For any conditional event, $A~|~C$, $P(\overline{A}~|~C)=1-P(A~|~C)$.
+\end{theorem}
+\begin{proof}
+  We know that
+  \[
+      P(A~|~B)=\frac{P(A~|~B)}{P(B)}
+  \]
+  Assuming the theorem is correct we then have that
+  \[
+      1-P(\overline{A}~|~C)=1-\frac{P(\overline{A}~|~C)}{P(B)}
+  \]
+  We wish to show that
+  \[
+      \frac{P(A~|~B)}{P(B)}=1-\frac{P(\overline{A}~|~C)}{P(B)}
+  \]
+  Multiplying by $P(B)$ gets us
+  \[
+      P(A~|~B)=P(B)-P(\overline{A}~|~C)
+  \]
+  Adding $P(\overline{A}~|~C)$ on the LHS we get
+  \[
+      P(A~|~B)+P(\overline{A}~|~C)=P(B)
+  \]
+  As the two are mutually exclusive by the definition of the complement
+  \[
+      P((A~|~B)\cup (\overline{A}~|~C))=P(B)
+  \]
+  Which is true.
+\end{proof}
+\begin{theorem}
+  The probability of the empty set is zero, $P(\emptyset~|~C)=0$.
+\end{theorem}
+\begin{proof}
+  As the empty is the complement of the sample set we have from the previous theorem that
+  \[
+      P(S~|~C)=1
+  \]
+  By applying previous equation
+  \[
+      P(\overline{S}~|~C)=1-1=0
+  \]
+\end{proof}
+\begin{theorem}
+  The probability of a conditional probability occuring must always be less than or equal to 1, $P(A~|~C)\leq 1$.
+\end{theorem}
+\begin{proof}
+  From the definition of conditional probability
+  \[
+      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+  \]
+  It is clear that the denominator and numerator can never be more than even as $A\cap B=B$ even if $A\superset B$, resulting in the maximum value being 1.
+  \[
+      P(A~|~B)\leq 1
+  \]
+\end{proof}
+\begin{theorem}
+  The probability of a difference is given by $P(A\setminus B~|~C)=P(A~|~C)-P(A\cap B~|~C)$.
+\end{theorem}
+\begin{proof}
+  As $A\cap B~|~C$ and $A\setminus B~|~C$ must be disjoint whilst their union must be $A~|~C$, we have that
+  \[
+      (A\cap B~|~C)\union (A\setminus B~|~C)=A~|~C
+  \]
+  By the third axiom we have that
+  \[
+      P(A~|~C)=P(A\cap B~|~C)+P(A\setminus B~|~C)
+  \]
+  Rearranging the terms we get
+  \[
+      P(A\setminus B~|~C)=P(A~|~C)-P(A\cap B~|~C)
+  \]
+\end{proof}
+\begin{theorem}
+  The probability of a union is given by $P(A\cup B~|~C)=P(A~|~C)+P(B~|~C)-P(A\cap B~|~C)$.
+\end{theorem}
+\begin{proof}
+  As $A~|~C$ and $B\setminus A~|~C$ must be disjoint and their union must be equal to $A\cup B~|~C$ we have that
+  \[
+      P(A\cup B)=P(A~|~C\union (B\setminus A~|~C))
+  \]
+  As these sets are disjoint we rewrite using the third axiom
+  \[
+      P(A\cup B)=P(A~|~C)+P(B\setminus A~|~C)
+  \]
+  By the previous theorem the difference is rewritten as
+  \[
+      P(A\cup B)=P(A~|~C)+P(B~|~C)-P(A\cap B~|~C)
+  \]
+\end{proof}
+\begin{theorem}
+  If $A\subset B$ then $P(A~|~C)\leq P(B~|~C)$.
+\end{theorem}
+\begin{proof}
+  As $A\subset B$ it is clear that their union must be $B$
+  \[
+      P(B~|~C)=P(A\cap B~|~C)+P(B\setminus A~|~C)
+  \]
+  Since their intersection is $A$ due to it being the subset
+  \[
+      P(B~|~C)=P(A~|~C)+P(B\setminus A~|~C)
+  \]
+  By the first axiom
+  \[
+      P(B\setminus A~|~C)\geq 0
+  \]
+  As such
+  \[
+      P(B~|~C)\geq P(A~|~C)
+  \]
+\end{proof}
+This introduces some special cases
+\begin{align*}
+    P(A~|~B)&=\frac{P(\emptyset)}{P(B)}=0 \text{, for } A\cap B=\emptyset \\
+    P(A~|~B)&=\frac{P(B)}{P(B)}=1 \text{, for } B\subset A \\
+    P(A~|~B)&=\frac{P(A)}{P(B)} \text{, for } A\subset B
+\end{align*}
+Furthermore we also write the chain rule for conditional probability using the definition as a starting point
+\begin{theorem}
+  The extended chain rule is given by $P(A_{1}\cap A_{2}\cap A_{3}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}~|~A_{1})P(A_{3}~|~A_{2},A_{1})\cdots P(A_{n}~|~A_{n-1},A_{n-2},\ldots,A_{1})$
+\end{theorem}
+\begin{proof}
+  From the definition of conditional probability we have that
+  \[
+      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+  \]
+  By isolation for $P(A\cap B)$ we get
+  \[
+      P(A\cap B)=P(A~|~B)P(B)=P(B~|~A)P(B)
+  \]
+  Extending to 3 or more events we get that
+  \[
+      P(A\cap B\cap C)=P(A\cap(B\cap C))=P(A)P(B\cap C~|~A)
+  \]
+  Applying the first equation
+  \[
+      P(B\cap C)=P(B)P(C~|~B)
+  \]
+  By conditioning both sides on $A$ we get
+  \[
+      P(B\cap C~|~A)=P(B~|~A)P(C~|~A,B)
+  \]
+  Inserting in the original equation we then get
+  \[
+      P(A\cap B\cap C)=P(A)P(B~|~A)P(C~|~A,B)
+  \]
+  Which can be generalised to
+  \begin{equation*}
+    \begin{gathered}
+      P(A_{1}\cap A_{2}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}~|~A_{1})P(A_{3}~|~A_{2},A_{1})\cdots \\
+      P(A_{n}~|~A_{n-1},A_{n-2},\ldots,A_{1})
+    \end{gathered}
+  \end{equation*}
+\end{proof}
+\subsubsection{Independence}
+Conditional probabilities are only relevant if two events are not independent.
+\begin{definition}
+  Two events $A,B$ are independent if $P(A\cap B)=P(A)P(B)$.
+\end{definition}
+Independence for two or more events requires that all the individual events are independents, as well as all of them together, this means that for 3 events, all of the following must hold
+\begin{align*}
+    P(A\cap B)&=P(A)P(B) \\
+    P(A\cap C)&=P(A)P(C) \\
+    P(B\cap C)&=P(B)P(C) \\
+    P(A\cap B\cap C)&=P(A)P(B)P(C)
+\end{align*}
+\begin{theorem}
+    If $A$ and $B$ are independent, then $A$ and $\overline{B}$, $\overline{A}$ and $B$, $\overline{A}$ and $\overline{B}$ are also independent.
+\end{theorem}
+\begin{proof}
+  The first statement is proven as the others can be concluded from it. As the statement is equivalent to
+  \[
+      P(A\cap \overline{B})=P(A)-P(A\cap B)
+  \]
+  As we know $A$ and $B$ are independent we have
+  \[
+      P(A\cap\overline{B})=P(A)-P(A)P(B)
+  \]
+  We factor out $P(A)$ and get that
+  \[
+      P(A\cap\overline{B})=P(A)(1-P(B))
+  \]
+  And as
+  \[
+      1-P(B)=P(\overline{B})
+  \]
+  It becomes clear that
+  \[
+      P(A\cap\overline{B})=P(A)P(\overline{B})
+  \]
+\end{proof}
+To determine the probability of several unions of independent events, we make use of De Morgans law
+\[
+    P\left(\bigcup_{i=1}^{n} A_{i}\right)=1-P\left(\bigcap_{i=1}^{n} \overline{A_{i}}\right)
+\]
+Which is equivalent to
+\[
+    P\left(\bigcup_{i=1}^{n} A_{i}\right)=1-\prod_{i=1}^{n} (1-P(A_{i}))
+\]
+\subsubsection{Law of Total Probability}
+The law of total probability states that the probability of an event, $A$ must be the sum of the probability of it occuring in every partition, $B_{1},B_{2},\ldots,B_{n}$ of the sample space
+\[
+    P(A)=\sum_{i=1}^{n}P(A\cap B_{i})=\sum_{i=1}^{n}P(A~|~B_{i})P(B_{i})
+\]
+\begin{proof}
+  As $B_{1},B_{2},\ldots,B_{n}$ are partitions of the sample space we write
+  \[
+      S=\bigcup_{i=1}^{n} B_{i}
+  \]
+  Now the event $A$ occuring must be given by its intersection of the sample space
+  \[
+      A=A\cap\left(\bigcup_{i=1}^{n} B_{i}\right)
+  \]
+  By the distributive property it becomes clear that
+  \[
+      A=\bigcup_{i=1}^{n} (A\cap B_{i})
+  \]
+  Now as the partitions by definition are disjoint we can determine the probability as the sum of probabilities
+  \[
+      P(A)=P\left(\bigcup_{i=1}^{n} (A\cap B_{i})\right)=\sum_{i=1}^{n}P(A\cap B_{i})
+  \]
+  Rewriting using the definition of conditional probability (as $A\in B_{i}$ can only occur if $B_{i}$ has occured) we get
+  \[
+      P(A)=\sum_{i=1}^{n}P(A~|~B_{i})P(B_{i})
+  \]
+\end{proof}
+\begin{theorem}
+  Bayes rule states that: $P(B~|~A)=\frac{P(A~|~B)P(B)}{P(A)}$
+\end{theorem}
+\begin{proof}
+  From the definition of conditional probability
+  \[
+      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+  \]
+  Multiplying by $P(B)$ on both sides
+  \[
+      P(A~|~B)P(B)=P(A\cap B)
+  \]
+  Dividing by $P(A)$ on both sides
+  \[
+      \frac{P(A~|~B)P(B)}{P(A)}=\frac{P(A\cap B)}{P(A)}=P(B~|~A)
+  \]
+\end{proof}
+\subsubsection{Conditional Independence}
