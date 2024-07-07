@@ -45,7 +45,7 @@ The cartesian product of two sets are given by the ordered pairs of both sets:
 \]
 Which can be expressed more generally as:
 \[
-    A\times B=\{(x,y)~|~x\in A \text{ and } y\in B\}
+    A\times B=\{(x,y)|x\in A \text{ and } y\in B\}
 \]
 The number of elements contained in a (finite) sets is given by its cardinality:
 \[
@@ -113,7 +113,7 @@ This means that any subset of $\mathbb{N}, \mathbb{Z} \text{ and } \mathbb{Q}$ a
   \end{align*}
   In accordance with the definition of the carthesian product, the two sets can be constructed as a list with the form
   \[
-      A\times B=\{(a_{i},b_{j})~|~i,j\in \mathbb{N}\}
+      A\times B=\{(a_{i},b_{j})|i,j\in \mathbb{N}\}
   \]
   Whereby it must be countable as it can be constructed as a list.
 \end{proof}
@@ -157,10 +157,10 @@ As a partition is any collection of disjoint sets whos union makes up $S$ we hav
 \paragraph{Problem 4}
 a) Determine whether each of the following sets are countable or countable:
 \begin{itemize}
-    \item[-] $A=\{x\in \mathbb{Q}~|~-100\leq x\leq 100\}$
-    \item[-] $B=\{(x,y)~|~x\in \mathbb{N},y \in \mathbb{Z}\}$
+    \item[-] $A=\{x\in \mathbb{Q}|-100\leq x\leq 100\}$
+    \item[-] $B=\{(x,y)|x\in \mathbb{N},y \in \mathbb{Z}\}$
     \item[-] $C=]0,0.1]$
-    \item[-] $D=\left\{\frac{1}{n}~|~n\in \mathbb{N}\right\}$
+    \item[-] $D=\left\{\frac{1}{n}|n\in \mathbb{N}\right\}$
 \end{itemize}
 
 As $A\subset \mathbb{Q}$ it is clear that it must be countable.
@@ -298,7 +298,7 @@ Write the sample space, $S$, for the following random experiments:
 
 a) We toss a coin until we see two consecutive tails. We record the number of coin tosses.
 \[
-    S= \{n\in \mathbb{N}~|~n\geq 2\}
+    S= \{n\in \mathbb{N}|n\geq 2\}
 \]
 b) A bag contains 4 balls: one is red, one is blue, one is white and one is green. We choose two distinct balls and record their color in order.
 \begin{equation*}
@@ -442,7 +442,7 @@ Subtracting the two we get that
 \paragraph{Problem 6}
 You get a stick and break it randomly into three pieces. What is the probability that you can make a triangle using the three pieces? You can assume the break points are chosen completely at random, i.e. if the length of the original stick is 1 unit, and $x,y,z$ are the lengths of the three pieces, then $(x,y,z)$ are uniformly chosen from the set
 \[
-    \{(x,y,z)\in \mathbb{R}^{3}~|~x+y+z=1,x,y,z\geq 0\}
+    \{(x,y,z)\in \mathbb{R}^{3}|x+y+z=1,x,y,z\geq 0\}
 \]
 By the triangle inequality we have that
 \begin{align*}
@@ -463,11 +463,11 @@ Furthermore we have that the entire sample space must stretch a 3 dimensional pl
 \subsection{Conditional probability}
 Conditional probabilities are written as
 \[
-    P(A~|~B)
+    P(A|B)
 \]
 And are read as ''\textit{the probability of $A$, given that $B$ has occurred}``. The conditional probability will therefore be given by
 \begin{align*}
-    P(A~|~B)&=\frac{|A\cap B|}{|B|} \\
+    P(A|B)&=\frac{|A\cap B|}{|B|} \\
             &=\frac{\frac{|A\cap B|}{|S|}}{\frac{|B|}{|S|}} \text{ dividing by $|S|$} \\
             &=\frac{P(A\cap B)}{P(B)}
 \end{align*}
@@ -475,163 +475,163 @@ This is as when we know $B$ has occured, the sample space of $A$ is shrunk to $B
 
 The earlier established probability axioms can also be formulated for conditional probabilities
 \begin{itemize}
-    \item[-] Axiom 1: For any event $A$, $P(A~|~B)\geq 0$.
-    \item[-] Axiom 2: Conditional probability of $B$ given $B$ is $1$, i.e., $P(B~|~B)=1$.
-    \item[-] Axiom 3: If $A_{1},A_{2},\ldots,A_{n}$ are disjoint events, then $P(\bigcup_{i=1}^{n}A_{i}~|~B)=\sum_{i=1}^{n} P(A_{i}~|~B)$.
+    \item[-] Axiom 1: For any event $A$, $P(A|B)\geq 0$.
+    \item[-] Axiom 2: Conditional probability of $B$ given $B$ is $1$, i.e., $P(B|B)=1$.
+    \item[-] Axiom 3: If $A_{1},A_{2},\ldots,A_{n}$ are disjoint events, then $P(\bigcup_{i=1}^{n}A_{i}|B)=\sum_{i=1}^{n} P(A_{i}|B)$.
 \end{itemize}
 And the same applies to the established fomulas
 
 \begin{theorem}
-  For any conditional event, $A~|~C$, $P(\overline{A}~|~C)=1-P(A~|~C)$.
+  For any conditional event, $A|C$, $P(\overline{A}|C)=1-P(A|C)$.
 \end{theorem}
 \begin{proof}
   We know that
   \[
-      P(A~|~B)=\frac{P(A~|~B)}{P(B)}
+      P(A|B)=\frac{P(A|B)}{P(B)}
   \]
   Assuming the theorem is correct we then have that
   \[
-      1-P(\overline{A}~|~C)=1-\frac{P(\overline{A}~|~C)}{P(B)}
+      1-P(\overline{A}|C)=1-\frac{P(\overline{A}|C)}{P(B)}
   \]
   We wish to show that
   \[
-      \frac{P(A~|~B)}{P(B)}=1-\frac{P(\overline{A}~|~C)}{P(B)}
+      \frac{P(A|B)}{P(B)}=1-\frac{P(\overline{A}|C)}{P(B)}
   \]
   Multiplying by $P(B)$ gets us
   \[
-      P(A~|~B)=P(B)-P(\overline{A}~|~C)
+      P(A|B)=P(B)-P(\overline{A}|C)
   \]
-  Adding $P(\overline{A}~|~C)$ on the LHS we get
+  Adding $P(\overline{A}|C)$ on the LHS we get
   \[
-      P(A~|~B)+P(\overline{A}~|~C)=P(B)
+      P(A|B)+P(\overline{A}|C)=P(B)
   \]
   As the two are mutually exclusive by the definition of the complement
   \[
-      P((A~|~B)\cup (\overline{A}~|~C))=P(B)
+      P((A|B)\cup (\overline{A}|C))=P(B)
   \]
   Which is true.
 \end{proof}
 \begin{theorem}
-  The probability of the empty set is zero, $P(\emptyset~|~C)=0$.
+  The probability of the empty set is zero, $P(\emptyset|C)=0$.
 \end{theorem}
 \begin{proof}
   As the empty is the complement of the sample set we have from the previous theorem that
   \[
-      P(S~|~C)=1
+      P(S|C)=1
   \]
   By applying previous equation
   \[
-      P(\overline{S}~|~C)=1-1=0
+      P(\overline{S}|C)=1-1=0
   \]
 \end{proof}
 \begin{theorem}
-  The probability of a conditional probability occuring must always be less than or equal to 1, $P(A~|~C)\leq 1$.
+  The probability of a conditional probability occuring must always be less than or equal to 1, $P(A|C)\leq 1$.
 \end{theorem}
 \begin{proof}
   From the definition of conditional probability
   \[
-      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+      P(A|B)=\frac{P(A\cap B)}{P(B)}
   \]
   It is clear that the denominator and numerator can never be more than even as $A\cap B=B$ even if $A\superset B$, resulting in the maximum value being 1.
   \[
-      P(A~|~B)\leq 1
+      P(A|B)\leq 1
   \]
 \end{proof}
 \begin{theorem}
-  The probability of a difference is given by $P(A\setminus B~|~C)=P(A~|~C)-P(A\cap B~|~C)$.
+  The probability of a difference is given by $P(A\setminus B|C)=P(A|C)-P(A\cap B|C)$.
 \end{theorem}
 \begin{proof}
-  As $A\cap B~|~C$ and $A\setminus B~|~C$ must be disjoint whilst their union must be $A~|~C$, we have that
+  As $A\cap B|C$ and $A\setminus B|C$ must be disjoint whilst their union must be $A|C$, we have that
   \[
-      (A\cap B~|~C)\union (A\setminus B~|~C)=A~|~C
+      (A\cap B|C)\union (A\setminus B|C)=A|C
   \]
   By the third axiom we have that
   \[
-      P(A~|~C)=P(A\cap B~|~C)+P(A\setminus B~|~C)
+      P(A|C)=P(A\cap B|C)+P(A\setminus B|C)
   \]
   Rearranging the terms we get
   \[
-      P(A\setminus B~|~C)=P(A~|~C)-P(A\cap B~|~C)
+      P(A\setminus B|C)=P(A|C)-P(A\cap B|C)
   \]
 \end{proof}
 \begin{theorem}
-  The probability of a union is given by $P(A\cup B~|~C)=P(A~|~C)+P(B~|~C)-P(A\cap B~|~C)$.
+  The probability of a union is given by $P(A\cup B|C)=P(A|C)+P(B|C)-P(A\cap B|C)$.
 \end{theorem}
 \begin{proof}
-  As $A~|~C$ and $B\setminus A~|~C$ must be disjoint and their union must be equal to $A\cup B~|~C$ we have that
+  As $A|C$ and $B\setminus A|C$ must be disjoint and their union must be equal to $A\cup B|C$ we have that
   \[
-      P(A\cup B)=P(A~|~C\union (B\setminus A~|~C))
+      P(A\cup B)=P(A|C\union (B\setminus A|C))
   \]
   As these sets are disjoint we rewrite using the third axiom
   \[
-      P(A\cup B)=P(A~|~C)+P(B\setminus A~|~C)
+      P(A\cup B)=P(A|C)+P(B\setminus A|C)
   \]
   By the previous theorem the difference is rewritten as
   \[
-      P(A\cup B)=P(A~|~C)+P(B~|~C)-P(A\cap B~|~C)
+      P(A\cup B)=P(A|C)+P(B|C)-P(A\cap B|C)
   \]
 \end{proof}
 \begin{theorem}
-  If $A\subset B$ then $P(A~|~C)\leq P(B~|~C)$.
+  If $A\subset B$ then $P(A|C)\leq P(B|C)$.
 \end{theorem}
 \begin{proof}
   As $A\subset B$ it is clear that their union must be $B$
   \[
-      P(B~|~C)=P(A\cap B~|~C)+P(B\setminus A~|~C)
+      P(B|C)=P(A\cap B|C)+P(B\setminus A|C)
   \]
   Since their intersection is $A$ due to it being the subset
   \[
-      P(B~|~C)=P(A~|~C)+P(B\setminus A~|~C)
+      P(B|C)=P(A|C)+P(B\setminus A|C)
   \]
   By the first axiom
   \[
-      P(B\setminus A~|~C)\geq 0
+      P(B\setminus A|C)\geq 0
   \]
   As such
   \[
-      P(B~|~C)\geq P(A~|~C)
+      P(B|C)\geq P(A|C)
   \]
 \end{proof}
 This introduces some special cases
 \begin{align*}
-    P(A~|~B)&=\frac{P(\emptyset)}{P(B)}=0 \text{, for } A\cap B=\emptyset \\
-    P(A~|~B)&=\frac{P(B)}{P(B)}=1 \text{, for } B\subset A \\
-    P(A~|~B)&=\frac{P(A)}{P(B)} \text{, for } A\subset B
+    P(A|B)&=\frac{P(\emptyset)}{P(B)}=0 \text{, for } A\cap B=\emptyset \\
+    P(A|B)&=\frac{P(B)}{P(B)}=1 \text{, for } B\subset A \\
+    P(A|B)&=\frac{P(A)}{P(B)} \text{, for } A\subset B
 \end{align*}
 Furthermore we also write the chain rule for conditional probability using the definition as a starting point
 \begin{theorem}
-  The extended chain rule is given by $P(A_{1}\cap A_{2}\cap A_{3}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}~|~A_{1})P(A_{3}~|~A_{2},A_{1})\cdots P(A_{n}~|~A_{n-1},A_{n-2},\ldots,A_{1})$
+  The extended chain rule is given by $P(A_{1}\cap A_{2}\cap A_{3}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}|A_{1})P(A_{3}|A_{2},A_{1})\cdots P(A_{n}|A_{n-1},A_{n-2},\ldots,A_{1})$
 \end{theorem}
 \begin{proof}
   From the definition of conditional probability we have that
   \[
-      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+      P(A|B)=\frac{P(A\cap B)}{P(B)}
   \]
   By isolation for $P(A\cap B)$ we get
   \[
-      P(A\cap B)=P(A~|~B)P(B)=P(B~|~A)P(B)
+      P(A\cap B)=P(A|B)P(B)=P(B|A)P(B)
   \]
   Extending to 3 or more events we get that
   \[
-      P(A\cap B\cap C)=P(A\cap(B\cap C))=P(A)P(B\cap C~|~A)
+      P(A\cap B\cap C)=P(A\cap(B\cap C))=P(A)P(B\cap C|A)
   \]
   Applying the first equation
   \[
-      P(B\cap C)=P(B)P(C~|~B)
+      P(B\cap C)=P(B)P(C|B)
   \]
   By conditioning both sides on $A$ we get
   \[
-      P(B\cap C~|~A)=P(B~|~A)P(C~|~A,B)
+      P(B\cap C|A)=P(B|A)P(C|A,B)
   \]
   Inserting in the original equation we then get
   \[
-      P(A\cap B\cap C)=P(A)P(B~|~A)P(C~|~A,B)
+      P(A\cap B\cap C)=P(A)P(B|A)P(C|A,B)
   \]
   Which can be generalised to
   \begin{equation*}
     \begin{gathered}
-      P(A_{1}\cap A_{2}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}~|~A_{1})P(A_{3}~|~A_{2},A_{1})\cdots \\
-      P(A_{n}~|~A_{n-1},A_{n-2},\ldots,A_{1})
+      P(A_{1}\cap A_{2}\cap\ldots\cap A_{n})=P(A_{1})P(A_{2}|A_{1})P(A_{3}|A_{2},A_{1})\cdots \\
+      P(A_{n}|A_{n-1},A_{n-2},\ldots,A_{1})
     \end{gathered}
   \end{equation*}
 \end{proof}
@@ -683,7 +683,7 @@ Which is equivalent to
 \subsubsection{Law of Total Probability}
 The law of total probability states that the probability of an event, $A$ must be the sum of the probability of it occuring in every partition, $B_{1},B_{2},\ldots,B_{n}$ of the sample space
 \[
-    P(A)=\sum_{i=1}^{n}P(A\cap B_{i})=\sum_{i=1}^{n}P(A~|~B_{i})P(B_{i})
+    P(A)=\sum_{i=1}^{n}P(A\cap B_{i})=\sum_{i=1}^{n}P(A|B_{i})P(B_{i})
 \]
 \begin{proof}
   As $B_{1},B_{2},\ldots,B_{n}$ are partitions of the sample space we write
@@ -704,24 +704,262 @@ The law of total probability states that the probability of an event, $A$ must b
   \]
   Rewriting using the definition of conditional probability (as $A\in B_{i}$ can only occur if $B_{i}$ has occured) we get
   \[
-      P(A)=\sum_{i=1}^{n}P(A~|~B_{i})P(B_{i})
+      P(A)=\sum_{i=1}^{n}P(A|B_{i})P(B_{i})
   \]
 \end{proof}
 \begin{theorem}
-  Bayes rule states that: $P(B~|~A)=\frac{P(A~|~B)P(B)}{P(A)}$
+  Bayes rule states that: $P(B|A)=\frac{P(A|B)P(B)}{P(A)}$
 \end{theorem}
 \begin{proof}
   From the definition of conditional probability
   \[
-      P(A~|~B)=\frac{P(A\cap B)}{P(B)}
+      P(A|B)=\frac{P(A\cap B)}{P(B)}
   \]
   Multiplying by $P(B)$ on both sides
   \[
-      P(A~|~B)P(B)=P(A\cap B)
+      P(A|B)P(B)=P(A\cap B)
   \]
   Dividing by $P(A)$ on both sides
   \[
-      \frac{P(A~|~B)P(B)}{P(A)}=\frac{P(A\cap B)}{P(A)}=P(B~|~A)
+      \frac{P(A|B)P(B)}{P(A)}=\frac{P(A\cap B)}{P(A)}=P(B|A)
   \]
 \end{proof}
 \subsubsection{Conditional Independence}
+\begin{definition}
+  Two events $A$ and $B$ are conditionally independent given an event $C$ if $P(A\cap B|C)=P(A|C)P(B|C)$.
+\end{definition}
+\begin{proof}
+  From the definition of conditional probability we have
+  \[
+      P(A|B)=\frac{P(A\cap B)}{P(B)}
+  \]
+  Conditioning both sides on $C$ it becomes apparent that
+  \[
+      P(A|B,C)=\frac{P(A\cap B|C)}{P(B|C)}
+  \]
+  Assuming that $A$ and $B$ are conditionally independent we have
+  \[
+      P(A|B,C)=\frac{P(A|C)P(B|C)}{P(B|C)}=P(A|C)
+  \]
+\end{proof}
+\subsubsection{Problems}
+\paragraph{Problem 1}
+You purchase a certain product. The manual states that the lifetime, $T$, of the product defined as the amount of time (in years) the product works properly untilk it breaks down satisfies:
+\[
+    P(T\geq t)=e^{-\frac{t}{5}} \text{ for all } t\geq 0
+\]
+For example, the probability that the product lasts more than (or equal to) 2 years is
+\[
+    P(T\geq 2)=e^{-\frac{2}{5}}=0.6703
+\]
+a) I purchase the product and use it for two years without any problems. What is the probability that it breaks down in the 3rd year?
+
+We define $A$ as the probability of the product not breaking down in the first two years
+\[
+    P(A)=P(T\geq 2)=e^{-\frac{2}{5}}=0.6703
+\]
+Similarly we define $B$ as the probability of it breaking down in the 3rd year
+\[
+    P(B)=P(2\leq T\leq 3)=P(T\geq 2)-P(T\geq 3)=e^{-\frac{2}{5}}-e^{-\frac{3}{5}}=0.1215
+\]
+We now wish to determine the conditional probability $P(B|A)$
+\[
+    P(B|A)=\frac{P(A\cap B)}{P(A)}
+\]
+As $B\subset A$ it is clear that $A\cap B=B$
+\[
+    P(B|A)=\frac{P(B)}{P(A)}=\frac{0.1215}{0.6703}=0.1812
+\]
+\paragraph{Problem 2}
+You toss a fair coin three times
+
+a) What is the probability of three heads, $HHH$?
+
+As the coin tosses are independent we have that
+\[
+    P(H\cap H\cap H)=P(H)P(H)P(H)=\left(\frac{1}{2}\right)^{3}=\frac{1}{8}
+\]
+b) What is the probability that you observe exactly one heads?
+
+The probability of observing exactly one heads must be the sum of the probabilities of
+\begin{align*}
+    A&=\{H,T,T\} \\
+    B&=\{T,H,T\} \\
+    C&=\{T,T,H\}
+\end{align*}
+As the likelihood of any sequence is equal we have that
+\[
+    P(HHH)=P(A)=P(B)=P(C)
+\]
+As such
+\[
+    P(1H)=\frac{1}{8}+\frac{1}{8}+\frac{1}{8}=\frac{3}{8}
+\]
+c) Given that you have observed at least one heads, what is the probability that you observe at least two heads?
+
+We wish to determine the probability $P(A|B)$ where $A$ is observing $\geq 2$ heads and $B$ is knowing there has already been observed at least one. The favourable events for $B$ are
+\[
+    P(B)=P(S\setminus\{T,T,T\})=1-\frac{1}{8}=\frac{7}{8}
+\]
+Whilst the favourable events for $A$ are
+\[
+    P(A)=P(\{(H,H,T),(H,T,H),(T,H,H),(H,H,H)\})=\frac{4}{8}=\frac{1}{2}
+\]
+By the definition of conditional probability
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{\frac{1}{2}}{\frac{7}{8}}=\frac{4}{7}
+\]
+\paragraph{Problem 3}
+For three events, $A$, $B$ and $C$, we know that
+\begin{itemize}
+    \item[-] $A$ and $C$ are independent.
+    \item[-] $B$ and $C$ are independent.
+    \item[-] $A$ and $B$ are disjoint.
+    \item[-] $P(A\cup C)=\frac{2}{3}$,$P(B\cup C)=\frac{3}{4}$ and $P(A\cup B\cup C)=\frac{11}{12}$.
+\end{itemize}
+a) Find $P(A),P(B)$ and $P(C)$.
+
+As these are all probabilities of unions we have that
+\begin{align*}
+    P(A\cup C)&=P(A)+P(C)-P(A\cap C)=\frac{2}{3} \\
+    P(B\cup C)&=P(B)+P(C)-P(B\cap C)=\frac{3}{4} \\
+    P(A\cup B\cup C)&=P(A)+P(B)+P(C)-P(A\cap C)-P(B\cap C)=\frac{11}{12}
+\end{align*}
+We add the first 2 equations together and get
+\[
+    P(A\cup C)+P(B\cup C)=P(A)+P(B)+2P(C)-P(A\cap C)-P(B\cap C)
+\]
+Subtracting the third equation from these we then get
+\begin{equation*}
+    \begin{gathered}
+        \left[P(A)+P(B)+2P(C)-P(A\cap C)-P(B\cap C)\right]-\left[P(A)+P(B)+ \\
+        P(C)-P(A\cap C)-P(B\cap C)\right]]=P(C)=\frac{2}{3}+\frac{3}{4}-\frac{11}{12}=\frac{6}{12}=\frac{1}{2}
+    \end{gathered}
+\end{equation*}
+Which we then substitute into the other equations
+\begin{align*}
+    P(A)+\frac{1}{2}-P(A)\cdot \frac{1}{2}=\frac{2}{3}&\Leftrightarrow P(A)=\frac{1}{3} \\
+    P(B)+\frac{1}{2}-P(B)\cdot\frac{1}{2}=\frac{3}{4}&\Leftrightarrow P(B)=\frac{1}{2}
+\end{align*}
+As such $P(A)=\frac{1}{3},P(B)=\frac{1}{2}$ and $P(C)=\frac{1}{2}$.
+\paragraph{Problem 4}
+Let $C_{1},C_{2},\ldots,C_{M}$ be a partition of the sample space, $S$, and $A,B$ be two events. Suppose we know that
+\begin{itemize}
+    \item[-] $A$ and $B$ are conditionally independent given $C_{i}$ for all $i\in\{1,2,\ldots,M\}$.
+    \item[-] $B$ is independent of all $C_{i}$'s.
+\end{itemize}
+a) Prove that $A$ and $B$ are independent.
+
+We have that
+\begin{align*}
+    P(A\cap B|C)&=P(A|C)P(B|C) \\
+    P(B\cap C)&=P(B)P(C)
+\end{align*}
+By the law of total probability
+\begin{align*}
+    P(A\cap B)&=\sum_{i=1}^{M}P(A\cap B|C_{i})P(C_{i}) \\ 
+           &=\sum_{i=1}^{M}P(A|C_{i})P(B|C_{i})P(C_{i}) \text{ $A,B$ are conditionally independent} \\
+           &=\sum_{i=1}^{M}P(A|C_{i})P(B)P(C_{i}) \text{ $B$ is independet of $C$ }\\
+           &=P(B)\sum_{i=1}^{M}P(A|C_{i})P(C_{i}) \\
+           &=P(B)P(A)
+\end{align*}
+\paragraph{Problem 5}
+In my town, it's rainy one third of the days. Given that it is rainy, there will be heavy traffic with probability $\frac{1}{2}$, and given that it is not rainy, there will be heavy traffic with probability $\frac{1}{4}$. If it's rainy and there is heavy traffic, I arrive late for work with probability $\frac{1}{2}$. On the other hand, the probability of being late is reduced to $\frac{1}{8}$ if it is not rainy and there is no heavy traffic. In other situations (rainy and no traffic, not rainy and traffic) the probability of being late is $\frac{1}{4}$. You pick a random day:
+
+We define the events, $R,T,L$ corresponding to it being rainy, traffic being heavy and the person being late, based on this a probability tree is made.
+
+a) What is the probability that it's not raining and there is heavy traffic and I am not late?
+
+We read from the probability tree that
+\[
+    P(\overline{L}|\overline{R},T)=\frac{1}{8}
+\]
+b) What is the probability that I am late?
+
+We sum the probabilities that result in being late
+\[
+    P(L)=\frac{1}{12}+\frac{1}{24}+\frac{1}{24}+\frac{1}{16}=\frac{11}{48}
+\]
+c) Given that I arrived late at work, what is the probability that it rained that day?
+\[
+    P(R|L)=\frac{P(R\cap L)}{P(L)}=\frac{\frac{1}{12}+\frac{1}{24}}{\frac{11}{48}}=\frac{6}{11}
+\]
+\paragraph{Problem 6}
+A box contains three coins: two regular coins and one fake two-headed coin.
+
+a) You pick a coin at random and toss it. What is the probability that it lands heads up?
+
+The probability of getting heads must be the union of the probabilities of getting heads with the individual coins.
+\begin{align*}
+    P(H)&=P(H|C_{1})P(C_{1})+P(H|C_{2})P(C_{2})+P(H|C_{3})P(C_{3}) \\
+        &=\frac{1}{2} \cdot\frac{1}{3}+\frac{1}{2} \cdot\frac{1}{3}+1 \cdot\frac{1}{3} \\
+        &=\frac{2}{3}
+\end{align*}
+
+
+b) You pick a coin at random and toss it, and get heads, what is the probability that it is the two headed coin?
+
+We apply Bayes rule and have that
+\begin{align*}
+    P(C_{3}|H)&=\frac{P(H|C_{3})P(C_{3})}{P(H)} \\
+           &=\frac{1\cdot\frac{1}{3}}{\frac{2}{3}} \\
+           &=\frac{1}{2}
+\end{align*}
+\paragraph{Problem 7}
+A family has two children. We ask the father, ``Do you have at least one daughter named Lilia?''. He replies, ``yes'', what is the probability that both children are girls? In other words, we want to find the probability that both children are girls, given that the family has at least one daughter named Lilia. Here you can assume that if a child is a girl, her name will be Lilia with a probability $\alpha\ll 1$ independently from other children's names. If the child is a boy, his name will not be Lilia
+
+The sample space is
+\[
+    P(S)=\{(B,B),(B,G),(G,G),(G,B)
+\]
+Given that we know they have at least one daughter named Lilia we have
+\begin{align*}
+    P(L|BB)&=0 \\
+    P(L|GB)&=P(L|BG)=\alpha \\
+    P(L|GG)&=\alpha(1-\alpha)+(1-\alpha)\alpha+\alpha^{2}=2\alpha-2\alpha^{2}
+\end{align*}}
+Applying Bayes rule we get that
+\begin{align*}
+    P(GG|L)&=\frac{P(L|GG)P(GG)}{P(L)} \\
+           &=\frac{(2\alpha-\alpha^{2})\frac{1}{4}}{(2\alpha-\alpha^{2})\frac{1}{4}+\alpha \frac{1}{4}+\alpha \frac{1}{4}+0 \frac{1}{4}} \\
+           &=\frac{0.5a-0.25a^{2}}{(2\alpha-\alpha^{2})\frac{1}{4}+\alpha \frac{1}{2}} \\
+           &=\frac{\frac{1}{4}\alpha(-\alpha+2)}{\frac{1}{4}\alpha(-\alpha+4)} \\
+           &=\frac{2-\alpha}{4-\alpha} \\
+           &\approx \frac{1}{2} \text{ as } \alpha \ll 1
+\end{align*}
+\paragraph{Problem 8}
+A family has two children. We choose one at random and find out that she is a girl. What is the probability that both children are girls?
+\begin{align*}
+    P(GG)&=P(GB)=P(BG)=P(BB) \\
+    P(G_{r}|GG)&=1 \\
+    P(G_{r}|BG)=P(G_{r}|GB)=\frac{1}{2}
+    P(G_{r}|BB)=0
+\end{align*}
+Using Bayes rule we determine $P(GG|G_{r})$
+\begin{align*}
+    P(GG|G_{r})&=\frac{P(G_{r}|GG)P(GG)}{P(G_{r})} \\
+            &=\frac{1 \cdot \frac{1}{4}}{\frac{1}{4}(1+\frac{1}{2}+\frac{1}{2})} \\
+            &=\frac{1}{2}
+\end{align*}
+\paragraph{Problem 9 (NOT SOLVED AS I DONT GET THE EXPLANATION)}
+I toss an unfair coin where $P(H)=p$ repeatedly. The game ends the first time two consecutive heads or tails is observed. I win if two heads are observed and lose if two tails are observed. 
+
+The probability of tails must be the complement of heads
+\[
+    P(T)=1-p
+\]
+The probability of winning is given by
+\begin{equation*}
+  \begin{gathered}
+    P(W)=P(\{(HH),(HTHH),(HTHTHH),\ldots\})+ \\
+    P(\{(THH),(THTHH),(THTHTHH,\ldots)\})
+  \end{gathered}
+\end{equation*}
+In regards to the above statement we then have that
+\begin{equation*}
+  \begin{gathered}
+    P(W)=P(H)^{2}+P(H)^{3}P(T)+P(H)^{4}P(T)^{2}+\ldots+ \\
+    P(T)^{1}P(H)^{2}+P(T)^{2}P(H)^{3}+P(T)^{3}+P(H)^{4}
+  \end{gathered}
+\end{equation*}
+
