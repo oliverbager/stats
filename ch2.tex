@@ -1,0 +1,35 @@
+\section{Chapter 2}
+\subsection{Counting}
+For a finite sample space with equal probabilities we recall that
+\[
+    P(A)=\frac{|A|}{|S|}
+\]
+As such determining the probability is a counting problem, determining the cardinality of $A$ and $S$.
+\begin{definition}[Multiplication principle]
+    Suppose that we perform $r$ experiments such that the $k$'th experiment has $n_{k}$ possible outcomes for $k=\{1,2,\ldots,r\}$. Then there are a total of $n_{1}\times n_{2}\times\ldots\times n_{r}$ possible outcomes for the sequence of $r$ experiments.
+\end{definition}
+For counting problems, some general terminology is relevant:
+\begin{itemize}
+    \item[-] Sampling: Choosing a random element from a set.
+    \item[-] With replacement, the sampled element is returned to the set and can therefore be drawn multiple times with repeated sampling.
+    \item[-] Without replacement, the sampled element is not returned to the set and can therefore not be drawn multiple times.
+    \item[-] Ordered means that the order at which elements are written matters, $\{a_{1},a_{2},a_{3}\}\neq \{a_{3},a_{1},a_{2}\}$.
+    \item[-] Unordered means that the order at which elements are written does not matter, $\{a_{1},a_{2},a_{3}\}=\{a_{3},a_{1},a_{2}\}$.
+\end{itemize}
+\subsubsection{Ordered sampling with replacement}
+Suppose we have a set consisting of $n$ elements and we wish to draw $k$ samples from the set. A list of samples would in this context consist of elements with $k$ positions where each position has $n$ options, as such the total number of possible outcomes is given by
+\[
+    n\times n\times\ldots\times n=n^{k}
+\]
+\subsubsection{Ordered sampling without replacement}
+As opposed to the previous circumstance, a element is now removed every time we draw, resulting in there being one less options every time we move to the next position, as such
+\[
+    n\times (n-1)\times (n-2)\times\ldots\times (n-k+1)
+\]
+Which is called a $k$-permutation of the elements in the set, the following notation is used to show the number of $k$-permutations of an $n$-element set
+\[
+    P_{k}^{n}=n\times(n-1)\times\ldots\times(n-k+1)
+\]
+A special case can also occur here when $n<k$, as there then wont be enough options for every position and there therefore are no possible lists.
+\subsubsection{Unordered sampling with replacement}
+\subsubsection{Unordered sampling without replacement}

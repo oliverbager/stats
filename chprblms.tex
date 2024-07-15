@@ -470,6 +470,26 @@ For $A$ and $B$ to be independent we would expect
 \]
 Which is true, as such, the 2 events are independent.
 \paragraph{Problem 26}
+Define $N_1,N_6$ as the number of times out of $n$ that a 1 or 6 is rolled, and let $X_i$ be the $i$'th roll, then
+\[
+    P(N_1\geq 1\cap N_6\geq 1)=1-P(\overline{N_1\geq 1\cap N_6\geq 1})
+\]
+By De Morgans Law we get
+\begin{align*}
+    &=1-P(N_1=0\cap N_6=0) \\
+    &=1-(P(X_1\neq 1,X_2\neq 1,\ldots,X_n\neq 1)+P(X_1\neq 6,X_2\neq 6,\ldots,X_n\neq 6) \\ 
+    &-P((X_1\neq 1,X_2\neq 1,\ldots,X_n\neq 1)\cap (X_1\neq 1, X_2\neq 6,\ldots, X_n\neq 6))) 
+\end{align*}
+As the final term is equivalent to
+\[
+    \bigcap_{i=1}^{n} P(X_{i}\neq 1\cap X_{i}\neq 6)
+\]
+We get that
+\begin{align*}
+    &=1-\left(2\left(\frac{5}{6}\right)^{n}-\left(\frac{4}{6}\right)^{n}\right) \\
+    &=1-\frac{2\cdot5^{n}-4^{n}}{6^{n}}
+\end{align*}
+\paragraph{Problem 27}
 a)
 
 Tree is finished on paper.
@@ -492,7 +512,6 @@ From the definition of conditional probability we have
                      &=\frac{0.72}{0.86} \\
                      &\approx 0.84
 \end{align*}
-\paragraph{Problem 27}
 \paragraph{Problem 28}
 We define $D$ as the unit being defective, the probability of picking a defective unit on the first draw is
 \[
@@ -500,11 +519,11 @@ We define $D$ as the unit being defective, the probability of picking a defectiv
 \]
 Assuming that one wasnt defective the next draw has
 \[
-    P(D_2|D_1)=\frac{5}{99}
+    P(D_2|\overline{D_1})=\frac{5}{99}
 \]
 And the 3rd
 \[
-    P(D_3|D_2,D_1)=\frac{5}{98}
+    P(D_3|\overline{D_2},\overline{D_1})=\frac{5}{98}
 \]
 We wish to determine the probaility of the event
 \[
@@ -517,13 +536,268 @@ P(D=1)&=P(\{(D,\overline{D},\overline{D})\})+P(\{\overline{D},D,\overline{D}\})+
       &\approx 0.14
 \end{align*}
 \paragraph{Problem 29}
+a)
+
+As the components are connected in series, the probability of the system being functional is equal to the complement of one or more of the components not working. Let $F$ be the event that the system is functional and $P(C_i)$ be the event that the $i$'th component is functional.
+\[
+    P(F)=P(C_1\cap C_2\cap C_3)=P(C_1)P(C_2)P(C_3)
+\]
+b)
+
+As they're connected in parallel they must all fail for the circuit to be non-functional, as such the probability must be given be the union of them
+\[
+    P(F)=P(C_1\cup C_2\cup C_3)
+\]
+By the inclusion-exclusion principle
+\begin{equation*}
+    \begin{gathered}
+        P(F)=P(C_1)+P(C_2)+P(C_3)-P(C_1)P(C_2)-P(C_1)P(C_3)- \\
+        P(C_2)P(C_3)+P(C_1)P(C_2)P(C_3)
+    \end{gathered}
+\end{equation*}
+
+c)
+
+The probability that this circuit works must be given by the probability that either $C_1$ and $C_3$ or $C_2$ and $C_3$ are functional.
+\begin{align*}
+    P(F)&=P((C_1\cap C_3)\cup(C_2\cap C_3)) \\
+        &=P(C_1\cap C_3)+P(C_2\cap C_3)-P((C_1\cap C_3)\cap(C_2\cap C_3)) \\
+        &=P(C_1)P(C_3)+P(C_2)P(C_3)-P(C_1\cap C_2\cap C_3)
+\end{align*}
+
+d)
+
+The probability that this circuit works is given by the probability that either $C_3$ or both $C_1$ and $C_2$ work
+\begin{align*}
+    P(F)&=P(C_3\cup(C_1\cap C_2)) \\
+        &=P(C_3)+P(C_1\cap C_2) \\
+        &=P(C_3)+P(C_1)P(C_2)-P(C_1)P(C_2)P(C_3)
+\end{align*}
+e)
+
+The probability that this circuit works is determined by whether $C_1,C_2$ and $C_5$ or $C_3,C_4$ and $C_5$ work, therefore
+\begin{align*}
+    P(F)&=P(C_1\cap C_2\cap C_5)+P(C_3\cap C_4\cap C_5)-P(C_1\cap C_2\cap C_3\cap C_4\cap C_5) \\
+        &=P(C_1)P(C_2)P(C_5)+P(C_3)P(C_4)P(C_5)-\prod_{i=1}^{5}P(C_i)
+\end{align*}
 \paragraph{Problem 30}
+a) 
+
+Rewriting the set as a piecewise function we get
+\[
+    A=\begin{cases}
+        x-y\leq \frac{1}{2} & x\geq y \\
+        y-x\leq\frac{1}{2} & y\geq x
+    \end{cases}
+    \implies
+    \begin{cases}
+        y\leq x-\frac{1}{2} & x\geq y \\
+        y\leq \frac{1}{2}+x & y\geq x
+    \end{cases}
+\]
+At the same time $B$ is equal to the area above the $45\degree$ line in the unit square. Drawing this in Geogebra gives us
+
+\includegraphics[width=\textwidth]{p30}
+
+b) 
+
+Using geometry to calculate the areas we get that
+\begin{align*}
+    P(A)&=1-2\cdot0.5\cdot 0.5\cdot 0.5=\frac{3}{4} \\
+    P(B)&=1-0.5\cdot 1\cdot 1=\frac{1}{2}
+\end{align*}
+c)
+
+We determine the probability of the intersection using geometry
+\[
+    P(A\cap B)=1-0.5-0.5\cdot 0.5\cdot 0.5=\frac{3}{8}
+\]
+For them to be independent
+\[
+    P(A\cap B)=P(A)P(B)=\frac{3}{4}\cdot\frac{1}{2}=\frac{3}{8}
+\]
+As such they are independent.
 \paragraph{Problem 31}
+Let $A$ be the event that an email is spam, $B$ the event that it contains the word refinance, we then have that
+\begin{align*}
+    P(A)&=0.5 \\
+    P(B|A)&=0.01 \\
+    P(B|\overline{A})&=0.00001
+\end{align*}
+We wish to determine the probability
+\[
+    P(A|B)
+\]
+By Bayes rule we have that
+\begin{align*}
+    P(A|B)&=\frac{P(B|A)P(A)}{P(B)} \\
+          &=\frac{0.01\cdot 0.5}{0.01\cdot 0.5+0.00001\cdot 0.5} \\
+          &\approx0.99
+\end{align*}
 \paragraph{Problem 32}
+
+a)
+
+For the path to be open it is clear that $B_1,B_4$ or $B_2,B_5$ or $B_1,B_3,B_5$ or $B_2,B_3,B_4$ must be open
+\[
+    P(A)=P(\{B_1\cap B_3\cap B_4\}\cup\{B_1\cap B_3\cap B_5\}\cup\{B_2\cap B_3\cap B_5\}\cup\{B_2\cap B_3\cap B_4\})
+\]
+We rename each path to $P_i$ where $i$ is the arbitrary number assigned to the path. By the inclusion exclusion principle we have that
+\begin{align*}
+    P(A)&=P(P_1)+P(P_2)P(P_3)+P(P_4)-P(P_1)P(P_2)-P(P_1)P(P_3) \\
+        &-P(P_1)P(P_4)-P(P_2)P(P_3)-P(P_2)P(P_4)-P(P_3)P(P_4) \\
+        &+P(P_1)P(P_2)P(P_3)+P(P_1)P(P_2)P(P_4)+P(P_1)P(P_3)P(P_4) \\
+        &+P(P_2)P(P_3)P(P_4)-P(P_1)P(P_2)P(P_3)P(P_4) \\
+        &=P(B_1\cap B_4)+P(B_2\cap B_5)+P(B_1\cap B_3\cap B_5)+P(B_2\cap B_3\cap B_4) \\
+        &-P((B_1\cap B_4)\cap(B_2\cap B_5))-P((B_1\cap B_4)\cap(B_1\cap B_3\cap B_5)) \\
+        &-P((B_1\cap B_4)\cap(B_2\cap B_3\cap B_4))-P((B_2\cap B_5)\cap(B_1\cap B_3\cap B_5)) \\
+        &-P((B_2\cap B_5)\cap(B_2\cap B_3\cap B_4))-P((B_1\cap B_3\cap B_5)\cap(B_2\cap B_3\cap B_4)) \\
+        &+P((B_1\cap B_4)\cap(B_2\cap B_5)\cap(B_2\cap B_3\cap B_5)) \\
+        &+P((B_1\cap B_4)\cap(B_2\cap B_5)\cap(B_2\cap B_3\cap B_4)) \\
+        &+P((B_1\cap B_4)\cap(B_1\cap B_3\cap B_5)\cap(B_2\cap B_3\cap B_4)) \\
+        &+P((B_2\cap B_5)\cap(B_2\cap B_3\cap B_4)\cap(B_2\cap B_3\cap B_4)) \\
+        &-P((B_1\cap B_4)\cap(B_2\cap B_5)\cap(B_1\cap B_3\cap B_5)\cap(B_2\cap B_3\cap B_4)) \\
+        &=P(B_1\cap B_4)+P(B_2\cap B_5)+P(B_1\cap B_3\cap B_5)+P(B_2\cap B_3\cap B_4) \\
+        &-P(B_1\cap B_2\cap B_4\cap B_5)-P(B_1\cap B_3\cap B_4\cap B_5) \\
+        &-P(B_1\cap B_2\cap B_3\cap B_4)-P(B_1\cap B_2\cap B_3\cap B_5) \\
+        &-P(B_2\cap B_3\cap B_4\cap B_5)-P(B_1\cap B_2\cap B_3\cap B_4\cap B_5) \\
+        &+P(B_1\cap B_2\cap B_3\cap B_4\cap B_5)+P(B_1\cap B_2\cap B_3\cap B_4\cap B_5) \\
+        &+P(B_1\cap B_2\cap B_3\cap B_4\cap B_5)+P(B_1\cap B_2\cap B_3\cap B_4\cap B_5) \\
+        &-P(B_1\cap B_2\cap B_3\cap B_4\cap B_5) \\
+        &=P_1P_4+P_2P_5+P_1P_3P_5+P_2P_3P_4-P_1P_2P_4P_5-P_1P_3P_4P_5-P_1P_2P_3P_4 \\
+        &-P_1P_2P_3P_5-P_2P_3P_4P_5-P_1P_2P_3P_4P_5+4P_1P_2P_3P_4P_5-P_1P_2P_3P_4P_5 \\
+        &=P_1P_4+P_2P_5+P_1P_3P_5+P_2P_3P_4-P_1P_2P_4P_5-P_1P_3P_4P_5-P_1P_2P_3P_4 \\
+        &-P_1P_2P_3P_5-P_2P_3P_4P_5+2P_1P_2P_3P_4P_5 \\
+        &=P_1P_4(1-P_2P_5-P_3P_5-P_2P_3+2P_2P_3P_5)+P_2P_5 \\
+        &+P_1P_3P_5+P_2P_3(P_4-P_1P_5-P_4P_5)
+\end{align*}
+b)
+We use Bayes rule to determine the probability, conditioning $A$ on $B_3$ we effectively cancel out the $P_3$ terms as $P(P_3|B_3)=1$
+\begin{align*}
+    P(A|B_3)&=P_1P_4(1-P_2P_5-P_5-P_2+2P_2P_5)+P_2P_5+P_1P_5 \\
+           &+P_2(P_4-P_1P_5-P_4P_5)
+\end{align*}
+By Bayes rule we have that
+\[
+    P(B_3|A)&=\frac{P(A|B_3)P_3}{P(A)}
+\]
+Inserting known information
+\[
+    P(B_3|A)=\frac{P_1P_3P_4(1-P_2P_5-P_5-P_2+2P_2P_5)+P_2P_3P_5+P_1P_3P_5+P_2P_3(P_4-P_1P_5-P_4P_5)}
+    {P_1P_4(1-P_2P_5-P_3P_5-P_2P_3+2P_2P_3P_5)+P_2P_5+P_1P_3P_5+P_2P_3(P_4-P_1P_5-P_4P_5)}
+\]
 \paragraph{Problem 33}
+Before any extra information is given we have that
+\[
+    P(H_{1})=P(H_{2})=P(H_{3})=\frac{1}{3}
+\]
+We let $C_{i}$ be the event that the host opens the $i$'th door and $H_{i}$ be the event that the car is behind the $i$'th door, assuming we opened the 1st door we get the following probabilities
+\begin{align*}
+    P(C_{1}|H_{1})&=0 \\
+    P(C_{2}|H_{1})&=\frac{1}{2} \\
+    P(C_{3}|H_{1})&=\frac{1}{2} \\
+    P(C_{1}|H_{2})&=0 \\
+    P(C_{2}|H_{2})&=0 \\
+    P(C_{3}|H_{2})&=1 \\
+    P(C_{1}|H_{3})&=0 \\
+    P(C_{2}|H_{3})&=1 \\
+    P(C_{3}|H_{3})&=0
+\end{align*}
+If the host choses to open the 3rd door, we wish to determine whether
+\[
+    P(H_{2}|C_{3})>P(H_{1})
+\]
+As that would put us in an advantageous situation. We apply Bayes rule and get
+\begin{align*}
+    P(H_{2}|C_{3})&=\frac{P(C_{3}|H_{2})P(H_{2})}{P(C_{3}|H_{1})P(H_{1})+P(C_{3}|H_{2})P(H_{2})+P(C_{3}|H_{3})P(H_{3})} \\
+            &=\frac{1\cdot\frac{1}{3}}{\frac{1}{2}\cdot\frac{1}{3}+1\cdot\frac{1}{3}+0\cdot\frac{1}{3}} \\
+            &=\frac{2}{3}
+\end{align*}
+As
+\[
+    P(H_{2}|C_{3})>P(H_{1})
+\]
+It would be advantageous to switch our guess.
 \paragraph{Problem 34}
+a)
+
+We have that
+\begin{align*}
+    P(A)&=\frac{1}{6} \\
+    P(B)&=\frac{1}{6} \\
+    P(C)&=\frac{1}{6}
+\end{align*}
+For $A$ and $B$ to be independent it must be true that
+\[
+    P(A\cap B)=P(A)P(B)
+\]
+The intersection of the 2 is only satisfied by the pair $(2,5)$, as such
+\[
+    P(A\cap B)=\frac{1}{36}\stackrel{?}{=}\frac{1}{6}\cdot\frac{1}{6}
+\]
+As the sides are equivalent the two are independent.
+
+b)
+
+Again we determine $P(A\cap C)$, this is again a single pair, $(2,3)$ as such the rest of the problem is equivalent to the previous. The two are independent.
+
+c)
+
+Again $P(B\cap C)$ is a single pair $(4,3)$, as such they are once again independent.
+
+d)
+
+As we already know we satisfy 3 of the requirements we must at last determine whether
+\[
+    P(A\cap B\cap C)=P(A)P(B)P(C)
+\]
+This however is not true as the intersection is empty due to 2 and 3 never adding up to 7, as such
+\[
+    P(A\cap B\cap C)=P(\emptyset)=0
+\]
+Which is not equal to the product of the individual probabilities as
+\[
+    0\neq\left(\frac{1}{6}\right)^{3}
+\]
 \paragraph{Problem 35}
 \paragraph{Problem 36}
+We define $H\ldots H$ as the event that $n$ coin tosses resulted in heads, and $H_{n+1}$ as the event that the next coin toss results in heads and $F$ be that we picked the fair coin. We wish to determine the probability
+\[
+    P(H_{n+1}|H\ldots H)
+\]
+From the law of total probability it becomes clear that
+\[
+    P(H_{n+1})=P(H_{n+1}|F)P(F)+P(n_{+1}|\overline{F})P(\overline{F})
+\]
+Conditioning both sides on $H\ldots H$ we then get
+\[
+    P(H_{n+1}|H\ldots H)=P(H_{n+1}|F,H\ldots H)P(F|H\ldots H)+P(n_{+1}|\overline{F},H\ldots H)P(\overline{F}|H\ldots H)
+\]
+The terms with two conditions are conditionally independent on $H\ldots H$ as only the selected coin matters, as such
+\begin{align*}
+    P(H_{n+1}|F,H\ldots H)&=\frac{1}{2} \\
+    P(H_{n+1}|\overline{F},H\ldots H)&=1
+\end{align*}
+By using Bayes rule we can determine $P(F|H\ldots H|)$ as
+\begin{align*}
+    P(F|H\ldots H)&=\frac{P(H\ldots H|F)P(F)}{P(H\ldots H|F)P(F)+P(H\ldots H|\overline{F})P(\overline{F})} \\
+             &=\frac{\frac{1}{2}^{n}\cdot \frac{1}{2}}{\frac{1}{2}^{n}\cdot\frac{1}{2}+1\cdot\frac{1}{2}} \\
+             &=\frac{\frac{1}{2}^{n}}{\frac{1}{2}^{n}+1} \\
+             &=\frac{1}{1+\frac{1}{\frac{1}{2}^{n}}} \\
+             &=\frac{1}{2^{n}+1}
+\end{align*}
+And $P(\overline{F}|H\ldots H|)$ as its complement
+\[
+    P(\overline{F}|H\ldots H)=1-\frac{1}{2^{n}+1}
+\]
+The probability of the $n$'th toss being must therefore be the sum of these probabitilies
+\begin{align*}
+    P(H_{n+1}|H\ldots H)&=P(F|H\ldots H)P(F)+P(\overline{F}|H\ldots H) \\
+                  &=\frac{1}{2}\cdot\frac{1}{2^{n}+1}+\left(1-\frac{1}{2^{n}+1}\right) \\
+                  &=\frac{1}{2(2^{n}+1)}+\left(1-\frac{1}{2^{n}+1}\right) \\
+                  &=1+\frac{-1}{2(2^{n}+1)} \\
+                  &=1-\frac{1}{2(2^{n}+1)}
+\end{align*}
 \paragraph{Problem 37}
 \paragraph{Problem 38}
 \paragraph{Problem 39}
