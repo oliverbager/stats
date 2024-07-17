@@ -17,19 +17,185 @@ For counting problems, some general terminology is relevant:
     \item[-] Unordered means that the order at which elements are written does not matter, $\{a_{1},a_{2},a_{3}\}=\{a_{3},a_{1},a_{2}\}$.
 \end{itemize}
 \subsubsection{Ordered sampling with replacement}
-Suppose we have a set consisting of $n$ elements and we wish to draw $k$ samples from the set. A list of samples would in this context consist of elements with $k$ positions where each position has $n$ options, as such the total number of possible outcomes is given by
+Suppose we have a set consisting of $n$ elements and we wish to draw $k$ samples from the set, for example, say $A=\{1,2,3\}$ where we wish to sample $k=2$, we then get 9 different possibilities
+\[
+    (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)
+\]
+From this its clear that we create a list consisting of $k$-valued elements where each position has $n$ options for values
+\[\begin{array}{cccc}
+    a_1 & a_2 & \ldots & a_k \\
+    \uparrow & \uparrow & & \uparrow \\
+    n & n & & n
+ \end{array}\]
+Meaning that we can determine the total amount of possibilities as 
 \[
     n\times n\times\ldots\times n=n^{k}
 \]
-\subsubsection{Ordered sampling without replacement}
-As opposed to the previous circumstance, a element is now removed every time we draw, resulting in there being one less options every time we move to the next position, as such
+\subsubsection{Ordered sampling without replacement (Permutations)}
+As opposed to the previous circumstance, a element is now removed every time we draw, resulting in there being one less options every time we move to the next position, as such, using the same example with $A$ and $k=2$ we get
 \[
-    n\times (n-1)\times (n-2)\times\ldots\times (n-k+1)
+    (1,2),(1,3),(2,1),(2,3),(3,1),(3,2)
 \]
+Here we create a list of $k$-valued elements where each position has one less option than the previous
+\[\begin{array}{cccc}
+    (a_1 & a_2 & \ldots & a_k) \\
+    \uparrow & \uparrow & & \uparrow \\
+    n & n-1 & & n-k+1
+ \end{array}\]
 Which is called a $k$-permutation of the elements in the set, the following notation is used to show the number of $k$-permutations of an $n$-element set
 \[
     P_{k}^{n}=n\times(n-1)\times\ldots\times(n-k+1)
 \]
-A special case can also occur here when $n<k$, as there then wont be enough options for every position and there therefore are no possible lists.
-\subsubsection{Unordered sampling with replacement}
+A special case can also occur here when $n<k$, as there then wont be enough options for every position and there therefore are no possible lists. Another special case is an $n$-permutation where $k=n$ which results in the sequence
+\begin{align*}
+    P_{n}^{n}&=n\times(n-1)\times(n-2)\times\ldots\times(n-n+1) \\
+         &=n\times(n-1)\times(n-2)\times\ldots\times 1 \\
+         &=n!
+\end{align*}
+As such the factorial operator simply denotes the total number of permutations of an $n$ element set, aka the total number of ways you can order $n$ different objects. By definition $0!=1$, using this we rewrite the formula for $P_{k}^{n}$
+\begin{theorem}
+  The amount of $k$-permutations of an $n$-element set is given by $P_{k}^{n}=\frac{n!}{(n-k)!}$.
+\end{theorem}
+\begin{proof}
+  From the original expression for $P_{k}^{n}$ we have that
+  \[
+      P_{k}^{n}&=n\times(n-1)\times(n-2)\times\ldots\times(n-k+1) \\
+  \]
+  By multiplying by $\frac{(n-k)!}{(n-k)!}$ we get
+\begin{align*}
+         &=n\times(n-1)\times(n-2)\times\ldots\times(n-k+1)\cdot\frac{(n-k)!}{(n-k)!} \\
+         &=\frac{n!}{(n-k)!}
+\end{align*}
+  As multiplying by $(n-k)!$ in the numerator results in the sequence ``finishing'' and being equal to $n!$.
+\end{proof}
+\subsubsection{Unordered sampling without replacement (Combinations)}
+We now wish to determine the amount of possible lists when we sample $k$ elements from an $n$-element set. This means that we want to determine the amount of possible $k$-element subsets of the $n$-element set. Using the same example as before with $A$ and $k=2$ we get 3 different combinations
+\[
+    (1,2),(1,3),(2,3)
+\]
+We show the number of $k$-element subsets of $A$ as
+\[\begin{pmatrix}
+  n \\
+  k
+ \end{pmatrix}\]
+Which is read as ``$n$ choose $k$'', to determine the value of this we compare with $P_{k}^{n}$ as the only difference between the two is ordering. This is because for any $k$-element subset of an $n$-element set, we can order the elements in $k!$ different ways, as such
+\[
+    P_{k}^{n}=\begin{pmatrix}n\\k\end{pmatrix}\times k!
+\]
+Rewriting using our previously established formula for $P_{k}^{n}$ and dividing by $k!$ we get
+\[
+    \begin{pmatrix}n\\k\end{pmatrix}=\frac{n!}{k!(n-k)}\text{, for }0\leq k\leq n
+\]
+This term is used extensively in the binomial theorem, which states that
+\[
+    (a+b)^{n}=\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}a^{k}b^{n-k}
+\]
+\begin{theorem}
+    For any non-negative integers $n,k$ it follows that $\begin{pmatrix}n\\k\end{pmatrix}=\begin{pmatrix}n\\n-k\end{pmatrix}$.
+\end{theorem}
+\begin{proof}
+  Assume we wish to determine the amount of possible sequences consisting of $k$ A's and $j$ B's, as such we have $n=j+k$ positions to fill with either A or B, from these positions we need to choose $j$ for A's and whatever is left is filled with B's, as such the amount of ways is
+  \[
+      \begin{pmatrix}n\\j\end{pmatrix}
+  \]
+  If we instead observe this from the point of B's, it is clear that the amount of ways would then be given by
+  \[
+      \begin{pmatrix}n\\k\end{pmatrix}
+  \]
+  As these must be equivalent we have that
+  \[
+      \begin{pmatrix}n\\j\end{pmatrix}=\begin{pmatrix}n\\k\end{pmatrix}
+  \]
+  From the initial determination of $n$ we get that
+  \[
+      n=j+k\implies j=n-k\vee k=n-j
+  \]
+  As such
+  \[
+      \begin{pmatrix}n\\j\end{pmatrix}=\begin{pmatrix}n\\n-k\end{pmatrix}=\begin{pmatrix}n\\k\end{pmatrix}=\begin{pmatrix}n\\n-j\end{pmatrix}
+  \]
+\end{proof}
+\begin{theorem}
+    For any non-negative integers $k,n$ it follows that $\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}=2^{n}$.
+\end{theorem}
+\begin{proof}
+  From the Binomial theorem we know that
+  \[
+      (a+b)^{n}=\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}a^{k}b^{n-k}
+  \]
+  We let $a=b=1$ and as such get
+  \[
+      2^{n}=\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}
+  \]
+\end{proof}
+\begin{theorem}
+    For non-negative integers $0\leq k\leq n$ it follows that $\begin{pmatrix}n+1\\k+1\end{pmatrix}=\begin{pmatrix}n\\k+1\end{pmatrix}+\begin{pmatrix}n\\k\end{pmatrix}$.
+\end{theorem}
+\begin{proof}
+  We define an arbitrary set, $A$ with $n+1$ elements
+  \[
+      A=\{a_{1},a_{2},\ldots,a_{n},a_{n+1}\}
+  \]
+  From this set we wish to choose a $k+1$ element subset, call it $B$, by combinations we know this is equal to
+  \[
+      \begin{pmatrix}n+1\\k+1\end{pmatrix}
+  \]
+  $B$ can also be constructed as the union of two subsets of $B$ that are defined by either containing- or not containing $a_{n+1}$
+  \[
+      B=B_{1}\cup B_{2}\text{, where } a_{n+1}\notin B_{1},a_{n+1}\in B_{2},B_{1}\cap B_{2}=\emptyset
+  \]
+  To define $B_{1}$ we need to choose $k+1$ elements from the set $A\setminus a_{n+1}$ which is equal to
+  \[
+      \begin{pmatrix}n\\k+1\end{pmatrix}
+  \]
+  To complete the set we then need to choose $k$ elements from $A$ which can be done in
+  \[
+      \begin{pmatrix}n+1\\k\end{pmatrix}
+  \]
+  ways. As such the sum of the two must be equal to the initial expression resulting in
+  \[
+      \begin{pmatrix}n+1\\k+1\end{pmatrix}=\begin{pmatrix}n\\k+1\end{pmatrix}+\begin{pmatrix}n\\k+1\end{pmatrix}
+  \]
+\end{proof}
+\begin{theorem}
+    Vandermonde's identity states that $\begin{pmatrix}m+n\\k\end{pmatrix}=\sum_{i=0}^{k}\begin{pmatrix}m\\i\end{pmatrix}\begin{pmatrix}n\\k-i\end{pmatrix}$
+\end{theorem}
+\begin{proof}
+  We construct a set $A$ with $m+n$ elements, as such
+  \[
+      A=\{a_{1},a_{2},\ldots,a_{m},b_{1},b_{2},\ldots,b_{n}\}
+  \]
+  Determining the number of $k$-element subsets of $A$ is equal to
+  \[
+      \begin{pmatrix}m+n\\k\end{pmatrix}
+  \]
+  This can also be done by choosing $i$ elements from $\{a_{1},a_{2},\ldots,a_{n}$ first, and then $k-i$ elements from $\{b_{1},b_{2},\ldots,b_{n}\}$, which then can be done in
+  \[
+      \begin{pmatrix}m\\i\end{pmatrix}\begin{pmatrix}n\\k-i\end{pmatrix}
+  \]
+  ways. But as $i$ can be any number from $0\rightarrow k$ it is necessary to sum all the possible options whereby we write
+  \[
+      \begin{pmatrix}m+n\\k\end{pmatrix}=\sum_{i=0}^{k}\begin{pmatrix}m\\i\end{pmatrix}\begin{pmatrix}n\\k-i\end{pmatrix}
+  \]
+\end{proof}
+An important class of random experiments are Bernoulli trials, a random experiemnt where there are two possible outcomes, succes and failure (which can be extended to any experiment with 2 outcomes as we can arbitrarily define success and failure).
+
+In Bernoulli trials the probability of success if usually denoted by $p$ and the probability of failure as its complement $q=1-p$. If we perform $n$ independent Bernoulli trials and count the number of successes, it is called a binomial experiment, for example a coin toss where we define success as heads and count the number of heads. 
+\begin{theorem}
+    The binomial formula is given by $P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}$
+\end{theorem}
+\begin{proof}
+    Imagine we toss a coin with $P(H)=p$ and $P(T)=1-p$ $n$ times, we define $C$ as the event of observing $k$ heads (and $n-k$ tails), the probability of observing $k$ heads will be given by
+    \[
+        P(k)=|C|p^{k}(1-p)^{n-k}
+    \]
+    To determine $|C|$, we realise that we can see the event as ordered sampling without replacement, as such we have that
+    \[
+        |C|=\begin{pmatrix}n\\k\end{pmatrix}
+    \]
+    Which we insert into the previous expression and get
+    \[
+        P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
+    \]
+\end{proof}
 \subsubsection{Unordered sampling without replacement}
