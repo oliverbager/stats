@@ -199,3 +199,188 @@ In Bernoulli trials the probability of success if usually denoted by $p$ and the
     \]
 \end{proof}
 \subsubsection{Unordered sampling without replacement}
+As opposed to the previous section we're now working with replacement, as such we again use the example of $A$ with $k=2$ and get 6 possibilities given by
+\[
+    (1,1),(1,2),(1,3),(2,2),(2,3),(3,3)
+\]
+One way to represent this sample is to list them as $n$-element vectors where each position corresponds to a number, eg.
+\begin{align*}
+    (a,b)&\rightarrow(x_{1},x_{2},x_{3})=(n_{1},n_{2},n_{3}) \\
+    (1,1)&\rightarrow(x_{1},x_{2},x_{3})=(2,0,0) \\
+    (1,2)&\rightarrow(x_{1},x_{2},x_{3})=(1,1,0) \\
+    (1,3)&\rightarrow(x_{1},x_{2},x_{3})=(1,0,1) \\
+\end{align*}
+Constructing these vectors a pattern emerges, that is $\sum_{i=1}^{3}x_{i}=2$, as such we can determine the amount of possibilities as the amount of integer solutions to $x_{1}+x_{2}+x_{3}=2$.
+\begin{theorem}
+    The number of distinct solutions to the equation $x_{1}+x_{2}+\ldots+x_{n}=k$ where $x_{n}\in\{0,1,2,3,\ldots\}$ is equal to $\begin{pmatrix}n+k-1\\k\end{pmatrix}=\begin{pmatrix}n+k-1\\n-1\end{pmatrix}$.
+\end{theorem}
+\begin{proof}
+  We first define a mapping where an integer $x_{n}\geq 0$ is replaced with $x_{n}$ vertical lines. Suppose we now have a solution to the equation where $k=6$, for example
+  \[
+      3+0+2+1\Leftrightarrow |||++||+|
+  \]
+  Here we realise that the equation can be represented by $k$ vertical lines and $n-1$ plus signs, as such we can use combinations to determine the amount of distinct sequences we can create using $k$ vertical lines and $n-1$ plus signs, as such
+  \[
+      n_{\text{solutions}}=\begin{pmatrix}k+n-1\\k\end{pmatrix}=\begin{pmatrix}k+n-1\\n-1\end{pmatrix}
+  \]
+\end{proof}
+\subsubsection{Problems}
+\paragraph{Problem 1}
+Let $A,B$ be two finite sets with $|A|=m,|B|=n$, how many distinct functions (mappings) can you define from set $A$ to set $B$, $A\xrightarrow{f} B$?
+
+We let
+\begin{align*}
+    A&=\{a_{1},a_{2},\ldots,a_{m}\} \\
+    B&=\{b_{1},b_{2},\ldots,b_{n}\}
+\end{align*}
+For each $a_{m}$ we have $n$ options as
+\[
+    f(a_{m})\in B
+\]
+As such we by the multiplication principle have that there exists
+\[
+    n^{m}
+\]
+distinct mappings.
+\paragraph{Problem 2}
+A function is said to be one-to-one if for all $x_{1}\neq x_{2}\implies f(x_{1})\neq f(x_{2})$. Equivalently we can say a function is one-to-one whenever $f(x_{1})=f(x_{2})\implies x_{1}=x_{2}$. Let $A,B$ be two finite sets with $|A|=m,|B|=n$, how many distinct one-to-one functions (mappings) can you define from set $A$ to set $B$, $A\xrightarrow{f} B$.
+
+Again we define
+\begin{align*}
+    A&=\{a_{1},a_{2},\ldots,a_{m}\} \\
+    B&=\{b_{1},b_{2},\ldots,b_{n}\}
+\end{align*}
+As opposed to the previous problem we here lose a possible value every time we progress once, this means that $a_{1}$ has $n$ options, $a_{2}$ has $n-1$ options, etc. as such we're making a permutation resulting in the amount of options that exists being given by
+\[
+    P_{m}^{n}=\frac{n!}{(n-m)!}
+\]
+\paragraph{Problem 3}
+An urn contains 30 red balls and 70 green balls. What is the probability of getting exactly $k$ red balls in a sample of size $20$ if the sampling is done with replacement? Assume $0\leq k\leq 20$.
+
+The probability of picking a red ball is 
+\[
+    P(R)=\frac{30}{100}=0.3
+\]
+And as such the chance of not drawing one is
+\[
+    P(G)=1-0.3=0.7
+\]
+As we're working with replacement, this stays constant throughout all samples, as such we can determine the probability of drawing $k$ balls using the binomial formula
+\[
+    P(k)=\begin{pmatrix}20\\k\end{pmatrix}0.3^{k}(0.7)^{20-k}
+\]
+\paragraph{Problem 4}
+An urn contains 30 red balls and 70 green balls. What is the probability of getting exactly $k$ red balls in a sample of size $20$ if the sampling is done without replacement?
+
+We let $A$ be the event of getting $k$ red balls, to determine $P(A)$ we need to find
+\[
+    P(A)=\frac{|A|}{|S|}
+\]
+Determining $|S|$ is trivial
+\[
+    |S|=\begin{pmatrix}100\\20\end{pmatrix}
+\]
+We now define $m$ as $|R|$ as $n$ as $|G|$, whilst $k=|R|$. As such we make use of
+\[
+    |A|=\begin{pmatrix}m\\k\end{pmatrix}\begin{pmatrix}n\\20-k\end{pmatrix}
+\]
+Inserting our known information we then get that
+\[ 
+    |A|=\begin{pmatrix}30\\k\end{pmatrix}\begin{pmatrix}70\\20-k\end{pmatrix}
+\]
+By using the initial expression we then get
+\[
+    P(A)=\frac{\begin{pmatrix}30\\k\end{pmatrix}\begin{pmatrix}70\\20-k\end{pmatrix}}{\begin{pmatrix}100\\20\end{pmatrix}}
+\]
+\paragraph{Problem 5}
+Assume there are $k$ people in a room and we know that
+\begin{itemize}
+    \item[-] $P(k=5)=\frac{1}{4}$
+    \item[-] $P(k=10)=\frac{1}{4}$
+    \item[-] $P(k=15)=\frac{1}{2}$
+\end{itemize}
+a) What is the probability that at least two of them have been born in the same month? Assume that all months are equally likely.
+
+We let $A$ be the event that two people are born in the same month, as we the phrase at least suggests determining the complement might be easier we wish to find
+\[
+    P(A)=1-\frac{|\overline{A}|}{|S|}
+\]
+Determining $|S|$ is trivial by the multiplication principle
+\[
+    |S|=12^{k}
+\]
+To determine the amount of possible we can use the same principle, except repetition isnt allowed, as such
+\[
+    |\overline{A}|=P_{k}^{12}
+\]
+Whereby it becomes clear that
+\[
+    P(A_{k})=1-\frac{P_{k}^{12}}{12^{k}}
+\]
+By the law of total probability we then have that
+\begin{align*}
+    P(A)&=P(A_{5})\cdot\frac{1}{4}+P(A_{10})\cdot\frac{1}{4}+P(A_{15})\frac{1}{2} \\
+        &=\frac{1}{4}\left(1-\frac{P_{5}^{12}}{12^{5}}\right)+\frac{1}{4}\left(1-\frac{P_{10}^{12}}{12^{10}}\right)+\frac{1}{2}
+\end{align*}
+As $P(A_{15})$ will always be $=1$ since $k>12$.
+
+b) Given that we already know there are at least two people that celebrate their birthday in the same month, what is the probability that $k=10$?
+
+We are asked to determine the conditional probability
+\[
+    P(k=10|A)
+\]
+By Bayes law we have that
+\begin{align*}
+    P(k=10|A)&=\frac{P(A|k=10)P(k=10)}{P(A)} \\
+             &=\frac{\left(1-\frac{P_{10}^{12}}{10^{12}}\right)\cdot\frac{1}{4}}{\frac{1}{4}\left(1-\frac{P_{5}^{12}}{12^{5}}\right)+\frac{1}{4}\left(1-\frac{P_{10}^{12}}{12^{10}}\right)+\frac{1}{2}} \\
+             &=\frac{1-\frac{P_{10}^{12}}{10^{12}}}{\left(1-\frac{P_{5}^{12}}{12^{5}}\right)+\left(1-\frac{P_{10}^{12}}{12^{10}}\right)+2}
+\end{align*}
+\paragraph{Problem 6}
+How many distinct solutions does the following equation have?
+\begin{equation*}
+    \begin{gathered}
+        x_{1}+x_{2}+_{3}+x_{4}=100\text{, such that } x_{1}\in\{1,2,3,\ldots\}, \\
+        x_{2}\in\{2,3,4,\ldots\},x_{3},x_{4}\in\{0,1,2,3,\ldots\}
+    \end{gathered}
+\end{equation*}
+We know that the number of solutions without the given restrictions is given by
+\[
+    \begin{pmatrix}k+n-1\\k\end{pmatrix}=\begin{pmatrix}k+n-1\\n-1\end{pmatrix}
+\]
+We wish to rewrite the given equation such that these restrictions are no longer present, as such we rewrite
+\begin{align*}
+    y_{1}&=x_{1}-1 \\
+    y_{2}&=x_{2}-2
+\end{align*}
+As this gives them the same domain, the equation is now
+\[
+    y_{1}+1+y_{2}+2+x_{3}+x_{4}=100\text{, where }y_{1},y_{2},x_{3},x_{4}\in\{0,1,2,3,\ldots\}
+\]
+Rewriting again this gives
+\[
+    y_{1}+y_{2}+x_{3}+x_{4}=97
+\]
+Which has the solution
+\[
+    \begin{pmatrix}97+4-1\\97\end{pmatrix}=\begin{pmatrix}100\\3\end{pmatrix}
+\]
+\paragraph{Problem 7}
+$N$ guests arrive at a party. Each person is wearing a hat. We collect all hats and then randomly redistribute the hats, giving each person one of the $N$ hats randomly.What is the probability that at least one person receives his/her own hat?
+\subsection{Chapter resume}
+  Ordered sampling with replacement
+  \[
+      n^{k}
+  \]
+  Ordered sampling without replacement
+  \[
+      P_{k}^{n}=\frac{n!}{(n-k)!}
+  \]
+  Unordered sampling without replacement
+  \[
+      \begin{pmatrix}n\\k\end{pmatrix}=\frac{n!}{k!(n-k)!}
+  \]
+  Unorderered sampling with replacement
+  \[
+      \begin{pmatrix}k+n-1\\k\end{pmatrix}=\begin{pmatrix}k+n-1\\n-1\end{pmatrix}
+  \]

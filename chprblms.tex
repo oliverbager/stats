@@ -801,3 +801,185 @@ The probability of the $n$'th toss being must therefore be the sum of these prob
 \paragraph{Problem 37}
 \paragraph{Problem 38}
 \paragraph{Problem 39}
+\subsection{Chapter 2}
+\paragraph{Problem 1}
+\paragraph{Problem 2}
+We make use of combinations with $n=12,k=8$
+\[
+    \begin{pmatrix}12\\8\end{pmatrix}=\frac{12!}{8!(12-8)!}=495
+\]
+\paragraph{Problem 3}
+a)
+
+The probability of picking exactly 4 black phones will be equal to
+\[
+    P(B=4)=\frac{|B=4|}{|S|}
+\]
+As they are not put back we determine $|S|$ as the amount of 10-element subsets of a 50 element set using combinations
+\[
+    |S|=\begin{pmatrix}50\\10\end{pmatrix}=\frac{50!}{10!(50-10)!}=10272278170
+\]
+Simultaneously we can determine the amount of sets containing 4 black phones and 6 white phones as
+\[
+    |B=4|=\begin{pmatrix}20\\4\end{pmatrix}\begin{pmatrix}30\\10-4\end{pmatrix}=\frac{20!}{4!(20-4)!}\cdot\frac{30!}{6!(30-6)!}=2876839875
+\]
+As such
+\[
+    P(B=4)=\frac{2876839875}{10272278170}\approx 0.28
+\]
+b)
+We wish to determine $P(B\in\{0,1,2\})$, we use the same method as the previous section and get that
+\begin{align*}
+    |B\in\{0,1,2\}|&=\sum_{i=0}^{2} \begin{pmatrix}20\\i\end{pmatrix}\begin{pmatrix}30\\10-i\end{pmatrix} \\
+              &=\begin{pmatrix}20\\0\end{pmatrix}\begin{pmatrix}30\\10\end{pmatrix}+\begin{pmatrix}20\\1\end{pmatrix}\begin{pmatrix}30\\9\end{pmatrix}+\begin{pmatrix}20\\2\end{pmatrix}\begin{pmatrix}30\\8\end{pmatrix} \\
+              &=30045015+286143000+1112055750 \\
+              &=1428243765
+\end{align*}
+And again we determine the probability as
+\[
+    P(B\in\{0,1,2\})=\frac{1428243765}{10272278170}\approx 0.14
+\]
+\paragraph{Problem 4}
+a)
+
+We once again make use of combinations, the sample space is given by
+\[
+    |S|=\begin{pmatrix}52\\5\end{pmatrix}=\frac{52!}{5!(52-5)!}=2598960
+\]
+The amount of 5 element sets consisting of 1 ace must be given by
+\[
+    |A=1|=\begin{pmatrix}4\\1\end{pmatrix}\begin{pmatrix}48\\4\end{pmatrix}=\frac{4!}{1!(4-1)!}\cdot\frac{48!}{4!(48-4)!}=778320
+\]
+Determining the probability is then as simple as
+\[
+    P(A=1)=\frac{778320}{2598960}\approx 0.30
+\]
+b) The phrasing of the question suggests that its easier to determine the complement, as such we find the probability of getting no aces using the same method as in the previous section
+\[
+    |A=0|=\begin{pmatrix}4\\0\end{pmatrix}\begin{pmatrix}48\\5\end{pmatrix}=\frac{4!}{0!(4)!}\cdot\frac{48!}{5!(48-5)!}=1712304
+\]
+The probability is then
+\[
+    P(A=0)=\frac{1712304}{2598960}\approx 0.66
+\]
+And we then determine the complement as this is equal to the probability of getting 1 or more aces
+\[
+    P(A\in\{1,2,3,4\})=P(\overline{A=0})=1-P(A=0)\approx 0.34
+\]
+\paragraph{Problem 5}
+We wish to determine the probability
+\[
+    P(A=2|A\geq 1)
+\]
+As the reverse conditional probability is independent of the condition we know that
+\[
+    P(A\geq 1|A=2)=1
+\]
+Using Bayes law we then find that
+\[
+    P(A=2|A\geq 1)=\frac{P(A\geq 1|A=2)P(A=2)}{P(A\geq 1)}
+\]
+We determine $|A=2|$ using the same method as in previous section
+\[
+    |A=2|=\begin{pmatrix}4\\2\end{pmatrix}\begin{pmatrix}48\\3\end{pmatrix}=\frac{4!}{2!(4-2)!}\cdot\frac{48!}{3!(48-3)!}=103776
+\]
+And then make use of this to determine the probability of getting 2 aces
+\[
+    P(A=2)=\frac{103776}{2598960}\approx 0.04
+\]
+As such we have that
+\[
+    P(A=2|A\geq 1)=\frac{1\cdot 0.04}{0.34}\approx 0.12
+\]
+\paragraph{Problem 6}
+Assuming the cards are dealt in bulk we can determine that
+\begin{align*}
+    n_{\text{cards}}&=52-26=26 \\
+    n_{\text{spades}}&=13-7=6
+\end{align*}
+As such 26 cards containing 6 spades will be dealt to player $C$, giving us that the sample space is
+\[
+    |S|=\begin{pmatrix}26\\13\end{pmatrix}=\frac{26!}{13!(26-13)!}
+\]
+Whilst the amount of decks containing exactly 4 spades is
+\[
+    |C=4|=\begin{pmatrix}6\\4\end{pmatrix}\begin{pmatrix}20\\13-4\end{pmatrix}=\frac{6!}{4!(6-4)!}\cdot\frac{20!}{9!(20-9)!}
+\]
+As such the probability is
+\[
+    P(C=4)=\frac{\begin{pmatrix}6\\4\end{pmatrix}\begin{pmatrix}20\\9\end{pmatrix}}{\begin{pmatrix}26\\13\end{pmatrix}}\approx 0.24
+\]
+\paragraph{Problem 7}
+The sample space is given by
+\[
+    |S|=\begin{pmatrix}50\\15\end{pmatrix}=\frac{50!}{15!(50-15)!}
+\]
+By inclusion exclusion we have that
+\[
+    P(Y\cup J)=P(Y)+P(J)-P(Y\cap J)
+\]
+The amount of sets containing either you or Joe is
+\[
+    |Y|=|J|=\begin{pmatrix}1\\1\end{pmatrix}\begin{pmatrix}49\\14\end{pmatrix}=\frac{1!}{1!(1-1)!}\cdot\frac{49!}{14!(49-14)!}
+\]
+The amount of sets containing both you and your friend Joe is
+\[
+    |Y,J|=\begin{pmatrix}2\\2\end{pmatrix}\begin{pmatrix}48\\13\end{pmatrix}=\frac{2!}{2!(2-2)!}\cdot\frac{48!}{13!(48-13)!}
+\]
+As such the probability of both you and Joe being in group is
+\[
+    P(Y\cup J)=\frac{\begin{pmatrix}2\\2\end{pmatrix}\begin{pmatrix}48\\13\end{pmatrix}}{\begin{pmatrix}50\\15\end{pmatrix}}\approx 0.09
+\]
+Inserting in the inclusion exclusion principle we then get
+\[
+    P(Y\cup J)=2\frac{\begin{pmatrix}1\\1\end{pmatrix}\begin{pmatrix}49\\14\end{pmatrix}}{\begin{pmatrix}50\\15\end{pmatrix}}-\frac{\begin{pmatrix}2\\2\end{pmatrix}\begin{pmatrix}48\\13\end{pmatrix}}{\begin{pmatrix}50\\15\end{pmatrix}}\approx 0.51
+\]
+\paragraph{Problem 8}
+For a set with $n$ elements of which $r$ are unique we have that there are
+\[
+    N=\frac{n!}{n_{1}!n_{2}!\ldots n_{r}!}
+\]
+Where $n_{i}$ is the amount of repetitions of the given element, in Massachusetts we observe that
+\begin{align*}
+    n_{m}&=1 \\
+    n_{a}&=2 \\
+    n_{s}&=4 \\
+    n_{c}&=1 \\
+    n_{h}&=1 \\
+    n_{u}&=1 \\
+    n_{e}&=1 \\
+    n_{t}&=2 \\
+\end{align*}
+As such
+\[
+    N=\frac{13!}{2!4!2!}=64864800
+\]
+\paragraph{Problem 9}
+a)
+
+We use the binomial theorem and as such have that
+\[
+    P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
+\]
+The probability of it containing 8 heads and 12 tails must simply be given by inserting $k=8$ and determining the amount of possible sets using combinations
+\[
+    P(8)=\begin{pmatrix}20\\8\end{pmatrix}p^{8}(1-p)^{20-8}
+\]
+b)
+
+Observing more than 8 heads and more than 8 tails is only possible when observing either 9, 10 or 11 heads, as such the probability must be given by
+\[
+    P(H\geq 8, T\geq 8)=\sum_{k=9}^{11}\begin{pmatrix}20\\k\end{pmatrix}p^{k}(1-p)^{20-k}
+\]
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
+\paragraph{Problem 1}
