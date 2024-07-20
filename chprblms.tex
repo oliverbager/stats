@@ -971,15 +971,90 @@ Observing more than 8 heads and more than 8 tails is only possible when observin
 \[
     P(H\geq 8, T\geq 8)=\sum_{k=9}^{11}\begin{pmatrix}20\\k\end{pmatrix}p^{k}(1-p)^{20-k}
 \]
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
-\paragraph{Problem 1}
+\paragraph{Problem 10}
+As every path will be described by some scrambled sequence of 20 movements to the right and 10 movements up, as such the problem boils down to finding out how many ways you can move right 20 times and up 10 times, which is given by
+\[
+    \frac{30!}{20!10!}=30045015
+\]
+\paragraph{Problem 11}
+We have the sample size from the previous problem, we determine the amount of paths that end up at $(10,5)$ by determining the amount of paths that end at that point, this is given by
+\[
+    \frac{15!}{10!5!}=3003
+\]
+Afterwards there is once again 10 rights and 5 ups to reach the final point, giving us the same amount of paths once again, as such
+\[
+    P((10,5)\in \text{Path})=\frac{\left(\frac{15!}{10!5!}\right)^{2}}{\frac{30!}{20!10!}}\approx 0.30
+\]
+\paragraph{Problem 12}
+Using the binomial theorem we have that
+\[
+    P(k)=\begin{pmatrix}n\\k\end{pmatrix}p_{a}^{k}(1-p_{a})^{n-k}
+\]
+As $p_{a}$ denotes the probability of moving up for it to reach the wanted point we must have that $k=5$ and $n=15$, therefore
+\[
+    P(5)=\begin{pmatrix}15\\5\end{pmatrix}p_{a}^{5}(1-p_{a})^{15-5}
+\]
+\paragraph{Problem 13}
+a)
+
+We make use of the law of total probability as well as the binomial theorem to write that
+\begin{align*}
+    P(H\geq 3)&=\sum_{i=1}^{2}P(H=3|C_{i})P(C_{i})+P(H=4|C_{i})P(C_{i})+P(H=5|C_{i})P(C_{i}) \\
+           &=0.5\sum_{i=1}^{2}\begin{pmatrix}5\\3\end{pmatrix}p_{i}^{3}(1-p_{i})^{2}+\begin{pmatrix}5\\4\end{pmatrix}p_{i}^{4}(1-p_{i})^{1}+\begin{pmatrix}5\\5\end{pmatrix}p_{i}^{5} \\
+           &\approx 0.35
+\end{align*}
+b)
+
+We wish to determine the probability
+\[
+    P(C_{2}|H\geq 3)
+\]
+We can easily determine the reverse conditional probability using the binomial theorem
+\begin{align*}
+    P(H\geq 3|C_{2})&=\begin{pmatrix}5\\3\end{pmatrix}p^{3}(1-p)^{2}+\begin{pmatrix}5\\4\end{pmatrix}p^{4}(1-p)^{1}+\begin{pmatrix}5\\5\end{pmatrix}p^{5} \\
+              &\approx 0.21
+\end{align*}
+As we know $P(H\geq 3)$ from the previous question, we apply Bayes rule and get that
+\begin{align*}
+    P(C_{2}|H\geq 3)&=\frac{P(H\geq 3|C_{2})P(C_2)}{P(H\geq 3)} \\
+              &=\frac{0.21\cdot 0.5}{0.35} \\
+              &=0.3
+\end{align*}
+\paragraph{Problem 14}
+\paragraph{Problem 15}
+\paragraph{Problem 16}
+\paragraph{Problem 17}
+\paragraph{Problem 18}
+\paragraph{Problem 19}
+We apply that the number of possible solutions for an equation equating to $k$ with $n$ distinct elements is given by
+\[
+    \begin{pmatrix}k+n-1\\k\end{pmatrix}
+\]
+As the $x_{i}$'s are limited to the natural numbers we rewrite such that we are working in the domain $\{0,1,2,\ldots\}$ by stating that
+\[
+    y_{i}=x_{i}-1\Leftrightarrow x_{i}=y_{i}+1
+\]
+Rewriting the equation we then get
+\[
+    y_{1}+y_{2}+y_{3}+y_{4}+y_{5}=95
+\]
+As such the number of solutions is given by
+\[
+    \begin{pmatrix}95+5-1\\k\end{pmatrix}=\frac{99!}{95!}=3764376
+\]
+\paragraph{Problem 20}
+We can determine that as the sum of solutions of the equation
+\[
+    x_{2}+x_{3}+x_{4}=100-x_{1}
+\]
+We rewrite $x_{1}$ as $i$ and thus this can be expressed as
+\[
+    x_{2}+x_{3}+x_{4}=100-i
+\]
+By sum we then have
+\begin{align*}
+n_{\text{solutions}}&=\sum_{i=0}^{10}\begin{pmatrix}100-i+3-1\\100-i\end{pmatrix} \\
+                   &=\begin{pmatrix}102\\100\end{pmatrix}+\begin{pmatrix}101\\99\end{pmatrix}+\ldots+\begin{pmatrix}92\\90\end{pmatrix} \\
+                   &=51271
+\end{align*}
+\paragraph{Problem 21}
