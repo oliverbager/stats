@@ -1,0 +1,93 @@
+\section{Chapter 3}
+\subsection{Random variables}
+\begin{definition}[Random variable]
+    A random variable is a real-valued value determined by an underlying random experiment. Mathematically this can be expressed as a function that assigns a value to a possible outcome, $S\xrightarrow{X} \mathbb{R}$.
+\end{definition}
+\subsubsection{Discrete random variables}
+What defines whether at random variable is discrete, continuous or mixed is it's range. If the range of the random variable is strictly countable, the random variable is said to be discrete, this for example occurs if we wish to determine the amount of heads in a coin throw.
+
+\subsubsection{Probability mass function}
+Let $X$ be a discrete random variable, as such
+\[
+    \text{Range}(X)=\{x_{1},x_{2},x_{3},\ldots\}
+\]
+As the possible outcomes are discrete, they must each have their own probability of occuring, we define the event
+\[
+    A=\{s\in S|X(s)=x_{i}\}
+\]
+Where the probabilities of each individual event $\{X=x_{i}\}$ is given by the probability mass function of $X$
+\[
+    P_{X}(x_{i})=P(X=x_{i})\text{, for} i=1,2,3,\ldots
+\]
+To ensure the function is well-defined, the definition of the mass probability function is frequently extended to all real numbers by a piecewise function
+\[
+    P_{X}(x)=\begin{cases}P(X=x) & x\in \text{Range}(X) \\ 0 & x\notin \text{Range}(X)\end{cases}
+\]
+As this is a plottable discrete function, this is also called the probability distribution of the random variable $X$.
+
+\subsubsection{Independent random variables}
+Random variables can, like probabilities and conditional probabilities, be independent. Independence is defined in a similar way to in those examples, 2 random variables, $X$ and $Y$, are independent if
+\[
+    P(X=x\cap Y=y)=P(X=x)P(Y=y) \text{, for all } x,y
+\]
+This means that if they are independent we can write
+\[
+    P(X\in A\cap Y\in B)=P(X\in A)P(Y\in B)\text{, for all sets } A \text{ and } B
+\]
+We can also condition random variables on eachother, for two independent random variables it then follows that
+\[
+    P(X=x|Y=y)=P(X=x)\text{, for all } x,y
+\]
+As knowing the outcome of $Y$ does not impact the probability of $X$.
+
+\subsubsection{Special distributions}
+\paragraph{Benroulli distribution}
+We recall that a Bernoulli experiment is an experiment with only two possible outcomes, success or failure, defining $x=1$ as success and $x=0$ as failure, we get the Bernoulli probability mass function
+\[
+    P_{X}(x)=\begin{cases}p & x=1 \\ 1-p & x=0 \\ 0 & \text{otherwise}\end{cases}
+\]
+\paragraph{Geometric distribution}
+For a geometric experiment, that being a Bernoulli experiment where we repeat the experiment until one of the two outcomes is observed has the probability $P(A)=p(1-p)^{k-1}$, where $p$ is the probability of observing what we want, as such the probability mass function is given by
+\[
+    P_{X}(x)=\begin{cases}p(1-p)^{k-1} & k\in \mathbb{N} \\ 0 & \text{otherwise}\end{cases}
+\]
+\paragraph{Binomial distribution}
+We recall that the binomial theorem states that
+\[
+    P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
+\]
+As such the probability mass function is given by
+\[
+    P_{X}(k)=\begin{cases}\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k} & k\in\{0,1,2,\ldots,n\} \\ 0 & \text{otherwise}\end{cases}
+\]
+TODO: WRITE ABOUT BINOMIAL RANDOM VARAIBLES BEING SUMS OF BERNOULLI RANDOM VARIABLES
+\paragraph{Negative binomial (Pascal) distribution}
+The Pascal distribution is a generalization of the geometric distribution where we wish to observe $m$ successes instead of just $1$, by this it follows that a Pascal distribution with $m=1$ is simply a geometric distribution.
+
+Suppose we toss a coin until $m$ heads are observed, where $X$ is the total number of tosses, in this context we define the event $A=\{X=k\}$ as the event that $m$ heads are observed in $k$ tosses. We rewrite this event as the intersection $A=B\cap C$ where
+\begin{itemize}
+    \item[-] $B$ is the event that $m-1$ heads are observed in the first $k-1$ tosses.
+    \item[-] $C$ is the event that heads is observed in the $k$th toss.
+\end{itemize}
+As these two events are independent (seperate coin tosses), we have that
+\[
+    P(A)=P(B\cap C)=P(B)P(C)
+\]
+We can determine these probabilities. $B$ is given by a binomial distribution whilst $C$ is a constant value, as such we write that
+\begin{align*}
+    P(B)&=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m-1}(1-p)^{(k-1)-(m-1)} \\
+        &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m-1}(1-p)^{k-m} \\
+    P(C)&=p
+\end{align*}
+Since $A$ is given by the product of these, we multiply them together whereby we get
+\begin{align*}
+    P(A)&=P(B)P(C) \\
+        &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m-1}(1-p)^{k-m}p \\
+        &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m}
+\end{align*}
+Whereby we can write the probability mass function for the Pascal distribution as
+\[
+    P_{X}(k)=\begin{cases}\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m} & k\in\{m,m+1,m+2,\ldots\} \\ 0 & \text{otherwise}\end{cases}
+\]
+\paragraph{Hypergeometric distribution}
+\paragraph{Poisson distribution}

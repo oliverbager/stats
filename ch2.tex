@@ -16,7 +16,7 @@ For counting problems, some general terminology is relevant:
     \item[-] Ordered means that the order at which elements are written matters, $\{a_{1},a_{2},a_{3}\}\neq \{a_{3},a_{1},a_{2}\}$.
     \item[-] Unordered means that the order at which elements are written does not matter, $\{a_{1},a_{2},a_{3}\}=\{a_{3},a_{1},a_{2}\}$.
 \end{itemize}
-\subsubsection{Ordered sampling with replacement}
+\subsubsection{Ordered with replacement}
 Suppose we have a set consisting of $n$ elements and we wish to draw $k$ samples from the set, for example, say $A=\{1,2,3\}$ where we wish to sample $k=2$, we then get 9 different possibilities
 \[
     (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)
@@ -31,7 +31,7 @@ Meaning that we can determine the total amount of possibilities as
 \[
     n\times n\times\ldots\times n=n^{k}
 \]
-\subsubsection{Ordered sampling without replacement (Permutations)}
+\subsubsection{Ordered without replacement (Permutations)}
 As opposed to the previous circumstance, a element is now removed every time we draw, resulting in there being one less options every time we move to the next position, as such, using the same example with $A$ and $k=2$ we get
 \[
     (1,2),(1,3),(2,1),(2,3),(3,1),(3,2)
@@ -68,7 +68,7 @@ As such the factorial operator simply denotes the total number of permutations o
 \end{align*}
   As multiplying by $(n-k)!$ in the numerator results in the sequence ``finishing'' and being equal to $n!$.
 \end{proof}
-\subsubsection{Unordered sampling without replacement (Combinations)}
+\subsubsection{Unordered without replacement (Combinations)}
 We now wish to determine the amount of possible lists when we sample $k$ elements from an $n$-element set. This means that we want to determine the amount of possible $k$-element subsets of the $n$-element set. Using the same example as before with $A$ and $k=2$ we get 3 different combinations
 \[
     (1,2),(1,3),(2,3)
@@ -198,7 +198,20 @@ In Bernoulli trials the probability of success if usually denoted by $p$ and the
         P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
     \]
 \end{proof}
-\subsubsection{Unordered sampling without replacement}
+\begin{theorem}
+  If we have $n$ people and wish to seperate them into $r$ groups, the number of ways this is possible is given by the multinomial coefficients, $\begin{pmatrix}n\\n_{1},n_{2},\ldots,n_{r}\end{pmatrix}=\frac{n!}{n_{1}!n_{2}!\ldots n_{r}!}$.
+\end{theorem}
+\begin{proof}
+  Say we have $n$ people we wish to divide into $r$ groups, using combinations, this would be given as
+  \begin{equation*}
+      \begin{gathered}
+          \begin{pmatrix}n\\k_{1}\end{pmatrix}\begin{pmatrix}n-k_{1}\\k_{2}\end{pmatrix}\ldots\begin{pmatrix}n-k_{1}-\ldots-k_{r-1}\\k_{r}\end{pmatrix}=\frac{n!}{k_{1}!(n-k_{1})!}\cdot\frac{(n-k_{1})!}{k_{2}!(n-k_{1}-k_{2})!} \\
+          \ldots\frac{(n-k_{1}-\ldots-k_{r-1})!}{k_{r}!(n-k_{1}-\ldots-k_{r-1}-k_{r})!}=\frac{n!}{k_{1}k_{2}!\ldots k_{r}!}
+      \end{gathered}
+  \end{equation*}
+  The simplification of this expression results from the following term always cancelling the ``excess'' in the previous, until we reach the final term where the numerator cancels the excess term from the previous fraction, whilst the denominator equals one as $n=\sum_{i=1}^{r}k_{i}\implies (n-k_{1}-\ldots-k_{r})!=(0)!=1$
+\end{proof}
+\subsubsection{Unordered without replacement}
 As opposed to the previous section we're now working with replacement, as such we again use the example of $A$ with $k=2$ and get 6 possibilities given by
 \[
     (1,1),(1,2),(1,3),(2,2),(2,3),(3,3)
@@ -224,28 +237,3 @@ Constructing these vectors a pattern emerges, that is $\sum_{i=1}^{3}x_{i}=2$, a
       n_{\text{solutions}}=\begin{pmatrix}k+n-1\\k\end{pmatrix}=\begin{pmatrix}k+n-1\\n-1\end{pmatrix}
   \]
 \end{proof}
-\subsection{Chapter resume}
-  Ordered sampling with replacement
-  \[
-      n^{k}
-  \]
-  Ordered sampling without replacement
-  \[
-      P_{k}^{n}=\frac{n!}{(n-k)!}
-  \]
-  Unordered sampling without replacement
-  \[
-      \begin{pmatrix}n\\k\end{pmatrix}=\frac{n!}{k!(n-k)!}
-  \]
-  Unorderered sampling with replacement
-  \[
-      \begin{pmatrix}k+n-1\\k\end{pmatrix}=\begin{pmatrix}k+n-1\\n-1\end{pmatrix}
-  \]
-  For a set of $n$ elements with $r$ unique ones, the amount of permutations is given by
-  \[
-      \frac{n!}{n_{1}!n_{2}!\ldots n_{r}!}
-  \]
-  Binomial theorem
-  \[
-      P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
-  \]

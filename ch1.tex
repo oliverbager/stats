@@ -130,7 +130,7 @@ Functions take an input from its domain, apply a rule to said input, whereby an 
 \[
     f:A\xrightarrow{} B\hskip 32pt f(x\in A)\in B
 \]
-\begin{definition}
+\begin{definition}[Function]
   A function maps elements from the domain set to elements in the co-domain with the property that each input is mapped to exactly one output.
 \end{definition}
 In the same context the range operand is defined, as it is not necessary for a function to be able to output all elements of the codomain:
@@ -143,7 +143,7 @@ Here both the domain- and co-domain are the real numbers, however it is clear th
 \]
 \subsection{Random experiments}
 A random experiment will always have an \textbf{outcome} corresponding to an element from the \textbf{sample space}, $S$.
-\begin{definition}
+\begin{definition}[Random experiment]
   A random experiment is a process by which we observe something uncertain.
 \end{definition}
 When a random experiment is repeated, each repetition is called a \textbf{trial}. The goal of analyzing a random experiment is to assign probabilities to \textbf{events}, which correspond to subsets of the sample space.
@@ -432,7 +432,7 @@ Furthermore we also write the chain rule for conditional probability using the d
 \end{proof}
 \subsubsection{Independence}
 Conditional probabilities are only relevant if two events are not independent.
-\begin{definition}
+\begin{definition}[Independence]
   Two events $A,B$ are independent if $P(A\cap B)=P(A)P(B)$.
 \end{definition}
 Independence for two or more events requires that all the individual events are independents, as well as all of them together, this means that for 3 events, all of the following must hold
@@ -520,7 +520,7 @@ The law of total probability states that the probability of an event, $A$ must b
   \]
 \end{proof}
 \subsubsection{Conditional Independence}
-\begin{definition}
+\begin{definition}[Conditional independence]
   Two events $A$ and $B$ are conditionally independent given an event $C$ if $P(A\cap B|C)=P(A|C)P(B|C)$.
 \end{definition}
 \begin{proof}
@@ -537,4 +537,3 @@ The law of total probability states that the probability of an event, $A$ must b
       P(A|B,C)=\frac{P(A|C)P(B|C)}{P(B|C)}=P(A|C)
   \]
 \end{proof}
-\subsection{Chapter resume (TO WRITE)}
