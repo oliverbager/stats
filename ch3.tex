@@ -40,28 +40,57 @@ We can also condition random variables on eachother, for two independent random 
 \]
 As knowing the outcome of $Y$ does not impact the probability of $X$.
 
-\subsubsection{Special distributions}
-\paragraph{Benroulli distribution}
-We recall that a Bernoulli experiment is an experiment with only two possible outcomes, success or failure, defining $x=1$ as success and $x=0$ as failure, we get the Bernoulli probability mass function
+\subsection{Special distributions}
+\subsubsection{Benroulli distribution}
+We recall that a Bernoulli experiment is an experiment with only two possible outcomes, success or failure, defining $x=1$ as success and $x=0$ as failure, we get the Bernoulli PDF
 \[
     P_{X}(x)=\begin{cases}p & x=1 \\ 1-p & x=0 \\ 0 & \text{otherwise}\end{cases}
 \]
-\paragraph{Geometric distribution}
-For a geometric experiment, that being a Bernoulli experiment where we repeat the experiment until one of the two outcomes is observed has the probability $P(A)=p(1-p)^{k-1}$, where $p$ is the probability of observing what we want, as such the probability mass function is given by
+\subsubsection{Geometric distribution}
+For a geometric experiment, that being a Bernoulli experiment where we repeat the experiment until one of the two outcomes is observed has the probability $P(A)=p(1-p)^{k-1}$, where $p$ is the probability of observing what we want, as such the PDF is given by
 \[
     P_{X}(x)=\begin{cases}p(1-p)^{k-1} & k\in \mathbb{N} \\ 0 & \text{otherwise}\end{cases}
 \]
-\paragraph{Binomial distribution}
+\subsubsection{Binomial distribution}
 We recall that the binomial theorem states that
 \[
     P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
 \]
-As such the probability mass function is given by
+As such the PDF is given by
 \[
     P_{X}(k)=\begin{cases}\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k} & k\in\{0,1,2,\ldots,n\} \\ 0 & \text{otherwise}\end{cases}
 \]
-TODO: WRITE ABOUT BINOMIAL RANDOM VARAIBLES BEING SUMS OF BERNOULLI RANDOM VARIABLES
-\paragraph{Negative binomial (Pascal) distribution}
+Simultaneously we can observe each cointoss that makes up the sequence as individual Bernoulli distributions, as such we can express a binomial as the sum of a sequence of Bernoulli experiments, i.e. we have the PDF $X$ defined as the binomial giving the number of heads, which can be expressed as
+\[
+    X=\sum_{i=1}^{n}X_{i}
+\]
+Where $i$ is the $i$th cointoss in the sequence as given by the Bernoulli PDF.
+\begin{theorem}
+    Given two independent random variables described by binomial distributions, $X,Y$, with $k_{1}=n$ and $k_{2}=m$ the random variable defined as $Z=X+Y$ is given by
+    \[
+        P_{Z}(k)=\begin{cases}\begin{pmatrix}n+m\\k\end{pmatrix}p^{k}(1-p)^{n+m-k} & k=\{0,1,2,\ldots,m+n\} \\ 0 & \text{otherwise}\end{cases}
+    \]
+\end{theorem}
+\begin{proof}
+  As the random variable can be described as the sum of the individual Bernoulli random variables we rewrite that
+  \begin{align*}
+      Z&=X+Y \\
+       &=X_{1}+X_{2}+\ldots+X_{n}+Y_{1}+Y_{2}+\ldots+Y_{n}
+  \end{align*}
+  A way to express this as probabilities is
+  \begin{align*}
+      P_{Z}(k)&=P(Z=k) \\
+              &=P(X+Y=k) \\
+              &=\sum_{i=0}^{n}P(X+Y=k|X=i)P(X=i) \\
+              &=\sum_{i=0}^{n}P(X=k-i)P(X=i) \\
+              &=\sum_{i=0}^{n}\begin{pmatrix}m\\k-i\end{pmatrix}p^{k-i}(1-p)^{m-k+i}\begin{pmatrix}n\\i\end{pmatrix}p^{i}(1-p)^{n-i} \\
+              &=\sum_{i=0}^{n}\begin{pmatrix}m\\k-i\end{pmatrix}\begin{pmatrix}n\\i\end{pmatrix}p^{k}(1-p)^{m-k+n} \\
+              &=p^{k}(1-p)^{m-k+n}\sum_{i=0}^{n}\begin{pmatrix}m\\k-i\end{pmatrix}\begin{pmatrix}n\\i\end{pmatrix} \\
+              &=\begin{pmatrix}m+n\\k\end{pmatrix}p^{k}(1-p)^{m-k+n} \\
+              &=\begin{cases}\begin{pmatrix}m+n\\k\end{pmatrix}p^{k}(1-p)^{m-k+n} & k\in\{0,1,2,\ldots,m+n\} \\ 0 & \text{otherwise}\end{cases}
+  \end{align*}
+\end{proof}
+\subsubsection{Negative binomial (Pascal) distribution}
 The Pascal distribution is a generalization of the geometric distribution where we wish to observe $m$ successes instead of just $1$, by this it follows that a Pascal distribution with $m=1$ is simply a geometric distribution.
 
 Suppose we toss a coin until $m$ heads are observed, where $X$ is the total number of tosses, in this context we define the event $A=\{X=k\}$ as the event that $m$ heads are observed in $k$ tosses. We rewrite this event as the intersection $A=B\cap C$ where
@@ -85,9 +114,57 @@ Since $A$ is given by the product of these, we multiply them together whereby we
         &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m-1}(1-p)^{k-m}p \\
         &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m}
 \end{align*}
-Whereby we can write the probability mass function for the Pascal distribution as
+Whereby we can write the PDF for the Pascal distribution as
 \[
     P_{X}(k)=\begin{cases}\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m} & k\in\{m,m+1,m+2,\ldots\} \\ 0 & \text{otherwise}\end{cases}
 \]
-\paragraph{Hypergeometric distribution}
-\paragraph{Poisson distribution}
+\subsubsection{Hypergeometric distribution}
+Imagine a bag containing $b$ blue marbles and $r$ red ones. Choosing $k\leq b+r$ marbles at random without replacements will at best give us $X\leq \text{min}(k,b)$ blue marbles, whilst the number of red marbles in our sample must be $X\geq \text{max}(0,k-r)$. As such we can define the range of $X$ as
+\[
+    \text{Range}(X)=\{\text{max}(0,k-r),\text{max}(0,k-r)+1,\ldots,\text{min}(k,b)\}
+\]
+Simultaneously we can create an expression for determining the probability of getting $x$ blue marbles (and $k-x$ red ones) by
+\[
+    \frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} \text{, for } x\in \text{Range}(X)
+\]
+Using this expression we create the PDF as
+\[
+    P_{X}(x)=\begin{cases}\frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} & x\in \text{Range}(X) \\ 0 & \text{otherwise}\end{cases}
+\]
+\subsubsection{Poisson distribution}
+The Poisson distribution is tupically used to model occurences in an interval using a variable, $\lambda$, as the known average.
+\begin{theorem}
+    Let $X$ be a binomial PDF with $p=\frac{\lambda}{n},\lambda>0$. Then for any $k\in\{0,1,2,\ldots\}$ we have that $\lim_{n\rightarrow\infty}P_{X}(k)=\frac{e^{-\lambda}\lambda^{k}}{k!}$.
+\end{theorem}
+\begin{proof}
+  The binomial will be given by
+  \[
+    P_{X}(k)=\begin{pmatrix}n\\k\end{pmatrix}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k}
+  \]
+  Taking the limit of this binomial we get
+  \begin{align*}
+      \lim_{n\rightarrow\infty}P_{X}(k)&=\lim_{n\rightarrow\infty}\begin{pmatrix}n\\k\end{pmatrix}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k} \\
+                        &=\lambda^{k}\lim_{n\rightarrow\infty}\frac{n!}{k!(n-k)!}\left(\frac{1}{n^{k}}\right)\left(1-\frac{\lambda}{n}\right)^{n-k} \\
+                        &=\frac{\lambda^{k}}{k!}\lim_{n\rightarrow\infty}\frac{n!}{(n-k)!}\left(\frac{1}{n^{k}}\right)\left(1-\frac{\lambda}{n}\right)^{n}\left(1-\frac{\lambda}{n}\right)^{-k} \\
+                        &=\frac{\lambda^{k}}{k!}\lim_{n\rightarrow\infty}\left(\frac{n(n-1)\ldots(n-k+1)}{n^{k}}\right)\left(1-\frac{\lambda}{n}\right)^{n}\left(1-\frac{\lambda}{n}\right)^{-k} \\
+  \end{align*}
+  We now take the limit of each of these expressions individually
+  \begin{align*}
+      \lim_{n\rightarrow\infty}\frac{n(n-1)\ldots(n-k+1)}{n^{k}}&=1 \\
+      \lim_{n\rightarrow\infty}\left(1-\frac{\lambda}{n}\right)^{n}&=e^{-\lambda} \\
+      \lim_{n\rightarrow\infty}\left(1-\frac{\lambda}{n}\right)^{-k}&=1 
+  \end{align*}
+  Which gives us
+  \begin{align*}
+      P_{X}(k)&=\frac{\lambda^{k}}{k!}\cdot 1\cdot 1\cdot e^{-\lambda} \\
+              &=\frac{e^{-\lambda}\lambda^{k}}{k!}
+  \end{align*}
+\end{proof}
+As such we can define the Poisson distributions PDF as
+\[
+    P_{X}(k)\begin{cases}\frac{e^{-\lambda}\lambda^{k}}{k!} & k\in \text{Range}(X) \\ 0 & \text{otherwise}\end{cases}
+\]
+\subsection{Cumulative distribution function}
+\begin{definition}
+  The cumumlative distribution functions of a random variable $X$ is defined as $F_{X}(x)=P(X\leq x)\text{, for all } x\in \mathbb{R}$.
+\end{definition}
