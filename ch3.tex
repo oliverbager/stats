@@ -9,7 +9,7 @@ What defines whether at random variable is discrete, continuous or mixed is it's
 \subsubsection{Probability mass function}
 Let $X$ be a discrete random variable, as such
 \[
-    \text{Range}(X)=\{x_{1},x_{2},x_{3},\ldots\}
+    R_X=\{x_{1},x_{2},x_{3},\ldots\}
 \]
 As the possible outcomes are discrete, they must each have their own probability of occuring, we define the event
 \[
@@ -21,7 +21,7 @@ Where the probabilities of each individual event $\{X=x_{i}\}$ is given by the p
 \]
 To ensure the function is well-defined, the definition of the mass probability function is frequently extended to all real numbers by a piecewise function
 \[
-    P_{X}(x)=\begin{cases}P(X=x) & x\in \text{Range}(X) \\ 0 & x\notin \text{Range}(X)\end{cases}
+    P_{X}(x)=\begin{cases}P(X=x) & x\in R_X \\ 0 & x\notin R_X\end{cases}
 \]
 As this is a plottable discrete function, this is also called the probability distribution of the random variable $X$.
 
@@ -121,15 +121,15 @@ Whereby we can write the PDF for the Pascal distribution as
 \subsubsection{Hypergeometric distribution}
 Imagine a bag containing $b$ blue marbles and $r$ red ones. Choosing $k\leq b+r$ marbles at random without replacements will at best give us $X\leq \text{min}(k,b)$ blue marbles, whilst the number of red marbles in our sample must be $X\geq \text{max}(0,k-r)$. As such we can define the range of $X$ as
 \[
-    \text{Range}(X)=\{\text{max}(0,k-r),\text{max}(0,k-r)+1,\ldots,\text{min}(k,b)\}
+    R_X=\{\text{max}(0,k-r),\text{max}(0,k-r)+1,\ldots,\text{min}(k,b)\}
 \]
 Simultaneously we can create an expression for determining the probability of getting $x$ blue marbles (and $k-x$ red ones) by
 \[
-    \frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} \text{, for } x\in \text{Range}(X)
+    \frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} \text{, for } x\in R_X
 \]
 Using this expression we create the PDF as
 \[
-    P_{X}(x)=\begin{cases}\frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} & x\in \text{Range}(X) \\ 0 & \text{otherwise}\end{cases}
+    P_{X}(x)=\begin{cases}\frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} & x\in R_X \\ 0 & \text{otherwise}\end{cases}
 \]
 \subsubsection{Poisson distribution}
 The Poisson distribution is tupically used to model occurences in an interval using a variable, $\lambda$, as the known average.
@@ -162,9 +162,183 @@ The Poisson distribution is tupically used to model occurences in an interval us
 \end{proof}
 As such we can define the Poisson distributions PDF as
 \[
-    P_{X}(k)\begin{cases}\frac{e^{-\lambda}\lambda^{k}}{k!} & k\in \text{Range}(X) \\ 0 & \text{otherwise}\end{cases}
+    P_{X}(k)\begin{cases}\frac{e^{-\lambda}\lambda^{k}}{k!} & k\in R_X \\ 0 & \text{otherwise}\end{cases}
 \]
 \subsection{Cumulative distribution function}
+As opposed to the discrete distribution function the cumulative distribution function describes the probability distribution on a continuous line.
 \begin{definition}
   The cumumlative distribution functions of a random variable $X$ is defined as $F_{X}(x)=P(X\leq x)\text{, for all } x\in \mathbb{R}$.
 \end{definition}
+A CDF can also be made for discrete random variables, this is done by extrapolating the range for which a probability is true to the real line, see for example a coin toss given by a binomial PDF with $p=\frac{1}{2},n=2$
+\begin{align*}
+    P_{X}(k)&=\begin{pmatrix}n\\k\end{pmatrix}\left(\frac{1}{2}\right)^{k}\left(1-\frac{1}{2}\right)^{n-k} \\
+    P_{X}(0)&=\frac{2!}{0!(2-0)!}\cdot 1\cdot\frac{1}{4}=\frac{1}{4} \\
+    P_{X}(1)&=\frac{2!}{1!(2-1)!}\cdot\frac{1}{2}\cdot\frac{1}{2}=\frac{1}{2} \\
+    P_{X}(2)&=\frac{2!}{2!(2-2)!}\cdot\frac{1}{4}\cdot 1=\frac{1}{4}
+\end{align*}
+To convert this to a CDF we extrapolate the range for which the probabilities are valid
+\[
+    F_{X}(x)=\begin{cases}0 & x<0 \\ \frac{1}{4} & x\leq x<1 \\ \frac{3}{4} & 1\leq x<2 \\ 1 & x\geq 2 \end{cases}
+\]
+Here we see that the CDF is equal to summing up the probabilities gradually
+\[
+    F_{X}(x)=\sum_{x_{k}\leq x}P_{X}(x_{k})
+\]
+\begin{theorem}
+  For all $a\leq b$ we have that $P(a<X\leq b)=F_{X}(b)-F_{X}(a)$.
+\end{theorem}
+\begin{proof}
+    For $a\leq b$ we have that
+    \[
+        P(X\leq b)=P(x\leq a)+P(a<X\leq b)
+    \]
+    Rewriting this as CDFs we have that
+    \[
+        F_{X}(b)=F_{X}(a)+P(a<X\leq b)
+    \]
+    Using simple algebraic manipulation we then get
+    \[
+        P(a<X\leq b)=F_{X}(b)-F_{X}(a)
+    \]
+\end{proof}
+\subsubsection{Expectation}
+A random variable has an expected value, also known as othe mean, which is the weighted average of all values in the range.
+\begin{definition}
+    Let $X$ be a discrete random variable with $R_X=\{x_{1},x_{2},\ldots\}$ (finite or countably infinite), the expected value of $X$ denoted $EX$ is then defined as
+    \[
+        EX=\sum_{x_{k}\in R_X}x_{k}P(X=X_{k})=\sum_{x_{k}\in R_X}x_{k}P_{X}(x_{k})
+    \]
+\end{definition}
+The expected value of a random variable is the value which we expect the mean to take on as the number of trials approaches infinity, other ways to denote the expected value is
+\[
+    EX=E[X]=E(X)=\mu_{X}
+\]
+This lets us establish models for the expected value of different known distribution functions
+
+\paragraph{Bernoulli expected value}
+The expected value of the Bernoulli is given by
+\begin{align*}
+    EX&=0P_{X}(0)+1P_{X}(1) \\
+      &=0\cdot(1-p)+1\cdot(p) \\
+      &=p
+\end{align*}
+\paragraph{Geometric expected value}
+The expected value of the geometric is given by
+\begin{align*}
+    EX&=\sum_{x_{k}\in R_{X}}x_{k}P_{X}(x_{k}) \\
+      &=\sum_{k=1}^{\infty}kq^{k-1}p \\ 
+      &=p\sum_{k=1}^{\infty}kq^{k-1}
+\end{align*}
+We make use of the geometric sum formula to determine the value of this
+\[
+    \sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x}\text{ for }|x|<1
+\]
+Our sum is however of a different form, however we realise we can take the derivative with respect to $x$ on both sides and get
+\begin{align*}
+    \frac{d}{dx}\sum_{k=0}^{\infty}x^{k}&=\frac{d}{dx}\frac{1}{1-x} \\
+    \sum_{k=0}^{\infty}kx^{k-1}&=\frac{1}{(1-x)^{2}}
+\end{align*}
+As such we can write that
+\begin{align*}
+    EX&=p\sum_{k=1}^{\infty}kq^{k-1} \\
+      &=p\frac{1}{(1-q)^{2}} \\
+      &=p\frac{1}{p^{2}} \\
+      &=\frac{1}{p}
+\end{align*}
+\paragraph{Poisson expected value}
+The expected value of the Poisson is given by
+\begin{align*}
+    EX&=\sum_{x_{k}\in R_{X}}x_{k}P_{X}(x_{k}) \\
+      &=\sum_{k=0}^{\infty}k\frac{e^{-\lambda}\lambda^{k}}{k!} \\
+      &=\sum_{k=0}^{\infty}\frac{e^{-\lambda}\lambda^{k}}{(k-1)!} \\
+\end{align*}
+To allow a favourable rewrite we now define $j=k-1$, as such
+\begin{align*}
+    EX&=\sum_{k=0}^{\infty}\frac{e^{-\lambda}\lambda^{j+1}}{j!} \\
+      &=\lambda e^{-\lambda}\sum_{j=0}^{\infty}\frac{\lambda^{j}}{j!}
+\end{align*}
+As this is the Taylor series for $e^{\lambda}$ we get
+\begin{align*}
+    EX&=\lambda e^{-\lambda}\sum_{j=0}^{\infty}\frac{\lambda^{j}}{j!} \\
+      &=\lambda e^{-\lambda}e^{\lambda} \\
+      &=\lambda
+\end{align*}
+An important concept in expectation is linearity, which is useful for calculating the expected value of linear functions of random variables. The theorem states that
+\begin{itemize}
+    \item[-] $E[aX+b]=aEX+b$, for all $a,b\in\mathbb{R}$
+    \item[-] $E[X_{1}+X_{2}+\ldots+X_{n}]=EX_{2}+EX_{1}+\ldots+EX_{n}$, for any set of random variables.
+\end{itemize}
+\paragraph{Binomial expected value}
+As demonstrated earlier, the binomial can be seen as a sum of Bernoulli random variables, as we know the expected value of the Bernoulli, we make use of linearity
+\begin{align*}
+    EX&=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k} \\
+      &=EX_{1}+EX_{2}+\ldots+EX_{n} \\
+      &=p+p+\ldots+p \\
+      &=np
+\end{align*}
+\paragraph{Pascal expected value}
+As in the binomial we can see the pascal as the sum of a sequence of geometric random variables, as such we again have by linearity that
+\begin{align*}
+    EX&=\begin{pmatrix}n-1\\k-1\end{pmatrix}p^{k-1}(1-p)^{n-k} \\
+      &=EX_{1}+EX_{2}+\ldots+EX_{n} \\
+      &=\frac{1}{p}+\frac{1}{p}+\ldots+\frac{1}{p} \\
+      &=\frac{n}{p}
+\end{align*}
+\subsection{Functions of random variables}
+If $X$ is a random variable and $Y=g(X)$ then $Y$ is a random variable. As such we can talk about its PMF, CDF and $EX$. The range of $Y$ can be determined as
+\[
+    R_{Y}=\{g(x)|x\in R_{X}\}
+\]
+This also means that we can determine the expected value of a function of a random variable. We let $X$ with PMF $P_{X}(x)$ be a discrete random variable and $Y=g(X)$. One way to determine $EY$ is to determine the PMF of $Y$ and then applying the expectation formula, however the law of the unconscious statisticatian which states that
+\[
+    E[g(X)]=\sum_{x_{k}\in R_{X}}g(x_{k})P_{X}(x_{k})
+\]
+\begin{theorem}
+    The expected value of a function of a discrete random variable is given by the law of the unconscious statistician, $E[g(X)]=\sum_{k_{k}\in R_{X}}g(x_{k})P_{X}(x_{k})$.
+\end{theorem}
+\begin{proof}
+    By definition we have that
+    \[
+        EY=\sum_{y_{k}\in R_{Y}}y_{k}P_{Y}(y_{k})
+    \]
+    As $Y=g(X)$ we can rewrite this expression as
+    \[
+        E[g(X)]=\sum_{x_{k}\in R_{X}}x_{k}P_{X}(x_{k})
+    \]
+\end{proof}
+\subsubsection{Variance}
+The expected value however has a problem, as it ignores the form of the distribution, two PDFs with the same expected value may have very different distributions. This is represented by the variance of the PDF, which denotes how spread out the distribution is.
+\begin{definition}
+  The variance of a random variable $X$ with $EX=\mu_{X}$ is defined as
+  \[
+      \text{Var}(X)=E[(X-\mu_{X})^{2}]
+  \]
+\end{definition}
+This works, as the variability will be high if $X$ is often far away from the mean, $\mu_{X}$, whilst it'll be low if it is close to the mean, we can therefore use the variance as a measure of how spread the distribution is.
+
+To compute the variance we simply use LOTUS with $g(X)=(X-\mu_{X})^{2}$
+\[
+    \text{Var}(X)=E[(X-\mu_{X})^{2}]=\sum_{x_{k}\in R_{X}}(x_{k}-\mu_{X})^{2}P_{X}(x_{k})
+\]
+\begin{theorem}
+    The variance of a random variable $X$ can be computed as $\text{Var}(X)=E[X² ]-[EX]^{2}$.
+\end{theorem}
+\begin{proof}
+    By the definition of variance we have that
+    \begin{align*}
+        \text{Var}(X)&=E[(X-\mu_{X})^{2}] \\
+                 &=E[X^{2}+\mu_{X}^{2}-2X\mu_{X}]
+    \end{align*}
+    By linearity we then have that
+    \begin{align*}
+        \text{Var}(X)&=E[X^{2}]+E[\mu_{X}]-E[2X\mu_{X}] \\
+                 &=E[X^{2}]+\mu_{X}^{2}-2\mu_{X}E[X] \\
+                 &=E[X^{2}]+\mu_{X}^{2}-2\mu_{X}^{2} \\
+                 &=E[X^{2}]-\mu_{X}^{2} \\
+                 &=\left[\sum_{x_{k}\in R_{x}}x_{k}^{2}P_{X}(x_{k})\right]-\mu_{X}^{2}
+    \end{align*}
+\end{proof}
+One problem with the variance is that it ends up being the wrong unit as the value is squared, as such we define the standard deviation as the square root of the variance
+\[
+    \text{SD}(X)=\sigma_{X}=\sqrt{\text{Var}(X)}
+\]
