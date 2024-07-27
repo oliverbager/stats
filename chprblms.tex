@@ -1229,19 +1229,157 @@ By the definition of conditional probability this is
               &=\frac{3}{4}
 \end{align*}
 \paragraph{Problem 9}
+We wish to show that
+\[
+    P_{X}(k)=p(1-p)^{k-1}\implies P(X>m+l|X>m)=P(X>l)
+\]
+From the condition we already know that $X>m$, as such, we can interpret this as the first $m$ experiments having already been conducted resulting in $P(X\leq m)=1$, this makes the first $m$ experiments redundant, as we are only interested in the experiments following the first $m$ experiments, resulting in only the values of $X$ that are larger than $l$ being relevant.
 \paragraph{Problem 10}
+a)
+We make use of combinations and get that
+\begin{align*}
+    P(R=4)&=\frac{|R=4||G=10-4|}{|S|} \\
+          &=\frac{\begin{pmatrix}20\\4\end{pmatrix}\begin{pmatrix}30\\10-4\end{pmatrix}}{\begin{pmatrix}50\\10\end{pmatrix}} \\
+          &\approx 0.28
+\end{align*}
+b)
+We wish to determine the probability
+\[
+    P(R=4|R\geq3)
+\]
+As the opposite conditional is conditionally independent we make use of Bayes rule
+\begin{align*}
+    P(R=4|R\geq3)&=\frac{P(R\geq 3|R=4)P(R=4)}{P(R\geq 3)} \\
+                 &=\frac{1\times 0.28}{1-\sum_{i=0}^{2}\begin{pmatrix}20\\i\end{pmatrix}\begin{pmatrix}30\\10-i\end{pmatrix}} \\
+                 &\approx 0.33
+\end{align*}
 \paragraph{Problem 11}
+We have that
+\begin{align*}
+    X_{weekday}&\sim Poisson\left(\frac{1}{6}\right) \\
+    X_{weekend}&\sim Poisson\left(\frac{1}{30}\right)
+\end{align*}
+a)
+We make use of the Poisson distribution, multiplying the argument by $4\times 60$ and setting $k=0$ after which we find the probability
+\[
+  P_{X}(k)=\frac{e^{-4\times 60\times \frac{1}{30}}\times\left(4\times 60\times \frac{1}{30}\right)^{k}}{k!}
+\]
+We set $k=0$ to determine the probability during the 4 hour interval and get
+\begin{align*}
+    P_{X}(0)&=\frac{e^{-8}\times8^{0}}{0!} \\
+            &=e^{-8} \\
+            &\approx3.4\times 10^{-4}
+\end{align*}
+b)
+We make use of the law of total probability as well as the definition of conditional probability
+\begin{align*}
+    P(\text{weekday}|k=0)&=\frac{P(\text{weekday}\cap k=0)}{\frac{5}{7}P_{X_{\text{weekday}}}(k)+\frac{2}{7}P_{X_{\text{weekend}}}(k)} \\
+                     &=\frac{\frac{5}{7}e^{-10}}{\frac{5}{7}e^{-10}+\frac{2}{7}e^{-2}} \\
+                     &\approx 8.4\times 10^{-4}
+\end{align*}
 \paragraph{Problem 12}
+\[
+    F_{X}(x)=\begin{cases}0 & x<-2 \\ 0.2 & -2\leq x< -1 \\ 0.5 & -1\leq x<-0 \\ 0.7 & 0\leq x< 1 \\ 0.9 & 1\leq x<2 \\ 1 & x\geq 2
+\]
 \paragraph{Problem 13}
+a)
+\[
+    R_{X}=\{0,1,2,3\}
+\]
+b)
+\[
+    P_{X}(x)=\begin{cases}\frac{1}{6} & x=0 \\ \frac{1}{3} & x=1 \\ \frac{1}{4} & x=2 \\ \frac{1}{4} & x=3 \\ 0 & \text{otherwise}
+\]
 \paragraph{Problem 14}
+a)
+Making use of LOTUS we get that
+\begin{align*}
+    EX&=\sum_{x=1}^{3}xP_{X}(x) \\
+      &=1\times 0.5+2\times 0.3+3\times 0.2 \\
+      &=0.5+0.6+0.6 \\
+      &=1.7
+\end{align*}
+b)
+We compute the variance using $\text{Var}(X)=E[X^{2}]-EX^{2}$, determining the first term using LOTUS we get
+\begin{align*}
+    E[X^{2}]&=\sum_{x=1}^{3}x^{2}P_{X}(x)
+         &=1^{2}\times 0.5+2^{2}\times 0.3+3^{2}\times 0.2 \\
+         &=3.5
+\end{align*}
+To determine the standard deviation we square the variance
+\[
+    \text{SD}(X)=\sqrt{3.5}
+\]
+c)
+Making use of LOTUS we have that
+\begin{align*}
+    EY&=\sum_{x\in R_{X}}\frac{2}{x}P_{X}(x) \\
+      &=\frac{2}{1}\times 0.5+\frac{2}{2}\times 0.3+\frac{2}{3}\times 0.2 \\
+      &\approx 1.43
+\end{align*}
 \paragraph{Problem 15}
 \paragraph{Problem 16}
 \paragraph{Problem 17}
+By LOTUS we have that
+\begin{align*}
+    EX&=\sum_{k\in R_{X}}kp(1-p)^{k-1} \\
+    &=\sum_{k=1}^{\infty}k(1-p)^{k-1} \\
+    &=p\sum_{k=1}^{\infty}(1-p)^{k-1}
+\end{align*}
+We wish to make use of the geometric sum and do so by taking the first derivative with respect to $x$ on both sides
+\begin{align*}
+    \frac{d}{dx}\sum_{k=0}^{\infty}x^{k}&=\frac{d}{dx}\frac{1}{1-x} \\
+    \sum_{k=0}^{\infty}kx^{k-1}&=\frac{1}{(1-x)^{2}}
+\end{align*}
+Which we make use of using the form written above
+\begin{align*}
+    EX&=p\sum_{k=1}^{\infty}k(1-p)^{k-1} \\
+      &=p\frac{1}{(1-(1-p))^{2}} \\
+      &=p\frac{1}{p^{2}} \\
+      &=\frac{1}{p}
+\end{align*}
 \paragraph{Problem 18}
+As the Pascal is the sum of a sequence of geometric random variables we can write that
+\begin{align*}
+    EX&=\begin{pmatrix}n-1\\k-1\end{pmatrix}p^{k-1})(1-p)^{n-k} \\
+      &=EX_{1}+EX_{2}+\ldots+EX_{n} \\
+      &=\frac{1}{p}+\frac{1}{p}+\ldots+\frac{1}{p} \\
+      &=\frac{n}{p}
+\end{align*}
 \paragraph{Problem 19}
 \paragraph{Problem 20}
 \paragraph{Problem 21}
 \paragraph{Problem 22}
+The probability of getting a sequence of $k$ heads followed by tails on a fair coin is given by the geometric distribution
+\[
+    X\sim Geometric\left(\frac{1}{2}\right)
+\]
+a)
+\begin{align*}
+    EX&=\sum_{k=1}^{\infty}2^{k-1}P_{X}(k) \\
+      &=\infty
+\end{align*}
+b)
+For the player to win more than 65 dollars $k$ has to satisfy the inequality
+\[
+    2^{k-1}>65\implies k>7
+\]
+As such the probability of winning more than 65 dollars must be the complement of getting $k\leq 7$, meaning that
+\begin{align*}
+    P(W>65)&=P(\overline{k\leq 7}) \\
+           &=1-\sum_{k=1}^{7}p(1-p)^{k-1} \\
+           &=1-\left(0.5^{1}+0.5^{2}+\ldots+0.5^{7}\right) \\
+           &=\frac{1}{128} 
+\end{align*}
+c)
+This places a limit onto the values that $k$ can have, as such we rewrite the LOTUS from previous
+\begin{align*}
+    EX&=\sum_{k=1}^{31}2^{k-1}P_{X}(k)+\sum_{k=32}^{\infty}2^{30}P_{X}(k) \\
+      &=\frac{1}{2}\sum_{k=1}^{31}2^{k}\left(\frac{1}{2}\right)^{k}+2^{30}\sum_{k=32}^{\infty}\left(\frac{1}{2}\right)^{k} \\
+      &=\frac{1}{2}\sum_{k=1}^{31}1+2^{30}\times\left(1-\sum_{k=1}^{31}\left(\frac{1}{2}\right)^{k}\right) \\
+      &=\frac{31}{2}+2^{30}\times(1-0.9999999995343387) \\
+      &=16
+\end{align*}
 \paragraph{Problem 23}
 \paragraph{Problem 24}
 \paragraph{Problem 25}
