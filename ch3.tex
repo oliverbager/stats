@@ -23,7 +23,7 @@ To ensure the function is well-defined, the definition of the mass probability f
 \[
     P_{X}(x)=\begin{cases}P(X=x) & x\in R_X \\ 0 & x\notin R_X\end{cases}
 \]
-As this is a plottable discrete function, this is also called the probability distribution of the random variable $X$.
+As this is a plottable discrete function, this is also called the probability mass function of the random variable $X$.
 
 \subsubsection{Independent random variables}
 Random variables can, like probabilities and conditional probabilities, be independent. Independence is defined in a similar way to in those examples, 2 random variables, $X$ and $Y$, are independent if
@@ -42,12 +42,12 @@ As knowing the outcome of $Y$ does not impact the probability of $X$.
 
 \subsection{Special distributions}
 \subsubsection{Bernoulli distribution}
-We recall that a Bernoulli experiment is an experiment with only two possible outcomes, success or failure, defining $x=1$ as success and $x=0$ as failure, we get the Bernoulli PDF
+We recall that a Bernoulli experiment is an experiment with only two possible outcomes, success or failure, defining $x=1$ as success and $x=0$ as failure, we get the Bernoulli PMF
 \[
     X\sim Bernoulli(p)=P_{X}(k)=\begin{cases}p & x=1 \\ 1-p & x=0 \\ 0 & \text{otherwise}\end{cases}
 \]
 \subsubsection{Geometric distribution}
-For a geometric experiment, that being a Bernoulli experiment where we repeat the experiment until one of the two outcomes is observed has the probability $P(A)=p(1-p)^{k-1}$, where $p$ is the probability of observing what we want, as such the PDF is given by
+For a geometric experiment, that being a Bernoulli experiment where we repeat the experiment until one of the two outcomes is observed has the probability $P(A)=p(1-p)^{k-1}$, where $p$ is the probability of observing what we want, as such the PMF is given by
 \[
     X\sim Geometric(p)=P_{X}(k)=\begin{cases}p(1-p)^{k-1} & k\in \mathbb{N} \\ 0 & \text{otherwise}\end{cases}
 \]
@@ -56,15 +56,15 @@ We recall that the binomial theorem states that
 \[
     P(k)=\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k}
 \]
-As such the PDF is given by
+As such the PMF is given by
 \[
     X\sim Binomial(n,p)=P_{X}(k)=\begin{cases}\begin{pmatrix}n\\k\end{pmatrix}p^{k}(1-p)^{n-k} & k\in\{0,1,2,\ldots,n\} \\ 0 & \text{otherwise}\end{cases}
 \]
-Simultaneously we can observe each cointoss that makes up the sequence as individual Bernoulli distributions, as such we can express a binomial as the sum of a sequence of Bernoulli experiments, i.e. we have the PDF $X$ defined as the binomial giving the number of heads, which can be expressed as
+Simultaneously we can observe each cointoss that makes up the sequence as individual Bernoulli distributions, as such we can express a binomial as the sum of a sequence of Bernoulli experiments, i.e. we have the PMF $X$ defined as the binomial giving the number of heads, which can be expressed as
 \[
     X=\sum_{i=1}^{n}X_{i}
 \]
-Where $i$ is the $i$th cointoss in the sequence as given by the Bernoulli PDF.
+Where $i$ is the $i$th cointoss in the sequence as given by the Bernoulli PMF.
 \begin{theorem}
     Given two independent random variables described by binomial distributions, $X,Y$, with $k_{1}=n$ and $k_{2}=m$ the random variable defined as $Z=X+Y$ is given by
     \[
@@ -114,7 +114,7 @@ Since $A$ is given by the product of these, we multiply them together whereby we
         &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m-1}(1-p)^{k-m}p \\
         &=\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m}
 \end{align*}
-Whereby we can write the PDF for the Pascal distribution as
+Whereby we can write the PMF for the Pascal distribution as
 \[
     X\sim Pascal(m,p)=P_{X}(k)=\begin{cases}\begin{pmatrix}k-1\\m-1\end{pmatrix}p^{m}(1-p)^{k-m} & k\in\{m,m+1,m+2,\ldots\} \\ 0 & \text{otherwise}\end{cases}
 \]
@@ -127,14 +127,14 @@ Simultaneously we can create an expression for determining the probability of ge
 \[
     \frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} \text{, for } x\in R_X
 \]
-Using this expression we create the PDF as
+Using this expression we create the PMF as
 \[
     X\sim Hypergeometric(b,r,k)=P_{X}(x)=\begin{cases}\frac{\begin{pmatrix}b\\x\end{pmatrix}\begin{pmatrix}r\\k-x\end{pmatrix}}{\begin{pmatrix}b+r\\k\end{pmatrix}} & x\in R_X \\ 0 & \text{otherwise}\end{cases}
 \]
 \subsubsection{Poisson distribution}
 The Poisson distribution is tupically used to model occurences in an interval using a variable, $\lambda$, as the known average.
 \begin{theorem}
-    Let $X$ be a binomial PDF with $p=\frac{\lambda}{n},\lambda>0$. Then for any $k\in\{0,1,2,\ldots\}$ we have that $\lim_{n\rightarrow\infty}P_{X}(k)=\frac{e^{-\lambda}\lambda^{k}}{k!}$.
+    Let $X$ be a binomial PMF with $p=\frac{\lambda}{n},\lambda>0$. Then for any $k\in\{0,1,2,\ldots\}$ we have that $\lim_{n\rightarrow\infty}P_{X}(k)=\frac{e^{-\lambda}\lambda^{k}}{k!}$.
 \end{theorem}
 \begin{proof}
   The binomial will be given by
@@ -160,7 +160,7 @@ The Poisson distribution is tupically used to model occurences in an interval us
               &=\frac{e^{-\lambda}\lambda^{k}}{k!}
   \end{align*}
 \end{proof}
-As such we can define the Poisson distributions PDF as
+As such we can define the Poisson distributions PMF as
 \[
     X\sim Poisson(\lambda)=P_{X}(k)=\begin{cases}\frac{e^{-\lambda}\lambda^{k}}{k!} & k\in R_X \\ 0 & \text{otherwise}\end{cases}
 \]
@@ -169,7 +169,7 @@ As opposed to the discrete distribution function the cumulative distribution fun
 \begin{definition}
   The cumumlative distribution functions of a random variable $X$ is defined as $F_{X}(x)=P(X\leq x)\text{, for all } x\in \mathbb{R}$.
 \end{definition}
-A CDF can also be made for discrete random variables, this is done by extrapolating the range for which a probability is true to the real line, see for example a coin toss given by a binomial PDF with $p=\frac{1}{2},n=2$
+A CDF can also be made for discrete random variables, this is done by extrapolating the range for which a probability is true to the real line, see for example a coin toss given by a binomial PMF with $p=\frac{1}{2},n=2$
 \begin{align*}
     P_{X}(k)&=\begin{pmatrix}n\\k\end{pmatrix}\left(\frac{1}{2}\right)^{k}\left(1-\frac{1}{2}\right)^{n-k} \\
     P_{X}(0)&=\frac{2!}{0!(2-0)!}\cdot 1\cdot\frac{1}{4}=\frac{1}{4} \\
@@ -307,7 +307,7 @@ This also means that we can determine the expected value of a function of a rand
     \]
 \end{proof}
 \subsubsection{Variance}
-The expected value however has a problem, as it ignores the form of the distribution, two PDFs with the same expected value may have very different distributions. This is represented by the variance of the PDF, which denotes how spread out the distribution is.
+The expected value however has a problem, as it ignores the form of the distribution, two PMFs with the same expected value may have very different distributions. This is represented by the variance of the PMF, which denotes how spread out the distribution is.
 \begin{definition}
   The variance of a random variable $X$ with $EX=\mu_{X}$ is defined as
   \[

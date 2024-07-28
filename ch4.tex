@@ -1,0 +1,65 @@
+\section{Chapter 4}
+\subsection{Continuous random variables and their distributions}
+Suppose we have an interval on the real line, $[a,b]$ with a uniformly distributed probability of a given value being picked, we know that the probability of each point $P(X=x)=0$ as there is an infinite amount of points, as such, it only makes sense to look at subintervals of the interval when it comes to probability. 
+
+Simply from the definition of a CDF we have that $F_{X}(x<a)=0$, whilst $F_{X}(x\geq b)=1$, simultaneously we can establish a general equation for the probability of an interval as the proportion it constitutes of the total interval
+\begin{align*}
+    F_{X}(a\leq x_{1}\leq x_{2}\leq b)&=P(X\in[x_{1},x_{2}]) \\
+                       &=\frac{x_{2}-x_{1}}{b-a}
+\end{align*}
+Using this definition we can create a CDF as
+\[
+    F_{X}(x)\begin{cases}0 & x<a \\ \frac{x-a}{b-a} & a\leq x\leq b \\ 1 & x\geq b\end{cases}
+    
+\]
+Whether we use $<$ or $\leq$ (or the reverse), doesn't matter as the probability of each individual point is equal to 0, as such $P(X<2)=P(X\leq 2)$.
+\begin{definition}
+  A random variable $X$ with CDF $F_{X}(x)$ is said to be continuous if $F_{X}(x)$ is a continuous function for all $x\in \mathbb{R}$.
+\end{definition}
+\subsection{Probability density function}
+As its impossible to define a PMF for a continuous function (as $P(X=x)=0$ for all $x\in \mathbb{R}$), as instead define the probability density function as 
+\[
+    f_{X}(x)=\lim_{\Delta\rightarrow0^{+}}\frac{P(x<X\leq x+\Delta)}{\Delta}
+\]
+We recall that $P(a<X\leq b)=F_{X}(b)-F_{X}(a)$, as such we rewrite the limit as
+\[
+    f_{X}(x)=\lim_{\Delta\rightarrow0^{+}}\frac{F_{X}(x+\Delta)-F_{X}(x)}{\Delta}
+\]
+We then recognize this as the definition of the derivate, as such we can write that
+\[
+    f_{X}(x)&=\lim_{\Delta\rightarrow0^{+}}\frac{F_{X}(x+\Delta)-F_{X}(x)}{\Delta}=F'_{X}(x)
+\]
+\begin{definition}
+  Consider a continuous random variable $X$ with an absolutely continuous CDF $F_{X}(x)$. The function $f_{X}(x)$ defined by
+  \[
+  f_{X}(x)=\frac{d}{dx}F_{X}(x)=F'_{X}(x)$ if $F_{X}(x) 
+  \]
+  is differentiable at $x$ is called the probability density function of $X$.
+\end{definition}
+Using the general example from the previous section we determine the PDF as
+\begin{align*}
+    F'_{X}(x)&=\frac{d}{dx}\frac{x-a}{b-a} \\
+             &=\frac{1}{b-a}\left(\frac{d}{dx}x+\frac{d}{dx}-a\right) \\
+             &=\frac{1}{b-a}
+\end{align*}
+As such we can define the probability density function as
+\[
+    f_{X}(X)=\begin{cases}\frac{1}{b-a} & a<x<b \\ 0 & x\notin [a,b]\end{cases}
+\]
+As the PDF is the derivative of the CDF, we can integrate a segment of the interval and get the probability thereof assuming it is absolutely continuous in that interval
+\[
+    F_{X}(x)=\int_{-\infty}^{x}f_{X}(x)dx
+\]
+At the same time the integral over the entire real line must be equal to $1$ in accordance with the axioms of probability
+\[
+    \int_{-\infty}^{\infty}f_{X}(x)dx=1
+\]
+Whilst we can determine the probability of an interval as
+\[
+    P(a<X\leq b)=F_{X}(b)-F_{X}(a)=\int_{a}^{b}f_{X}(x)dx
+\]
+Similarly we can define the range of a random variable $X$ as the possible values of the random varibles where the PDF is larger than $0$, as such
+\[
+    R_{X}=\{x|f_{X}(x)>0\}
+\]
+\subsection{Expected value and variance}
