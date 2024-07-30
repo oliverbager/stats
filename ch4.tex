@@ -63,3 +63,99 @@ Similarly we can define the range of a random variable $X$ as the possible value
     R_{X}=\{x|f_{X}(x)>0\}
 \]
 \subsection{Expected value and variance}
+In discrete random variables we frequently used sums to determine different values, in the case of continuous random variables we replace the sum with an integral sign and the PMF with the PDF, using LOTUS as an example we for example get that
+\begin{align*}
+    EX_{discrete}&=\sum_{x_{k}\in R_{X}}x_{k}P_{X}(x_{k}) \\
+    EX_{continuous}&=\int_{-\infty}^{\infty}xf_{X}(x)dx
+\end{align*}
+For variance we can do the same as
+\begin{align*}
+    \text{Var}(X)&=E[(X-\mu_{X})^{2}]\\
+             &=EX^{2}-(EX)^{2} \\
+             &=\int_{-\infty}^{\infty}x^{2}f_{X}(x)dx-\mu_{X}^{2}
+\end{align*}
+\subsection{Functions of continuous random variables}
+If $X$ is a continuous random variable and $Y=g(X)$ is a function of $X$, then $Y$ is a random variable, as such finding the CDF and PDF of $Y$ should be possible, either directly or by determining CDF and taking the derivative, to do so we however have to make sure the function is continuous over the real line.
+
+\subsubsection{Uniform distribution}
+A uniform distribution is a distribution with a PDF given by
+\[
+    f_{X}(x)=\begin{cases}\frac{1}{b-a} & a<x<b \\ 0 & x\notin[a,b]\end{cases}
+\]
+The expected value of a uniform distribution is given by
+\begin{align*}
+    \text{Var}(x)&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+             &=\int_{-\infty}^{\infty}x\times\left(\frac{1}{b-a}\right)dx \\
+             &=\frac{1}{b-a}\times\left[\frac{x^{2}}{2}\right]_{a}^{b} \\
+             &=\frac{1}{b-a}\times\left(\frac{b^{2}}{2}-\frac{a^{2}}{2}\right) \\
+             &=\frac{b^{2}-a^{2}}{2(b-a)} \\
+             &=\frac{b-a}{2}
+\end{align*}
+To determine the variance we need $EX^{2}$
+\begin{align*}
+    EX^{2}&=\int_{-\infty}^{\infty}x^{2}f_{X}(x)dx \\
+       &=\int_{-\infty}^{\infty}x^{2}\times\left(\frac{1}{b-a}\right)dx \\
+       &=\frac{1}{b-a}\times\left[\frac{x^{3}}{3}\right]_{a}^{b} \\
+       &=\frac{1}{b-a}\times\left(\frac{b^{3}}{3}-\frac{a^{3}}{3}\right) \\
+       &=\frac{b^{3}-a^{3}}{3(b-a)} \\
+       &=\frac{(b-a)(b^{2}+a^{2}+ab)}{3(b-a)} \\
+       &=\frac{b^{2}+a^{2}+ab}{3}
+\end{align*}
+As such we can determine the variance as
+\begin{align*}
+    Var(X)&=EX^{2}-(EX)^{2} \\
+          &=\frac{b^{2}+a^{2}+ab}{3}-\left(\frac{b-a}{2}\right)^{2} \\
+          &=\frac{b^{2}+a^{2}+ab}{3}-\frac{(b-a)^{2}}{4} \\
+          &=\frac{4(b^{2}+a^{2}+ab)}{12}-\frac{3(b^{2}+a^{2}-2ab)}{12} \\
+          &=\frac{4b^{2}+4a^{2}+4ab-3b^{2}-3a^{2}+6ab}{12} \\
+          &=\frac{b^{2}+a^{2}-2ab}{12}
+\end{align*}
+\subsubsection{Exponential distribution}
+An exponential distribution is a distribution with a PDF given by
+\[
+    f_{X}(x)=\begin{cases}\lambda e^{-\lambda x} & x>0 \\ 0 & \text{otherwise}\end{cases}
+\]
+The expected value of a uniform distribution is given by
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+      &=\int_{-\infty}^{\infty}x\times\lambda e^{-\lambda x}dx \\
+      &=\lambda\int_{-\infty}^{\infty}xe^{-\lambda x}dx \\
+\end{align*}
+We now make use of integration by parts with $f=x$ and $g'=e^{-\lambda x}$
+\[
+    \int xe^{-\lambda x}=-\frac{xe^{-\lambda x}}{\lambda}-\int-\frac{e^{-\lambda x}}{\lambda}dx
+\]
+And solve the integral using substitution with $u=-\lambda x\implies dx=\frac{1}{-\lambda}du$
+\begin{align*}
+    \int-\frac{e^{u}}{\lambda}\frac{1}{-\lambda}du\right)&=\frac{1}{\lambda^{2}}\int e^{u}du \\
+      &=\frac{e^{u}}{\lambda^{2}} \\
+      &=\frac{e^{-\lambda x}}{\lambda^{2}}
+\end{align*}
+As such we can compute the expected value as
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}\lambda\times\left(-\frac{xe^{-\lambda x}}{\lambda}-\frac{e^{-\lambda x}}{\lambda^{2}}\right)dx \\
+      &=\int_{-\infty}^{\infty}-xe^{-\lambda x}-\frac{e^{-\lambda x}}{\lambda}dx \\
+      &=\int_{-\infty}^{\infty}-\frac{\lambda xe^{-\lambda x}-e^{-\lambda x}}{\lambda}dx \\
+      &=\left[\frac{(\lambda x+1)e^{-\lambda x}}{\lambda}\right]_{0}^{\infty} \\
+      &=\frac{(\lambda\times 0+1)e^{0}}{\lambda}-\lim_{x\rightarrow \infty}\frac{(\lambda x+1)e^{-\lambda x}}{\lambda} \\
+      &=\frac{1}{\lambda}
+\end{align*}
+To determine the variance we need $EX^{2}$
+\begin{align*}
+    EX^{2}&=\int_{0}^{\infty}x^{2}\times \lambda e^{-\lambda x}dx \\
+       &=\lambda\int_{0}^{\infty}x^{2}\times e^{-\lambda x}dx \\
+       &=\lambda\int_{0}^{\infty}\left(-\frac{x^{2}e^{-\lambda x}}{\lambda}-\int-\frac{2xe^{-\lambda x}}{\lambda}\right) \\
+       &=\lambda\int_{0}^{\infty}\left(-\frac{x^{2}e^{-\lambda x}}{\lambda}+\frac{2}{\lambda}\int xe^{-\lambda x}\right) \\
+       &=\lambda\int_{0}^{\infty}\left(-\frac{x^{2}e^{-\lambda x}}{\lambda}+\frac{2}{\lambda}\times\left(\frac{e^{-\lambda x}}{\lambda^{2}}\right)\right) \\
+       &=\int_{0}^{\infty}-x^{2}e^{-\lambda x}+\frac{2e^{-\lambda x}}{\lambda^{2}} \\
+       &=\int_{0}^{\infty}\frac{-\lambda^{2}x^{2}e^{-\lambda x}+2e^{-\lambda x}}{\lambda^{2}} \\
+       &=\left[\frac{-\lambda^{2}x^{2}e^{-\lambda x}+2e^{-\lambda x}}{\lambda^{2}}\right]_{0}^{\infty} \\
+       &=\frac{-\lambda^{2}0^{2}e^{-\lambda 0}+2e^{0}}{\lambda^{2}}-\lim_{x\rightarrow \infty}\frac{-\lambda^{2}x^{2}e^{-\lambda x}+2e^{-\lambda x}}{\lambda^{2}} \\
+       &=\frac{2}{\lambda^{2}}
+\end{align*}
+As such we can determine the variance as
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=\frac{2}{\lambda^{2}}-\frac{1}{\lambda^{2}} \\
+             &=\frac{1}{\lambda^{2}}
+\end{align*}
