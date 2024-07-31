@@ -159,3 +159,39 @@ As such we can determine the variance as
              &=\frac{2}{\lambda^{2}}-\frac{1}{\lambda^{2}} \\
              &=\frac{1}{\lambda^{2}}
 \end{align*}
+\subsubsection{Normal (Gaussian) distribution}
+A standard normal random variable is a random variable whos PDF follows
+\[
+    f_{Z}(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^{2}}{2}}
+\]
+Where the first term ensures that the area under the curve is equal to one. The expected value of such a distribution is given by
+\begin{align*}
+    EZ&=\int_{-\infty}^{\infty}zf_{Z}(z)dz \\
+      &=\int_{-\infty}^{\infty}z\times\frac{1}{\sqrt{2\pi}}e^{-\frac{z^{2}}{2}}dz \\
+      &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z\times e^{-\frac{z^{2}}{2}}dz 
+\end{align*}
+Making use of integration by substitution with $u=-\frac{z^{2}}{2}\implies dz=\frac{1}{-z}du$
+\begin{align*}
+    EZ&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z\times e^{u}\times\frac{1}{-z}du \\
+      &=-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{u}du \\
+      &=-\frac{1}{\sqrt{2\pi}}\left[e^{u}\right]_{-\infty}^{\infty} \\
+      &=-\frac{1}{\sqrt{2\pi}}\left[e^{-\frac{z^{2}}{2}}\right]_{-\infty}^{\infty} \\
+      &=-\frac{1}{\sqrt{2\pi}}\times\left(\lim_{z\rightarrow\infty}e^{-\frac{z^{2}}{2}}-\lim_{z\rightarrow-\infty}e^{-\frac{z^{2}}{2}}\right) \\
+      &=0
+\end{align*}
+This makes sense as the distribution is symmetrical around 0. We now determine $EZ^{2}$ to enable determining the variance.
+\begin{align*}
+    EZ^{2}&=\int_{-\infty}^{\infty}z^{2}f_{Z}(z)dz \\
+       &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^{2}e^{-\frac{z^{2}}{2}}dz
+\end{align*}
+Let $u=-\frac{z^{2}}{2}\implies dz=-\frac{1}{-z}du$, by substitution we get
+\begin{align*}
+    EZ^{2}&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^{2}e^{u}\frac{1}{-z}du \\
+          &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}-ze^{u}du \\
+          &=-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}ze^{u}du
+\end{align*}
+Using integration by parts with $f=z,g'=e^{u}$ we get that
+\begin{align*}
+    \int ze^{u}du&=ze^{u}-\int e^{u}du \\
+           &=
+\end{align*}
