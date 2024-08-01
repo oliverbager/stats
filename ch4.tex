@@ -181,17 +181,112 @@ Making use of integration by substitution with $u=-\frac{z^{2}}{2}\implies dz=\f
 \end{align*}
 This makes sense as the distribution is symmetrical around 0. We now determine $EZ^{2}$ to enable determining the variance.
 \begin{align*}
-    EZ^{2}&=\int_{-\infty}^{\infty}z^{2}f_{Z}(z)dz \\
-       &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^{2}e^{-\frac{z^{2}}{2}}dz
+    EZ^{2}&=\int_{-\infty}^{\infty} z^{2}f_{Z}(z)dz \\ 
+          &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} z^{2}e^{-\frac{z^2}{2}}dz \\ 
+          &=\frac{1}{\sqrt{2\pi}}\left(\int_{-\infty}^{0} z\left(ze^{-\frac{z^2}{2}}dz\right)+\int_{0}^{\infty} z\left(ze^{-\frac{z^2}{2}}\right)dz\right) \\ 
+          &=\frac{1}{\sqrt{2\pi}}\left(\left[-ze^{-\frac{z^2}{2}}\right]_{-\infty}^{0}+\int_{-\infty}^{0}e^{-\frac{z^2}{2}}dz-\left[ze^{-\frac{z^2}{2}}\right]_{0}^{\infty}+\int_{0}^{\infty} e^{-\frac{z^2}{2}}dz\right) \\ 
+          &=\frac{1}{\sqrt{2\pi}}\left(\int_{-\infty}^{0}e^{-\frac{z^2}{2}}dz+\int_{0}^{\infty} e^{-\frac{z^2}{2}}dz\right) \\
+          &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\frac{z^2}{2}}dz \\ 
+          &=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}dz \\ 
+          &=\int_{-\infty}^{\infty}f_{Z}(z)dz \\ 
+          &=1 
 \end{align*}
-Let $u=-\frac{z^{2}}{2}\implies dz=-\frac{1}{-z}du$, by substitution we get
+As such we can determine the variance of the Gaussian distribution as
 \begin{align*}
-    EZ^{2}&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^{2}e^{u}\frac{1}{-z}du \\
-          &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}-ze^{u}du \\
-          &=-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}ze^{u}du
+    \text{Var}(Z)&=EZ^{2}-(EZ)^{2} \\
+                 &=1-0 \\
+                 &=1
 \end{align*}
-Using integration by parts with $f=z,g'=e^{u}$ we get that
+The CDF of the normal distribution which we would typically find by integrating the PDF, this integral does however not have a closed form solution, and as such we typically denote the CDF of a standard normal as
+\[
+    \phi(x)=P(Z\leq x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{x^{2}}{2}}dz
+\]
+Furthermore we define a normal random variable, a random variable which can be transformed into any other random variable, for this we have that
 \begin{align*}
-    \int ze^{u}du&=ze^{u}-\int e^{u}du \\
-           &=
+    X&=\sigma Z+\mu\text{, where }\sigma>0 \\
+    EX&=\sigma EZ+\mu=\mu \\
+    \text{Var}(X)&=\sigma^{2}\text{Var}(Z)=\sigma^{2}
 \end{align*}
+By this definition we call $X$ a normal random variable with mean $\mu$ and variance $\sigma^{2}$, notationally this can be written
+\[
+    X\sim N(\mu,\sigma^{2})
+\]
+A random variable with such distribution has that
+\begin{align*}
+    P(X<z)&=F_{X}(z) \\
+          &=\phi\left(\frac{z-\mu}{\sqrt{\sigma}}\right)
+\end{align*}
+\begin{theorem}
+  A linear transformation of a normal random variable is itself a normal random variable.
+\end{theorem}
+\begin{proof}
+  Let
+  \[
+      X\sim N(\mu_{X},\sigma^{2}_{X})\text{ and }Y=aX+b\text{ where }a,b\in \mathbb{R}
+  \]
+  Expanding the shorthand we have that
+  \[
+      X=\sigma_{X}Z+\mu_{X}
+  \]
+  As such we write that
+  \begin{align*}
+      Y&=aX+b \\
+       &=a(\sigma_{X}Z+\mu_{X})+b \\
+       &=a\sigma_{X}Z+a\mu_{X}+b
+  \end{align*}
+  Which can also be written as
+  \begin{align*}
+      Y&=(a\sigma_{X})Z+(a\mu_{X}+b) \\
+       &=N(a\mu_{X}+b,a^{2}\sigma_{X}^{2})
+  \end{align*}
+\end{proof}
+\subsubsection{Gamma distribution}
+The gamma distribution makes use of the gamma function, denoted by $\Gamma(x)$, which is defined by
+\[
+    \Gamma(\alpha)=\int_{0}^{\infty}x^{\alpha-1}e^{-x}dx\text{, }\alpha>0
+\]
+In practice, the gamma function is an extension of the factorial operation to the real (and complex) numbers. This function has some notable properties
+\begin{itemize}
+    \item[-] $\Gamma(\alpha)=\int_{0}^{\infty}x^{\alpha-1}e^{-x}dx$
+    \item[-] $\int_{0}^{\infty}x^{\alpha-1}e^{-\lambda x}dx=\frac{\Gamma(\alpha)}{\lambda^{\alpha}}$ for $\lambda>0$
+    \item[-] $\Gamma(\alpha+1)=\alpha\Gamma(\alpha)$
+    \item[-] $\Gamma(n)=(n-1)!$ for $n\in\mathbb{N}$
+    \item[-] $\Gamma(\frac{1}{2})=\sqrt{\pi}$
+\end{itemize}
+The gamme function has a PDF given by
+\[
+    f_{X}(x)=\begin{cases}\frac{\lambda^{\alpha}x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha) & x>0 \\ 0 & \text{otherwise}}\end{cases}
+\]
+If we let $\alpha=1$ we get
+\[
+    f_{X}(x)\begin{cases}\lambda e^{-\lambda} & x>0 \\ 0 & \text{otherwise}\end{cases}
+\]
+We recognize that this is the PDF of an exponential distribution, and as such the gamma distribution can be seen as the sum of $n$ independent exponential distributions. We again determine the expected value and variance of a gamma distribution, using LOTUS we have that
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x) \\
+      &=\int_{-\infty}^{\infty}x\frac{\lambda^{\alpha}x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)} \\
+      &=\frac{\lambda^{\alpha}}{\Gamma(\alpha)}\int_{0}^{\infty}x^{\alpha}e^{-\lambda x} \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{\Gamma(\alpha+1)}{\lambda^{\alpha+1}} \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{\alpha\Gamma(\alpha)}{\lambda^{\alpha+1}} \\
+      &=\frac{\alpha}{\lambda}
+\end{align*}
+The same method is employed to determine $EX^{2}$, as such
+\begin{align*}
+    EX^{2}&=\int_{-\infty}^{\infty}x^{2}f_{X}(x)dx \\
+      &=\int_{-\infty}^{\infty}x^{2}\frac{\lambda^{\alpha}x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}dx \\
+      &=\frac{\lambda^{\alpha}}{\Gamma(\alpha)}\int_{0}^{\infty}x^{\alpha+1}e^{-\lambda x}dx \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{\Gamma(\alpha+2)}{\lambda^{\alpha+2}} \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{\Gamma(\alpha+2)}{\lambda^{\alpha+2}} \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{(\alpha+1)\Gamma(\alpha+1)}{\lambda^{\alpha+2}} \\
+      &=\frac{\lambda^{a}}{\Gamma(\alpha)}\times\frac{(\alpha+1)\alpha\Gamma(\alpha)}{\lambda^{\alpha+2}} \\
+      &=\frac{(\alpha+1)\alpha}{\lambda^{2}} \\
+      &=\frac{a^{2}+\alpha}{\lambda^{2}}
+\end{align*}
+We now determine the variance and get that
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=\frac{a^{2}+a}{\lambda^{2}}-\frac{a^{2}}{\lambda^{2}} \\
+             &=\frac{a}{\lambda^{2}}
+\end{align*}
+\subsection{Mixed random variables}
+As opposed to the previous exclusively discrete or continuous random variables, mixed random variables feature both a discrete and continuous part.
