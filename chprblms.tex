@@ -1442,3 +1442,99 @@ And identify the 2 middle numbers as $3,4$, we take the average of this as the a
 As such the median is $3.5$.
 
 c)
+
+\pagebreak
+\subsection{Chapter 4}
+\paragraph{Problem 1}
+a)
+\[
+    F_{X}(x)=\begin{cases}0 & x<2 \\ \frac{x-a}{b-a} & a<x<b \\ 1 & x\geq b\end{cases}
+\]
+b)
+We differentiate the CDF to obtain the PDF 
+\begin{align*}
+    f_{X}(x)&=\frac{d}{dx}F_{X}(x) \\
+            &=\begin{cases}\frac{1}{b-a} & 2<x<6 \\ 0 & \text{otherwise}\end{cases}
+\end{align*}
+And then determine $EX$ using LOTUS
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+      &=\int_{2}^{6}\frac{x}{b-a}dx \\
+      &=\frac{1}{6-2}\int_{2}^{6}xdx \\
+      &=\frac{1}{4}\times\left[\frac{x^{2}}{2}\right]_{2}^{6} \\
+      &=\frac{1}{4}\times\left(\frac{6^{2}}{2}-\frac{2^{2}}{2}\right) \\
+      &=4
+\end{align*}
+\paragraph{Problem 2}
+a)
+As we must have that
+\[
+    \int_{-\infty}^{\infty}f_{X}(x)=1
+\]
+We can write that
+\begin{align*}
+    1&=\int_{0}^{\infty}ce^{-4x} \\
+     &=c\int_{0}^{\infty}e^{-4x}
+\end{align*}
+Using substitution with $u=-4x\implies dx=\frac{1}{-4}du$
+\begin{align*}
+    1&=c\int_{0}^{\infty}\frac{e^{u}}{-4}du \\
+     &=-\frac{c}{4}\times\left[e^{-4x}\right]_{0}^{\infty} \\
+     &=-\frac{c}{4}\times(0-1) \\
+     &=\frac{c}{4}
+\end{align*}
+Solving for $c$ we then get that
+\[
+    c=1\times 4=4
+\]
+b)
+As the PDF is the derivative of the CDF we integrate and get
+\begin{align*}
+    \int 4e^{-4x}&=4\int e^{-4x} \\
+             &=4\int e^{u}\frac{1}{-4}du \\
+             &=-\int e^{u}du \\
+             &=-e^{-4x}
+\end{align*}
+\[
+    F_{X}(x)=\begin{cases}0 & x<0 \\ 1-e^{-4x} & x\geq 0\end{cases}
+\]
+c)
+We integrate the PDF from 2 to 5 and get
+\begin{align*}
+    P(2<X<5)&=\int_{2}^{5}f_{X}(x)dx \\
+            &=\int_{2}^{5}4e^{-4x}dx \\
+            &=\left[-e^{-4x}\right]_{2}^{5} \\
+            &=e^{-8}-e^{-20}
+\end{align*}
+d)
+We use LOTUS and obtain that
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+      &=\int_{0}^{\infty}x4e^{-4x}dx \\
+      &=4\int_{0}^{\infty}xe^{-4x}dx \\
+      &=\left[-xe^{-4x}\right]_{0}^{\infty}+\int_{0}^{\infty}e^{-4x} \\
+      &=\left[-xe^{-4x}\right]_{0}^{\infty}+\left[-\frac{e^{-4x}}{4}\right]_{0}^{\infty} \\
+      &=\left(0-0\right)+\left(0-\left(-\frac{1}{4}\right)\right) \\
+      &=\frac{1}{4}
+\end{align*}
+\paragraph{Problem 3}
+\paragraph{Problem 4}
+\paragraph{Problem 5}
+\paragraph{Problem 6}
+\paragraph{Problem 7}
+\paragraph{Problem 8}
+\paragraph{Problem 9}
+\paragraph{Problem 10}
+\paragraph{Problem 11}
+\paragraph{Problem 12}
+\paragraph{Problem 13}
+\paragraph{Problem 14}
+\paragraph{Problem 15}
+\paragraph{Problem 16}
+\paragraph{Problem 17}
+\paragraph{Problem 18}
+\paragraph{Problem 19}
+\paragraph{Problem 20}
+\paragraph{Problem 21}
+\paragraph{Problem 22}
+\paragraph{Problem 23}
