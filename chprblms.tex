@@ -1518,10 +1518,115 @@ We use LOTUS and obtain that
       &=\frac{1}{4}
 \end{align*}
 \paragraph{Problem 3}
+a)
+By LOTUS we have that
+\begin{align*}
+    E[X^{n}]&=\int_{-\infty}^{\infty}x^{n}f_{X}(x)dx \\
+         &=\int_{0}^{1}x^{n}\left(x^{2}+\frac{2}{3}\right)dx \\
+         &=\int_{0}^{1}x^{n+2}+\frac{2x^{n}}{3}dx \\
+         &=\int_{0}^{1}x^{n+2}+\frac{2}{3}\int_{-\infty}^{\infty}x^{n}dx \\
+         &=\left[\frac{x^{n+3}}{n+3}\right]_{0}^{1}+\frac{2}{3}\left[\frac{x^{n+1}}{n+1}\right]_{0}^{1} \\
+         &=\frac{1}{n+3}+\frac{2}{3(n+1)} \\
+         &=\frac{3(n+1)}{3(n+1)(n+3)}+\frac{2(n+3)}{3(n+1)(n+3)} \\
+         &=\frac{5n+9}{3(n+1)(n+3)}
+\end{align*}
+b) To determine the variance we need $EX$ and $EX^{2}$, as such we insert $n=1$ and $n=2$ in the equation above. Determining $EX$ we get
+\begin{align*}
+    EX&=\frac{5+9}{3\times2\times4} \\
+      &=\frac{14}{24} \\
+      &=\frac{7}{12}
+\end{align*}
+And then $EX^{2}$
+\begin{align*}
+    EX^{2}&=\frac{10+9}{3\times3\times5} \\
+       &=\frac{19}{45}
+\end{align*}
+Whereby we can determine the variance
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=\frac{19}{45}-\left(\frac{7}{12}\right)^{2} \\
+             &\approx 0.0819
+\end{align*}
 \paragraph{Problem 4}
 \paragraph{Problem 5}
+a)
+As the PDF is the derivative of the CDF and we have that $R_{Y}=[0,4]$, we write
+\begin{align*}
+    F_{Y}(y)&=P(Y\leq y) \\
+            &=P(X^{2}\leq y) \\
+            &=P(X\leq\sqrt{y}) \\
+            &=P(0\leq X\leq\sqrt{y}) \\
+            &=\int_{0}^{\sqrt{y}}\frac{5}{32}x^{4}dx \\
+            &=\frac{5}{32}\int_{0}^{\sqrt{y}}x^{4}dx \\
+            &=\frac{1}{32}\left[x^{5}\right]_{0}^{\sqrt{y}} \\
+            &=\frac{y^{2.5}}{32} \\
+            &=\frac{y^{2}\sqrt{y}}{32}
+\end{align*}
+As such the CDF can be written as
+\[
+    F_{Y}(y)=\begin{cases}0 & y<0 \\ \frac{y^{2}\sqrt{y}}{32} & 0\leq y\leq 4 \\ 1 & y>4\end{cases}
+\]
+b)
+As the PDF is the derivative of the CDF we get that
+\begin{align*}
+    f_{Y}(y)&=\frac{d}{dy}F_{Y}(y) \\
+            &=\begin{cases}\frac{d}{dy}\frac{y^{2}\sqrt{y}}{32} & 0\leq y\leq 4 \\ 0 & \text{otherwise}\end{cases} \\
+            &=\begin{cases}\frac{2.5y\sqrt{y}}{32} & 0\leq y\leq 4 \\ 0 & \text{otherwise}\end{cases}
+\end{align*}
+c)
+We determine $EY$ using LOTUS
+\begin{align*}
+    EY&=EX^{2} \\
+      &=\int_{-\infty}^{\infty}x^{2}f_{X}(x)dy \\
+      &=\int_{0}^{2}x^{2}\left(\frac{5}{32}x^{4}\right)dx \\
+      &=\frac{5}{32}\int_{0}^{2}x^{6} \\
+      &=\frac{5}{32}\times\frac{1}{7}\times\left[x^{7}\right]_{0}^{2} \\
+      &=\frac{5}{32}\times\frac{1}{7}\times 2^{7} \\
+      &=\frac{20}{7}
+\end{align*}
 \paragraph{Problem 6}
+We have that
+\[
+    X=\lambda e^{-\lambda x}
+\]
+As $Y=aX$, we have that
+\begin{align*}
+    Y&=a(\lambda e^{-\lambda x}) \\
+     &=a\left(\lambda \frac{1}{e^{\lambda x}}\right)
+\end{align*}
 \paragraph{Problem 7}
+a)
+Using the solution obtained in b) we insert $n=n-1$ and get that
+\[
+    EX^{n-1}&=\frac{(n-1)!}{\lambda^{n-1}}
+\]
+We wish to determine a coefficient that results in this expression being equivalent to $EX^{n}$, as ssuch we can write that
+\[
+    \frac{n!}{\lambda^{n}}&=c\frac{(n-1)!}{\lambda^{n-1}}
+\]
+Isolation for $c$ we get that
+\begin{align*}
+    c&=\frac{n!\lambda^{n-1}}{\lambda^{n}(n-1)!} \\
+     &=\frac{n}{\lambda}
+\end{align*}
+Whereby we can write that
+\[
+    EX^{n}=\frac{n}{\lambda}EX^{n-1}
+\]
+b)
+We make use of LOTUS with the PDF for $X\sim Exponential(\lambda)$, as such we have that
+\begin{align*}
+    EX^{n}&=\int_{-\infty}^{\infty}x^{n}f_{X}(x) \\
+       &=\int_{0}^{\infty}x^{n}\lambda e^{-\lambda x} \\
+       &=\lambda\int_{0}^{\infty}x^{n}e^{-\lambda x}
+\end{align*}
+We recognize this as a gamma function and get 
+\begin{align*}
+    \lambda\int_{0}^{\infty}x^{n}e^{-\lambda x}&=\lambda\times\frac{\Gamma(n+1)}{\lambda^{n+1}} \\
+                     &=\frac{n\Gamma(n)}{\lambda^{n}} \\
+                     &=\frac{n(n-1)!}{\lambda^{n}} \\
+                     &=\frac{n!}{\lambda^{n}}
+\end{align*}
 \paragraph{Problem 8}
 \paragraph{Problem 9}
 \paragraph{Problem 10}
