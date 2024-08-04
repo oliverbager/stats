@@ -1628,10 +1628,160 @@ We recognize this as a gamma function and get
                      &=\frac{n!}{\lambda^{n}}
 \end{align*}
 \paragraph{Problem 8}
+a)
+As this is a random normal variable we have that
+\begin{align*}
+    P(X<z)&=F_{X}(z) \\
+          &=\phi\left(\frac{z-3}{3}\right)
+\end{align*}
+As such we determine
+\begin{align*}
+    P(X>0)&=1-P(X<0) \\
+          &=1-\phi\left(\frac{0-3}{3}\right) \\
+          &\approx 0.841
+\end{align*}
+b)
+\begin{align*}
+    P(-3<X<8)&=P(X<8)-P(X<-3) \\
+             &=\phi\left(\frac{8-3}{3}\right)-\phi\left(\frac{-3-3}{3}\right) \\
+             &\approx 0.929
+\end{align*}
+c)
+\begin{align*}
+    P(X>5|X>3)&=\frac{P(X>5)}{P(X>3)} \\
+              &=\frac{1-\phi\left(\frac{5-3}{3}\right)}{1-\phi\left(\frac{3-3}{3}\right)} \\
+              &\approx 0.505
+\end{align*}
 \paragraph{Problem 9}
+a)
+As this is a random normal variable we have that
+\begin{align*}
+    P(X<z)&=F_{X}(z) \\
+          &=\phi\left(\frac{z-3}{3}\right)
+\end{align*}
+As such we determine
+\begin{align*}
+    P(X>2)&=1-\phi\left(\frac{2-3}{3}\right) \\
+          &\approx 0.631
+\end{align*}
+b)
+As $Y=5-X$ we rewrite it in the form $aX+b$ where $a=1,b=-5$, as such we get that
+\begin{align*}
+    Y&=1\times (-X)-5 \\
+     &=1(-3Z-3)+5 \\
+     &=-3Z+2
+\end{align*}
+Which lets us define
+\[
+    Y\sim N(2,9)
+\]
+As such we can determine the probability by
+\begin{align*}
+    P(-1<Y<3)&=P(Y<3)-P(Y<-1) \\
+             &=\phi\left(\frac{3-2}{3}\right)-\phi\left(\frac{(-1)-2}{3}\right) \\
+             &\approx 0.472
+\end{align*}
+c)
+\begin{align*}
+    P(X>4|Y<2)&=\frac{P(X>4\cap 5-X<2)}{P(5-X<2)} \\
+              &=\frac{P(X>4\cap X>3)}{P(X>3)} \\
+              &=\frac{1-\phi\left(\frac{4-3}{3}\right)}{\phi\left(\frac{3-3}{3}\right)} \\
+              &\approx 0.739
+\end{align*}
 \paragraph{Problem 10}
+\begin{align*}
+    f_{Y}(y)&=\sqrt{\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}} \\
+            &=\sqrt{\frac{1}{\sqrt{2\pi}}}\times\sqrt{e^{-\frac{x^{2}}{2}}} \\
+            &=\left(\frac{1}{\sqrt{2\pi}}\right)^{\frac{1}{2}}\times\left(e^{-\frac{x^{2}}{2}}\right)^{\frac{1}{2}} \\
+            &=\frac{1}{\sqrt[4]{2\pi}}e^{-\frac{x^{2}}{4}}
+\end{align*}
 \paragraph{Problem 11}
+We have that
+\[
+    f_{X}(x)= 2e^{-2x}
+\]
+a)
+\begin{align*}
+    P(X>2)&=\int_{2}^{\infty}2e^{-2x}dx \\
+          &=2\int_{2}^{\infty}e^{u}\frac{1}{-2}du \\
+          &=-\left[e^{-2x}\right]_{2}^{\infty} \\
+          &\approx 0.018
+\end{align*}
+b)
+By linearity we have that
+\begin{align*}
+    EY&=E[2+3X] \\
+      &=2+3\times EX \\
+      &=2+3\times\frac{1}{2}
+      &=3.5
+\end{align*}
+Whilst
+\begin{align*}
+    EY^{2}&=E[(2+3X)^{2}] \\
+       &=E[4+9X^{2}+12X] \\
+       &=4+9\times[EX^{2}]+12\times[EX] \\ 
+       &=4+9\times\frac{2}{2^{2}}+12\times\frac{1}{2} \\
+       &=4+4.5+6 \\
+       &=14.5
+\end{align*}
+As such we determine the variance
+\begin{align*}
+    \text{Var}(Y)&=EX^{2}-(EX)^{2} \\
+             &=14.5-3.5^{2} \\
+             &=2.25
+\end{align*}
+c)
+We have that
+\begin{align*}
+    P(X>2|Y<11)&=\frac{P(X>2)\cap P(Y<11)}{P(Y<11)} \\
+               &=\frac{P(X>2)\cap P(2+3X<11)}{P(2+3X<11)} \\
+               &=\frac{P(X>2)\cap P(X<3)}{P(X<3)} \\
+               &=\frac{P(2<X<3)}{P(X<3)} \\
+               &=\frac{\int_{2}^{3}2e^{-2x}dx}{\int_{0}^{3}2e^{-2x}dx} \\
+               &=\frac{\left[-e^{-2x}\right]_{2}^{3}}{\left[-e^{-2x}\right]_{0}^{3}} \\
+               &=\frac{e^{-4}-e^{-6}}{1-e^{-6}} \\
+               &\approx 0.016
+\end{align*}
 \paragraph{Problem 12}
+a)
+The PDF of a uniform distribution in its defined interval is given by
+\[
+    f_{X}(x)=\frac{1}{b-a}
+\]
+As the area under the curve represents the probability of a given interval we wish to determine values $a,b$ that satisfy
+\begin{align*}
+    0.5&=\int_{x}^{\infty}\frac{1}{b-a}dx \\
+       &=\left[\frac{x}{b-a}\right]_{x}^{b} \\
+       &=\frac{b}{b-a}-\frac{x}{b-a} \\
+       &=\frac{b-x}{b-a}
+\end{align*}
+Solving for $x$ we then get that
+\begin{align*}
+    x&=-0.5b+0.5a+b \\
+     &=0.5b+0.5a \\
+     &=\frac{a+b}{2}
+\end{align*}
+b)
+The PDF of an exponential distribution is given by
+\[
+    f_{X}(x)=\lambda e^{-\lambda x}
+\]
+As such we write that
+\begin{align*}
+    0.5&=\int_{0}^{x}\lambda e^{-\lambda x}dx \\
+       &=\left[-e^{-\lambda x}\right]_{0}^{x} \\
+       &=-e^{-\lambda x}+1
+\end{align*}    
+Solving for $x$ we then get that
+\begin{align*}
+    -0.5&=-e^{-\lamda x} \\
+    0.5&=e^{-\lambda x} \\
+    \ln(0.5)&=-\lambda x \\
+    x&=\frac{\ln(0.5)}{-\lambda} \\
+    x&=\frac{\ln(2)}{\lambda}
+\end{align*}
+c)
+As the normal random variable is symmetrical by definition we know the median is equal to the mean, we can however show this algebraically
 \paragraph{Problem 13}
 \paragraph{Problem 14}
 \paragraph{Problem 15}
