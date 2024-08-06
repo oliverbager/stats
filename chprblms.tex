@@ -1803,17 +1803,64 @@ We determine this as the complement of the first interval
 \end{align*}
 d)
 We can write that
+\begin{align*}
+    C(x)&=\begin{cases}x & 0\leq x<\frac{1}{2} \\ \frac{1}{2} & x\geq \frac{1}{2} \\ 0 & \text{otherwise}\end{cases} \\
+        &=xu(x)-xu\left(x-\frac{1}{2}\right)+\frac{1}{2}u\left(x-\frac{1}{2}\right)
+\end{align*}
+\begin{align*}
+    D(x)&=\begin{cases}0 & x<\frac{1}{4} \\ \frac{1}{2} & x\geq\frac{1}{4}\end{cases} \\
+        &=\frac{1}{2}u\left(x-\frac{1}{4}\right)
+\end{align*}
+As such the function can be written as
 \[
-    C(x)=\begin{cases}x & 0\leq x<\frac{1}{2} \\ 0 & \text{otherwise}\end{cases}
-\]
-\[
-    D(x)=\begin{cases}0 & x<\frac{1}{4} \\ \frac{1}{2} & x\geq\frac{1}{4}\end{cases}
+    F_{X}(x)=xu(x)-xu\left(x-\frac{1}{2}\right)+\frac{1}{2}u\left(x-\frac{1}{2}\right)+\frac{1}{2}u\left(x-\frac{1}{4}\right)
 \]
 e)
-
+\begin{align*}
+    c(x)&=\frac{d}{dx}C(x) \\
+        &=\frac{d}{dx}xu(x)-\frac{d}{dx}xu\left(x-\frac{1}{2}\right)+\frac{d}{dx}\frac{1}{2}u\left(x-\frac{1}{2}\right) \\
+        &=x\delta(x)+u(x)-x\delta\left(x-\frac{1}{2}\right)-u\left(x-\frac{1}{2}\right)+\frac{1}{2}\delta\left(x-\frac{1}{2}\right) \\
+        &=u(x)-u\left(x-\frac{1}{2}\right)
+\end{align*}
 f)
-
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+      &=\int_{-\infty}^{\infty}x\times\left[u(x)-u\left(x-\frac{1}{2}\right)\right]dx+\sum_{k}\frac{1}{2}u\left(x-\frac{1}{4}\right) \\
+      &=\left[\frac{x^{2}}{2}\right]_{0}^{\frac{1}{2}}+\frac{1}{2}\times\frac{1}{4} \\
+      &=\frac{0.5^{2}}{2}+\frac{1}{8} \\
+      &=\frac{1}{4}
+\end{align*}
 \paragraph{Problem 14}
+a)
+We differentiate previously determined $F_{X}(x)$
+\begin{align*}
+    f_{X}(x)&=\frac{d}{dx}F_{X}(x) \\
+            &=c(x)+\frac{d}{dx}\frac{1}{2}u\left(x-\frac{1}{4}\right) \\
+            &=u(x)-u\left(x-\frac{1}{2}\right)+\frac{1}{2}\delta\left(x-\frac{1}{4}\right)
+\end{align*}
+b)
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}\frac{1}{2}\delta\left(x-\frac{1}{4}\right)xdx+\int_{-\infty}^{\infty}u(x)xdx-\int_{-\infty}^{\infty}u\left(x-\frac{1}{2}\right)xdx \\
+      &=\frac{1}{2}\times\frac{1}{4}+\int_{0}^{\frac{1}{2}}xdx-\int_{0}^{\frac{1}{2}}u\left(x-\frac{1}{2}\right)xdx \\
+      &=\frac{1}{2}\times\frac{1}{4}+\left[\frac{x^{2}}{2}\right]_{0}^{\frac{1}{2}} \\
+      &=\frac{1}{2}\times\frac{1}{4}+\frac{0.5^{2}}{2} \\
+      &=\frac{1}{4}
+\end{align*}
+c)
+We determine $EX^{2}$
+\begin{align*}
+    EX^{2}&=\int_{-\infty}^{\infty}\frac{1}{2}\delta\left(x-\frac{1}{4}\right)x^{2}dx+\int_{-\infty}^{\infty}u(x)x^{2}dx-\int_{-\infty}^{\infty}u\left(x-\frac{1}{2}\right)x^{2}dx \\
+       &=\frac{1}{2}\times\frac{1}{16}+\int_{0}^{\frac{1}{2}}x^{2}dx-\int_{0}^{\frac{1}{2}}u\left(x-\frac{1}{2}\right)x^{2}dx \\
+       &=\frac{1}{2}\times\frac{1}{16}+\left[\frac{x^{3}}{3}\right]_{0}^{\frac{1}{2}} \\
+       &=\frac{1}{32}+\frac{0.5^{3}}{3} \\
+       &=\frac{7}{96}
+\end{align*}
+And as such determine the variance as
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=\frac{7}{96}-\left(\frac{1}{4}\right)^{2} \\
+             &=\frac{1}{96}
+\end{align*}
 \paragraph{Problem 15}
 a)
 As we're looking at specific points the continuous part of the generalized PDF provides no probability, as such we look at the delta functions and observe that
@@ -1853,6 +1900,43 @@ We integrate over the generalized PDF and get that
 \end{align*}
 \paragraph{Problem 16}
 \paragraph{Problem 17}
+a)
+We have that
+\[
+    f_{X}(x)=\frac{1}{2\times 1}e^{-\frac{|x-0|}{1}}
+\]
+We realise that the function is symmetrical around $\mu$, as such $EX=\mu$
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}xf_{X}(x)dx \\
+      &=\mu \\
+      &=0
+\end{align*}
+We now determine $EX^{2}$, as the function is symmetrical, we bound at 0 and multiply by 2
+\begin{align*}
+    EX^{2}&=\int_{-\infty}^{\infty}x^{2}f_{X}(x)dx \\
+      &=2\int_{0}^{\infty}x^{2}\frac{1}{2}e^{-x}dx \\
+      &=\int_{0}^{\infty}x^{2}e^{-x}dx \\
+      &=\left[-x^{2}e^{-x}\right]_{0}^{\infty}-\int_{0}^{\infty}-2xe^{-x}dx \\
+      &=2\int_{0}^{\infty}xe^{-x}dx \\
+      &=2\times\left(\left[-xe^{-x}\right]_{0}^{\infty}-\int_{0}^{\infty}e^{-x}\right) \\
+      &=2\times\left(-\left[-e^{-x}\right]_{0}^{\infty}\right) \\
+      &=2
+\end{align*}
+And at last the variance
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=2-0^{2} \\
+             &=2
+\end{align*}
+b)
+By linearity we have that
+\begin{align*}
+    Y&=bX+\mu \\
+     &=b\left(\frac{1}{2}e^{-x}\right)+\mu \\
+     &=1\times\left(\frac{1}{2}e^{-x}\right)+0 \\
+     &=\frac{1}{2}e^{-x}
+\end{align*}
+c)
 \paragraph{Problem 18}
 \paragraph{Problem 19}
 \paragraph{Problem 20}
