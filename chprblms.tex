@@ -1937,9 +1937,113 @@ By linearity we have that
      &=\frac{1}{2}e^{-x}
 \end{align*}
 c)
+Using results from previous problem with $X\sim Laplace(0,1)$ we know that
+\begin{align*}
+    EY&=E[bX+\mu] \\
+      &=bEX+\mu
+      &=\mu
+\end{align*}
+We determine $EY^{2}$ in the same way
+\begin{align*}
+    EY^{2}&=E[(bX+\mu)^{2}] \\
+          &=E[b^{2}X^{2}+\mu^{2}+2bX\mu] \\
+          &=b^{2}EX^{2}+\mu^{2}+2bEX\mu \\
+          &=2b^{2}+\mu^{2}
+\end{align*}
+As such
+\begin{align*}
+    \text{Var}(Y)&=EY^{2}-(EY)^{2} \\
+             &=2b^{2}+\mu^{2}-\mu^{2} \\
+             &=2b^{2}
+\end{align*}
 \paragraph{Problem 18}
 \paragraph{Problem 19}
+The expected value will be given by
+\begin{align*}
+    EX&=\int_{-\infty}^{\infty}x\times\frac{1}{\pi(1+x^{2})}dx \\
+      &=\int_{-\infty}^{\infty}\frac{x}{\pi u}\frac{1}{2x}du \\
+      &=\int_{-\infty}^{\infty}\frac{1}{2\pi u}du \\
+      &=\frac{1}{2\pi}\int_{-\infty}^{\infty}\frac{1}{u}du \\
+      &=\frac{1}{2\pi}\left[\ln(1+x^{2})\right]_{-\infty}^{\infty} \\
+      &=\infty-\infty
+\end{align*}
+Which is not well defined
+\begin{align*}
+    EX^{2}&=\int_{-\infty}^{\infty}x^{2}\times\frac{1}{\pi(1+x^{2})}dx \\
+       &=\frac{2}{\pi}\int_{0}^{\infty}\frac{x^{2}}{1+x^{2}}dx \\
+       &=\frac{2}{\pi}\int_{0}^{\infty}\frac{x^{2}+1-1}{x^{2}+1}dx \\
+       &=\frac{2}{\pi}\int_{0}^{\infty}\frac{x^{2}+1}{x^{2}+1}-\frac{1}{x^{2}+1}dx \\
+       &=\frac{2}{\pi}\int_{0}^{\infty}1-\frac{1}{x^{2}+1}dx \\
+       &=\frac{2}{\pi}\times\left[x-\arctan(x)\right]_{0}^{\infty} \\
+       &=\frac{2}{\pi}\times\left(\infty-\frac{\pi}{2}\right) \\
+       &=\infty
+\end{align*}
 \paragraph{Problem 20}
+a)
+\begin{align*}
+    EX&=\int_{0}^{\infty}x\times\left(\frac{x}{\sigma^{2}}e^{-\frac{x^{2}}{2\sigma^{2}}}\right)dx \\
+      &=\frac{1}{\sigma^{2}}\int_{0}^{\infty}x^{2}e^{-\frac{x^{2}}{2\sigma^{2}}} \\
+\end{align*}
+We recognize this integral from the variance of a random variable $X\sim Normal(0,\sigma^{2})$, as such we rewrite the constant
+\begin{align*}
+    EX&=\frac{1}{\sigma^{2}}\int_{0}^{\infty}x^{2}e^{-\frac{x^{2}}{2\sigma^{2}}} \\
+      &=\frac{\sqrt{2\pi}\sigma}{2\sigma^{2}}\left[\frac{2}{\sqrt{2\pi}\sigma}\int_{0}^{\infty}x^{2}e^{-\frac{x^{2}}{2\sigma^{2}}}\right] \\
+      &=\frac{\sqrt{2\pi}}{2\sigma}\sigma^{2} \\
+      &=\frac{\sqrt{2\pi}\sigma}{2}
+\end{align*}
+b)
+
+c)
 \paragraph{Problem 21}
+a)
+\begin{align*}
+    F_{X}(x)&=\int_{-\infty}^{\infty}f_{X}(x) \\
+         &=\int_{-\infty}^{x_{m}}0+\int_{x_{m}}^{x}\alpha\frac{x_{m}^{\alpha}}{x^{\alpha+1}} \\
+         &=\alpha x_{m}^{\alpha}\int_{x_{m}}^{x}\frac{1}{x^{\alpha+1}} \\
+         &=\alpha x_{m}^{\alpha}\times\left[-\frac{1}{\alpha x^{\alpha}}\right]_{x_{m}}^{x} \\
+         &=\alpha x_{m}^{\alpha}\times\left(\frac{1}{\alpha x_{m}^{\alpha}}-\frac{1}{\alpha x^{\alpha}}\right) \\
+         &=1-\left(\frac{\alpha x_{m}}{\alpha x}\right)^{\alpha}
+\end{align*}
+b)
+\begin{align*}
+    P(X>3x_{m}|X>2x_{m})&=\frac{P(X>3x_{m}\cap X>2x_{m})}{P(X>2x_{m})} \\
+                        &=\frac{P(X>3x_{m})}{P(X>2x_{m})} \\
+                        &=\frac{1-\left(1-\left(\frac{\alpha x_{m}}{3\alpha x_{m}}\right)^{\alpha}\right)}{1-\left(1-\left(\frac{\alpha x_{m}}{2\alpha x_{m}}\right)^{\alpha}\right)} \\
+                        &=\left(\frac{2}{3}\right)^{\alpha}
+\end{align*}
+c)
+\begin{align*}
+    EX&=\int_{x_{m}}^{\infty}x\times f_{X}(x)dx \\
+      &=\int_{x_{m}}^{\infty}x\alpha\frac{x_{m}^{\alpha}}{x^{\alpha+1}}dx \\
+      &=\alpha x_{m}^{a}\int_{x_{m}}^{\infty}\frac{1}{x^{\alpha}}dx \\
+      &=\alpha x_{m}^{a}\times\left[\frac{x^{-a+1}}{-a+1}\right]_{x_{m}}^{\infty} \\
+      &=\frac{\alpha x_{m}^{a}}{1-\alpha}\times\left[x^{-a+1}\right]_{x_{m}}^{\infty} \\
+      &=\frac{\alpha x_{m}^{a}}{1-\alpha}\times\left[\frac{x}{x^{\alpha}}\right]_{x_{m}}^{\infty} \\
+      &=\frac{\alpha x_{m}^{a}}{1-\alpha}\times\left(-\frac{x_{m}}{x_{m}^{\alpha}}\right) \\
+      &=\frac{\alpha x_{m}}{\alpha-1}
+\end{align*}
+And we now determine $EX^{2}$
+\begin{align*}
+    EX^{2}&=\int_{x_{m}}^{\infty}x^{2}\times f_{X}(x)dx \\
+       &=\int_{x_{m}}^{\infty}x^{2}\alpha\frac{x_{m}^{\alpha}}{x^{\alpha+1}} \\
+       &=\alpha x_{m}^{\alpha}\int_{x_{m}}^{\infty}\frac{1}{x^{\alpha-1}} \\
+       &=\alpha x_{m}^{\alpha}\times\left[\frac{x^{-\alpha+1+1}}{-\alpha+1+1}\right]_{x_{m}}^{\infty} \\
+       &=\frac{\alpha x_{m}^{\alpha}}{\alpha+2}\times\left[x^{2-\alpha}\right]_{x_{m}}^{\infty} \\
+       &=\frac{\alpha x_{m}^{\alpha}}{2-\alpha}\times\left[\frac{x^{2}}{x^{\alpha}}\right]_{x_{m}}^{\infty} \\
+       &=\frac{\alpha x_{m}^{\alpha}}{2-\alpha}\times\left(-\frac{x_{m}^{2}}{x_{m}^{\alpha}}\right) \\
+       &=\frac{\alpha x_{m}^{2}}{\alpha-2}
+\end{align*}
+As such the variance is given by
+\begin{align*}
+    \text{Var}(X)&=EX^{2}-(EX)^{2} \\
+             &=\frac{\alpha x_{m}^{2}}{\alpha-2}-\frac{\alpha^{2}x_{m}^{2}}{(\alpha-1)^{2}} \\
+\end{align*}
 \paragraph{Problem 22}
+\begin{align*}
+    F_{X}(x)&=P(X\leq x) \\
+            &=P(e^{\sigma Z+\mu}\leq x) \\
+            &=P(\sigma Z+\mu\leq\ln(x)) \\
+            &=P\left(Z\leq\frac{\ln(x)-\mu}{\sigma}\right) \\
+            &=\phi\left(\frac{\ln(x)-\mu}{\sigma}\right)
+\end{align*}
 \paragraph{Problem 23}
